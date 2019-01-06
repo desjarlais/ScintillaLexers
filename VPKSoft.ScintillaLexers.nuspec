@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/VPKSoft/ScintillaLexers/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/VPKSoft/ScintillaLexers</projectUrl>
+    <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial NuGet release.</releaseNotes>
+    <copyright>Copyright © 2019 VPKSoft</copyright>
+    <tags>wrapper scintilla ScintillaNET lexer</tags>
+  </metadata>
+</package>
