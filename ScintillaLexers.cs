@@ -85,7 +85,12 @@ namespace VPKSoft.ScintillaLexers
         /// <summary>
         /// A batch script file.
         /// </summary>
-        Batch = 64
+        Batch = 64,
+
+        /// <summary>
+        /// A lexer for the Pascal language.
+        /// </summary>
+        Pascal = 118
     }
 
     /// <summary>
@@ -127,6 +132,10 @@ namespace VPKSoft.ScintillaLexers
                 else if (lexerType == LexerType.Batch)
                 {
                     return batchColors;
+                }
+                else if (lexerType == LexerType.Pascal)
+                {
+                    return pascalColors;
                 }
                 return result;
             }
@@ -180,6 +189,14 @@ namespace VPKSoft.ScintillaLexers
                         throw new ArgumentOutOfRangeException("value");
                     }
                     batchColors = value;
+                }
+                else if (lexerType == LexerType.Pascal)
+                {
+                    if (value == null || value.Count != pascalColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException("value");
+                    }
+                    pascalColors = value;
                 }
             }
         }
@@ -410,6 +427,39 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(252, 255, 240), // #FF8000 
                 Color.FromArgb(255, 0, 0), // #FF0000 
                 Color.FromArgb(255, 255, 255), // #FF0000 
+            });
+
+        List<Color> pascalColors = 
+            new List<Color>(new Color[]
+            {
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(0, 128, 128), // #008080 
+                Color.FromArgb(255, 255, 255), // #008080 
+                Color.FromArgb(128, 64, 0), // #804000 
+                Color.FromArgb(255, 255, 255), // #804000 
+                Color.FromArgb(128, 64, 0), // #804000 
+                Color.FromArgb(255, 255, 255), // #804000 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
+                Color.FromArgb(0, 0, 255), // #0000FF 
+                Color.FromArgb(255, 255, 255), // #0000FF 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(0, 0, 128), // #000080 
+                Color.FromArgb(255, 255, 255), // #000080 
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
             });
         #endregion
 
@@ -710,6 +760,55 @@ namespace VPKSoft.ScintillaLexers
                     new KeyValuePair<int, string>(15, "OperatorBack"),
                 }
             );
+
+        private List<KeyValuePair<int, string>> PascalColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new KeyValuePair<int, string>[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "IdentifierFore"),
+                    new KeyValuePair<int, string>(3, "IdentifierBack"),
+
+                    new KeyValuePair<int, string>(4, "CommentFore"),
+                    new KeyValuePair<int, string>(5, "CommentBack"),
+
+                    new KeyValuePair<int, string>(6, "Comment2Fore"),
+                    new KeyValuePair<int, string>(7, "Comment2Back"),
+
+                    new KeyValuePair<int, string>(8, "CommentLineFore"),
+                    new KeyValuePair<int, string>(9, "CommentLineBack"),
+
+                    new KeyValuePair<int, string>(10, "PreprocessorFore"),
+                    new KeyValuePair<int, string>(11, "PreprocessorBack"),
+
+                    new KeyValuePair<int, string>(12, "Preprocessor2Fore"),
+                    new KeyValuePair<int, string>(13, "Preprocessor2Back"),
+
+                    new KeyValuePair<int, string>(14, "NumberFore"),
+                    new KeyValuePair<int, string>(15, "NumberBack"),
+
+                    new KeyValuePair<int, string>(16, "HexNumberFore"),
+                    new KeyValuePair<int, string>(17, "HexNumberBack"),
+
+                    new KeyValuePair<int, string>(18, "WordFore"),
+                    new KeyValuePair<int, string>(19, "WordBack"),
+
+                    new KeyValuePair<int, string>(20, "StringFore"),
+                    new KeyValuePair<int, string>(21, "StringBack"),
+
+                    new KeyValuePair<int, string>(22, "CharacterFore"),
+                    new KeyValuePair<int, string>(23, "CharacterBack"),
+
+                    new KeyValuePair<int, string>(24, "OperatorFore"),
+                    new KeyValuePair<int, string>(25, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(26, "ForeColorFore"),
+                    new KeyValuePair<int, string>(27, "ForeColorBack"),
+                }
+            );
         #endregion
 
         /// <summary>
@@ -859,6 +958,11 @@ namespace VPKSoft.ScintillaLexers
                 int idx = BatchColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
+            else if (lexerType == LexerType.Pascal)
+            {
+                int idx = PascalColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
             return -1;
         }
 
@@ -893,7 +997,11 @@ namespace VPKSoft.ScintillaLexers
             {
                 return BatchColorIndexes.Select(f => f.Value);
             }
-            
+            else if (lexerType == LexerType.Pascal)
+            {
+                return PascalColorIndexes.Select(f => f.Value);
+            }
+
             return new List<string>();
         }
     }
@@ -937,6 +1045,11 @@ namespace VPKSoft.ScintillaLexers
         /// File extensions for the NSIS (Nullsoft Scriptable Install System).
         /// </summary>
         public const string NsisExtensions = ".nsi .nsh";
+
+        /// <summary>
+        /// File extensions for the Pascal programming language.
+        /// </summary>
+        public const string PascalExtensions = ".pas";
 
         /// <summary>
         /// Gets or sets the value of a LexerColors class instance.
@@ -990,6 +1103,12 @@ namespace VPKSoft.ScintillaLexers
             if (extensions.Contains(ext))
             {
                 return LexerType.Batch;
+            }
+
+            extensions = PascalExtensions.Split(' ');
+            if (extensions.Contains(ext))
+            {
+                return LexerType.Pascal;
             }
 
             return LexerType.Unknown;
@@ -1468,6 +1587,73 @@ namespace VPKSoft.ScintillaLexers
 
                 // Name: instre1
                 scintilla.SetKeywords(0, "assoc aux break call cd chcp chdir choice cls cmdextversion color com com1 com2 com3 com4 con copy country ctty date defined del dir do dpath echo else endlocal erase errorlevel exist exit for ftype goto if in loadfix loadhigh lpt lpt1 lpt2 lpt3 lpt4 md mkdir move not nul path pause popd prn prompt pushd rd rem ren rename rmdir set setlocal shift start time title type ver verify vol");
+
+                AddFolding(scintilla);
+                return true;
+            }
+            else if (lexerType == LexerType.Pascal)
+            {
+                ClearStyle(scintilla);
+
+                // DEFAULT, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Default].ForeColor = LexerColors[LexerType.Pascal, "DefaultFore"];
+                scintilla.Styles[Style.Pascal.Default].BackColor = LexerColors[LexerType.Pascal, "DefaultBack"];
+
+                // IDENTIFIER, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Identifier].ForeColor = LexerColors[LexerType.Pascal, "IdentifierFore"];
+                scintilla.Styles[Style.Pascal.Identifier].BackColor = LexerColors[LexerType.Pascal, "IdentifierBack"];
+
+                // COMMENT, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Comment].ForeColor = LexerColors[LexerType.Pascal, "CommentFore"];
+                scintilla.Styles[Style.Pascal.Comment].BackColor = LexerColors[LexerType.Pascal, "CommentBack"];
+
+                // COMMENT LINE, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Comment2].ForeColor = LexerColors[LexerType.Pascal, "Comment2Fore"];
+                scintilla.Styles[Style.Pascal.Comment2].BackColor = LexerColors[LexerType.Pascal, "Comment2Back"];
+
+                // COMMENT DOC, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.CommentLine].ForeColor = LexerColors[LexerType.Pascal, "CommentLineFore"];
+                scintilla.Styles[Style.Pascal.CommentLine].BackColor = LexerColors[LexerType.Pascal, "CommentLineBack"];
+
+                // PREPROCESSOR, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Preprocessor].ForeColor = LexerColors[LexerType.Pascal, "PreprocessorFore"];
+                scintilla.Styles[Style.Pascal.Preprocessor].BackColor = LexerColors[LexerType.Pascal, "PreprocessorBack"];
+
+                // PREPROCESSOR2, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Preprocessor2].ForeColor = LexerColors[LexerType.Pascal, "Preprocessor2Fore"];
+                scintilla.Styles[Style.Pascal.Preprocessor2].BackColor = LexerColors[LexerType.Pascal, "Preprocessor2Back"];
+
+                // NUMBER, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Number].ForeColor = LexerColors[LexerType.Pascal, "NumberFore"];
+                scintilla.Styles[Style.Pascal.Number].BackColor = LexerColors[LexerType.Pascal, "NumberBack"];
+
+                // HEX NUMBER, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.HexNumber].ForeColor = LexerColors[LexerType.Pascal, "HexNumberFore"];
+                scintilla.Styles[Style.Pascal.HexNumber].BackColor = LexerColors[LexerType.Pascal, "HexNumberBack"];
+
+                // INSTRUCTION WORD, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Word].ForeColor = LexerColors[LexerType.Pascal, "WordFore"];
+                scintilla.Styles[Style.Pascal.Word].BackColor = LexerColors[LexerType.Pascal, "WordBack"];
+
+                // STRING, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.String].ForeColor = LexerColors[LexerType.Pascal, "StringFore"];
+                scintilla.Styles[Style.Pascal.String].BackColor = LexerColors[LexerType.Pascal, "StringBack"];
+
+                // CHARACTER, fontStyle = 0 
+                scintilla.Styles[Style.Pascal.Character].ForeColor = LexerColors[LexerType.Pascal, "CharacterFore"];
+                scintilla.Styles[Style.Pascal.Character].BackColor = LexerColors[LexerType.Pascal, "CharacterBack"];
+
+                // OPERATOR, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Operator].ForeColor = LexerColors[LexerType.Pascal, "OperatorFore"];
+                scintilla.Styles[Style.Pascal.Operator].BackColor = LexerColors[LexerType.Pascal, "OperatorBack"];
+
+                // ASM, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Asm].ForeColor = LexerColors[LexerType.Pascal, "ForeColorFore"];
+                scintilla.Styles[Style.Pascal.Asm].BackColor = LexerColors[LexerType.Pascal, "ForeColorBack"];
+                scintilla.Lexer = Lexer.Pascal;
+
+                // Name: instre1
+                scintilla.SetKeywords(0, "and array asm begin case cdecl class const constructor default destructor div do downto else end end. except exit exports external far file finalization finally for function goto if implementation in index inherited initialization inline interface label library message mod near nil not object of on or out overload override packed pascal private procedure program property protected public published raise read record register repeat resourcestring safecall set shl shr stdcall stored string then threadvar to try type unit until uses var virtual while with write xor");
 
                 AddFolding(scintilla);
                 return true;
