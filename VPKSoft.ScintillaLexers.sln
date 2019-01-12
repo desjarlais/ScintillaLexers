@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers.csproj", "{29857765-069A-4497-A616-E6A813F5736A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLexer", "..\TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{29857765-069A-4497-A616-E6A813F5736A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29857765-069A-4497-A616-E6A813F5736A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29857765-069A-4497-A616-E6A813F5736A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
