@@ -1351,6 +1351,7 @@ namespace VPKSoft.ScintillaLexers
             scintilla.StyleResetDefault();
             scintilla.Styles[Style.Default].Font = "Consolas";
             scintilla.Styles[Style.Default].Size = 10;
+            scintilla.Styles[Style.Default].Size = 10;
             scintilla.StyleClearAll();
         }
 
@@ -1375,6 +1376,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Default].BackColor = LexerColors[LexerType.Cs, "DefaultBack"];
 
                 // INSTRUCTION WORD, fontStyle = 1
+                scintilla.Styles[Style.Cpp.Word].Bold = true;
                 scintilla.Styles[Style.Cpp.Word].ForeColor = LexerColors[LexerType.Cs, "WordFore"];
                 scintilla.Styles[Style.Cpp.Word].BackColor = LexerColors[LexerType.Cs, "WordBack"];
 
@@ -1395,6 +1397,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Character].BackColor = LexerColors[LexerType.Cs, "CharacterBack"];
 
                 // OPERATOR, fontStyle = 1
+                scintilla.Styles[Style.Cpp.Operator].Bold = true;
                 scintilla.Styles[Style.Cpp.Operator].ForeColor = LexerColors[LexerType.Cs, "OperatorFore"];
                 scintilla.Styles[Style.Cpp.Operator].BackColor = LexerColors[LexerType.Cs, "OperatorBack"];
 
@@ -1403,6 +1406,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Verbatim].BackColor = LexerColors[LexerType.Cs, "VerbatimBack"];
 
                 // REGEX, fontStyle = 1
+                scintilla.Styles[Style.Cpp.Regex].Bold = true;
                 scintilla.Styles[Style.Cpp.Regex].ForeColor = LexerColors[LexerType.Cs, "RegexFore"];
                 scintilla.Styles[Style.Cpp.Regex].BackColor = LexerColors[LexerType.Cs, "RegexBack"];
 
@@ -1423,6 +1427,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.CommentLineDoc].BackColor = LexerColors[LexerType.Cs, "CommentLineDocBack"];
 
                 // COMMENT DOC KEYWORD, fontStyle = 1
+                scintilla.Styles[Style.Cpp.CommentDocKeyword].Bold = true;
                 scintilla.Styles[Style.Cpp.CommentDocKeyword].ForeColor = LexerColors[LexerType.Cs, "CommentDocKeywordFore"];
                 scintilla.Styles[Style.Cpp.CommentDocKeyword].BackColor = LexerColors[LexerType.Cs, "CommentDocKeywordBack"];
 
@@ -1460,6 +1465,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Xml.XmlEnd].BackColor = LexerColors[LexerType.Xml, "XmlEndBack"];
 
                 // DEFAULT, fontStyle = 1 
+                scintilla.Styles[Style.Xml.Default].Bold = true;
                 scintilla.Styles[Style.Xml.Default].ForeColor = LexerColors[LexerType.Xml, "DefaultFore"];
                 scintilla.Styles[Style.Xml.Default].BackColor = LexerColors[LexerType.Xml, "DefaultBack"];
 
@@ -1472,10 +1478,12 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Xml.Number].BackColor = LexerColors[LexerType.Xml, "NumberBack"];
 
                 // DOUBLESTRING, fontStyle = 1 
+                scintilla.Styles[Style.Xml.DoubleString].Bold = true;
                 scintilla.Styles[Style.Xml.DoubleString].ForeColor = LexerColors[LexerType.Xml, "DoubleStringFore"];
                 scintilla.Styles[Style.Xml.DoubleString].BackColor = LexerColors[LexerType.Xml, "DoubleStringBack"];
 
                 // SINGLESTRING, fontStyle = 1 
+                scintilla.Styles[Style.Xml.SingleString].Bold = true;
                 scintilla.Styles[Style.Xml.SingleString].ForeColor = LexerColors[LexerType.Xml, "SingleStringFore"];
                 scintilla.Styles[Style.Xml.SingleString].BackColor = LexerColors[LexerType.Xml, "SingleStringBack"];
 
@@ -1508,6 +1516,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Xml.CData].BackColor = LexerColors[LexerType.Xml, "CDataBack"];
 
                 // ENTITY, fontStyle = 2 
+                scintilla.Styles[Style.Xml.Entity].Italic = true;
                 scintilla.Styles[Style.Xml.Entity].ForeColor = LexerColors[LexerType.Xml, "EntityFore"];
                 scintilla.Styles[Style.Xml.Entity].BackColor = LexerColors[LexerType.Xml, "EntityBack"];
 
@@ -1532,6 +1541,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Default].BackColor = LexerColors[LexerType.Cpp, "DefaultBack"];
 
                 // INSTRUCTION WORD, fontStyle = 1 
+                scintilla.Styles[Style.Cpp.Word].Bold = true;
                 scintilla.Styles[Style.Cpp.Word].ForeColor = LexerColors[LexerType.Cpp, "WordFore"];
                 scintilla.Styles[Style.Cpp.Word].BackColor = LexerColors[LexerType.Cpp, "WordBack"];
 
@@ -1552,6 +1562,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Character].BackColor = LexerColors[LexerType.Cpp, "CharacterBack"];
 
                 // OPERATOR, fontStyle = 1 
+                scintilla.Styles[Style.Cpp.Operator].Bold = true;
                 scintilla.Styles[Style.Cpp.Operator].ForeColor = LexerColors[LexerType.Cpp, "OperatorFore"];
                 scintilla.Styles[Style.Cpp.Operator].BackColor = LexerColors[LexerType.Cpp, "OperatorBack"];
 
@@ -1560,6 +1571,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.Verbatim].BackColor = LexerColors[LexerType.Cpp, "VerbatimBack"];
 
                 // REGEX, fontStyle = 1 
+                scintilla.Styles[Style.Cpp.Regex].Bold = true;
                 scintilla.Styles[Style.Cpp.Regex].ForeColor = LexerColors[LexerType.Cpp, "RegexFore"];
                 scintilla.Styles[Style.Cpp.Regex].BackColor = LexerColors[LexerType.Cpp, "RegexBack"];
 
@@ -1580,6 +1592,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Cpp.CommentLineDoc].BackColor = LexerColors[LexerType.Cpp, "CommentLineDocBack"];
 
                 // COMMENT DOC KEYWORD, fontStyle = 1 
+                scintilla.Styles[Style.Cpp.CommentDocKeyword].Bold = true;
                 scintilla.Styles[Style.Cpp.CommentDocKeyword].ForeColor = LexerColors[LexerType.Cpp, "CommentDocKeywordFore"];
                 scintilla.Styles[Style.Cpp.CommentDocKeyword].BackColor = LexerColors[LexerType.Cpp, "CommentDocKeywordBack"];
 
@@ -1677,10 +1690,12 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[SCE_NSIS_USERDEFINED].BackColor = LexerColors[LexerType.Nsis, "UserDefinedBack"];
 
                 // SECTION, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_SECTIONDEF].Bold = true;
                 scintilla.Styles[SCE_NSIS_SECTIONDEF].ForeColor = LexerColors[LexerType.Nsis, "SectionFore"];
                 scintilla.Styles[SCE_NSIS_SECTIONDEF].BackColor = LexerColors[LexerType.Nsis, "SectionBack"];
 
                 // SUBSECTION, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_SUBSECTIONDEF].Bold = true;
                 scintilla.Styles[SCE_NSIS_SUBSECTIONDEF].ForeColor = LexerColors[LexerType.Nsis, "SubSectionFore"];
                 scintilla.Styles[SCE_NSIS_SUBSECTIONDEF].BackColor = LexerColors[LexerType.Nsis, "SubSectionBack"];
 
@@ -1689,6 +1704,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[SCE_NSIS_IFDEFINEDEF].BackColor = LexerColors[LexerType.Nsis, "IfDefineBack"];
 
                 // MACRO, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_MACRODEF].Bold = true;
                 scintilla.Styles[SCE_NSIS_MACRODEF].ForeColor = LexerColors[LexerType.Nsis, "MacroFore"];
                 scintilla.Styles[SCE_NSIS_MACRODEF].BackColor = LexerColors[LexerType.Nsis, "MacroBack"];
 
@@ -1701,14 +1717,17 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[SCE_NSIS_NUMBER].BackColor = LexerColors[LexerType.Nsis, "NumberBack"];
 
                 // SECTION GROUP, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_SECTIONGROUP].Bold = true;
                 scintilla.Styles[SCE_NSIS_SECTIONGROUP].ForeColor = LexerColors[LexerType.Nsis, "SectionGroupFore"];
                 scintilla.Styles[SCE_NSIS_SECTIONGROUP].BackColor = LexerColors[LexerType.Nsis, "SectionGroupBack"];
 
                 // PAGE EX, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_PAGEEX].Bold = true;
                 scintilla.Styles[SCE_NSIS_PAGEEX].ForeColor = LexerColors[LexerType.Nsis, "PageExFore"];
                 scintilla.Styles[SCE_NSIS_PAGEEX].BackColor = LexerColors[LexerType.Nsis, "PageExBack"];
 
                 // FUNCTION DEFINITIONS, fontStyle = 1 
+                scintilla.Styles[SCE_NSIS_FUNCTIONDEF].Bold = true;
                 scintilla.Styles[SCE_NSIS_FUNCTIONDEF].ForeColor = LexerColors[LexerType.Nsis, "FunctionDefinitionsFore"];
                 scintilla.Styles[SCE_NSIS_FUNCTIONDEF].BackColor = LexerColors[LexerType.Nsis, "FunctionDefinitionsBack"];
 
@@ -1734,6 +1753,7 @@ namespace VPKSoft.ScintillaLexers
                 ClearStyle(scintilla);
 
                 // KEYWORD, fontStyle = 1 
+                scintilla.Styles[Style.Sql.Word].Bold = true;
                 scintilla.Styles[Style.Sql.Word].ForeColor = LexerColors[LexerType.SQL, "WordFore"];
                 scintilla.Styles[Style.Sql.Word].BackColor = LexerColors[LexerType.SQL, "WordBack"];
 
@@ -1750,6 +1770,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Sql.Character].BackColor = LexerColors[LexerType.SQL, "CharacterBack"];
 
                 // OPERATOR, fontStyle = 1 
+                scintilla.Styles[Style.Sql.Operator].Bold = true;
                 scintilla.Styles[Style.Sql.Operator].ForeColor = LexerColors[LexerType.SQL, "OperatorFore"];
                 scintilla.Styles[Style.Sql.Operator].BackColor = LexerColors[LexerType.SQL, "OperatorBack"];
 
@@ -1789,10 +1810,12 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Batch.Comment].BackColor = LexerColors[LexerType.Batch, "CommentBack"];
 
                 // KEYWORDS, fontStyle = 1 
+                scintilla.Styles[Style.Batch.Word].Bold = true;
                 scintilla.Styles[Style.Batch.Word].ForeColor = LexerColors[LexerType.Batch, "WordFore"];
                 scintilla.Styles[Style.Batch.Word].BackColor = LexerColors[LexerType.Batch, "WordBack"];
 
                 // LABEL, fontStyle = 1 
+                scintilla.Styles[Style.Batch.Label].Bold = true;
                 scintilla.Styles[Style.Batch.Label].ForeColor = LexerColors[LexerType.Batch, "LabelFore"];
                 scintilla.Styles[Style.Batch.Label].BackColor = LexerColors[LexerType.Batch, "LabelBack"];
 
@@ -1805,10 +1828,12 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Batch.Command].BackColor = LexerColors[LexerType.Batch, "CommandBack"];
 
                 // VARIABLE, fontStyle = 1 
+                scintilla.Styles[Style.Batch.Identifier].Bold = true;
                 scintilla.Styles[Style.Batch.Identifier].ForeColor = LexerColors[LexerType.Batch, "IdentifierFore"];
                 scintilla.Styles[Style.Batch.Identifier].BackColor = LexerColors[LexerType.Batch, "IdentifierBack"];
 
                 // OPERATOR, fontStyle = 1 
+                scintilla.Styles[Style.Batch.Operator].Bold = true;
                 scintilla.Styles[Style.Batch.Operator].ForeColor = LexerColors[LexerType.Batch, "OperatorFore"];
                 scintilla.Styles[Style.Batch.Operator].BackColor = LexerColors[LexerType.Batch, "OperatorBack"];
                 scintilla.Lexer = Lexer.Batch;
@@ -1860,6 +1885,7 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Pascal.HexNumber].BackColor = LexerColors[LexerType.Pascal, "HexNumberBack"];
 
                 // INSTRUCTION WORD, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Word].Bold = true;
                 scintilla.Styles[Style.Pascal.Word].ForeColor = LexerColors[LexerType.Pascal, "WordFore"];
                 scintilla.Styles[Style.Pascal.Word].BackColor = LexerColors[LexerType.Pascal, "WordBack"];
 
@@ -1872,10 +1898,12 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Pascal.Character].BackColor = LexerColors[LexerType.Pascal, "CharacterBack"];
 
                 // OPERATOR, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Operator].Bold = true;
                 scintilla.Styles[Style.Pascal.Operator].ForeColor = LexerColors[LexerType.Pascal, "OperatorFore"];
                 scintilla.Styles[Style.Pascal.Operator].BackColor = LexerColors[LexerType.Pascal, "OperatorBack"];
 
                 // ASM, fontStyle = 1 
+                scintilla.Styles[Style.Pascal.Asm].Bold = true;
                 scintilla.Styles[Style.Pascal.Asm].ForeColor = LexerColors[LexerType.Pascal, "ForeColorFore"];
                 scintilla.Styles[Style.Pascal.Asm].BackColor = LexerColors[LexerType.Pascal, "ForeColorBack"];
                 scintilla.Lexer = Lexer.Pascal;
@@ -1999,6 +2027,7 @@ namespace VPKSoft.ScintillaLexers
         public static void SetHTMLStyles(ref Scintilla scintilla)
         {
             // DEFAULT, fontStyle = 1, styleId = 0
+            scintilla.Styles[Style.Html.Default].Bold = true;
             scintilla.Styles[Style.Html.Default].ForeColor = LexerColors[LexerType.HTML, "DefaultFore"];
             scintilla.Styles[Style.Html.Default].BackColor = LexerColors[LexerType.HTML, "DefaultBack"];
 
@@ -2010,11 +2039,19 @@ namespace VPKSoft.ScintillaLexers
             scintilla.Styles[Style.Html.Number].ForeColor = LexerColors[LexerType.HTML, "NumberFore"];
             scintilla.Styles[Style.Html.Number].BackColor = LexerColors[LexerType.HTML, "NumberBack"];
 
+            // self added, seemed to be missing..
+            scintilla.Styles[Style.Html.Entity].Italic = true;
+            scintilla.Styles[Style.Html.Entity].ForeColor = LexerColors[LexerType.HTML, "EntityFore"];
+            scintilla.Styles[Style.Html.Entity].BackColor = LexerColors[LexerType.HTML, "EntityBack"];
+           
+
             // DOUBLESTRING, fontStyle = 1, styleId = 6
+            scintilla.Styles[Style.Html.DoubleString].Bold = true;
             scintilla.Styles[Style.Html.DoubleString].ForeColor = LexerColors[LexerType.HTML, "DoubleStringFore"];
             scintilla.Styles[Style.Html.DoubleString].BackColor = LexerColors[LexerType.HTML, "DoubleStringBack"];
 
             // SINGLESTRING, fontStyle = 1, styleId = 7
+            scintilla.Styles[Style.Html.SingleString].Bold = true;
             scintilla.Styles[Style.Html.SingleString].ForeColor = LexerColors[LexerType.HTML, "SingleStringFore"];
             scintilla.Styles[Style.Html.SingleString].BackColor = LexerColors[LexerType.HTML, "SingleStringBack"];
 
@@ -2062,6 +2099,7 @@ namespace VPKSoft.ScintillaLexers
             scintilla.Styles[Style.PhpScript.HString].BackColor = LexerColors[LexerType.PHP, "HStringBack"];
 
             // STRING VARIABLE, fontStyle = 1, styleId = 126
+            scintilla.Styles[Style.PhpScript.HStringVariable].Bold = true;
             scintilla.Styles[Style.PhpScript.HStringVariable].ForeColor = LexerColors[LexerType.PHP, "HStringVariableFore"];
             scintilla.Styles[Style.PhpScript.HStringVariable].BackColor = LexerColors[LexerType.PHP, "HStringVariableBack"];
 
@@ -2070,6 +2108,7 @@ namespace VPKSoft.ScintillaLexers
             scintilla.Styles[Style.PhpScript.SimpleString].BackColor = LexerColors[LexerType.PHP, "SimpleStringBack"];
 
             // WORD, fontStyle = 1, styleId = 121
+            scintilla.Styles[Style.PhpScript.Word].Bold = true;
             scintilla.Styles[Style.PhpScript.Word].ForeColor = LexerColors[LexerType.PHP, "WordFore"];
             scintilla.Styles[Style.PhpScript.Word].BackColor = LexerColors[LexerType.PHP, "WordBack"];
 
