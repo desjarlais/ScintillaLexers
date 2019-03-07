@@ -44,63 +44,62 @@ namespace VPKSoft.ScintillaLexers
     /// <summary>
     /// An enumeration of currently supported Scintilla lexers.
     /// </summary>
-    [Flags]
-    public enum LexerType: int
+    public enum LexerType
     {
         /// <summary>
         /// An unknown language and / or file.
         /// </summary>
-        Unknown = 0,
+        Unknown = 0, // previously: 0
 
         /// <summary>
         /// The C# programming language.
         /// </summary>
-        Cs = 1,
+        Cs = 1, // previously: 1
 
         /// <summary>
         /// The C++ programming language.
         /// </summary>
-        Cpp = 2,
+        Cpp = 2, // previously: 2
 
         /// <summary>
         /// The Extensible Markup Language.
         /// </summary>
-        Xml = 4,
+        Xml = 3, // previously: 4
 
         /// <summary>
         /// A plain text document.
         /// </summary>
-        Text = 8,
+        Text = 4, // previously: 8
 
         /// <summary>
         /// The NSIS (Nullsoft Scriptable Install System).
         /// </summary>
-        Nsis = 16,
+        Nsis = 5, // previously: 16
 
         /// <summary>
         /// The Structured Query Language (SQL).
         /// </summary>
-        SQL = 32,
+        SQL = 6, // previously: 32
 
         /// <summary>
         /// A batch script file.
         /// </summary>
-        Batch = 64,
+        Batch = 7, // previously: 64
 
         /// <summary>
         /// A lexer for the Pascal language.
         /// </summary>
-        Pascal = 128,
+        Pascal = 8, // previously: 128
 
         /// <summary>
         /// A lexer for the PHP programming language.
         /// </summary>
-        PHP = 256,
+        PHP = 9, // previously: 256
 
         /// <summary>
         /// A lexer type for the HTML markup language.
         /// </summary>
-        HTML = 512
+        HTML = 10 // previously: 512
     }
 
     /// <summary>

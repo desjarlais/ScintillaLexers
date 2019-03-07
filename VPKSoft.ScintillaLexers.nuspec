@@ -6,13 +6,13 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/VPKSoft/ScintillaLexers/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/VPKSoft/ScintillaLexers</projectUrl>
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Updated the PHP lezer. Added HTML lexer draft.</releaseNotes>
+    <releaseNotes>Removed the supid [FLAGS] attribute from the LexerType enumeration.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper scintilla ScintillaNET lexer</tags>
+    <license type="expression">MIT</license>
   </metadata>
 </package>
