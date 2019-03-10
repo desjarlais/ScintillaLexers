@@ -99,7 +99,12 @@ namespace VPKSoft.ScintillaLexers
         /// <summary>
         /// A lexer type for the HTML markup language.
         /// </summary>
-        HTML = 10 // previously: 512
+        HTML = 10, // previously: 512
+
+        /// <summary>
+        /// A lexer type for the Windows PowerShell scripting language.
+        /// </summary>
+        WindowsPowerShell = 11,
     }
 
     /// <summary>
@@ -153,6 +158,10 @@ namespace VPKSoft.ScintillaLexers
                 else if (lexerType == LexerType.HTML)
                 {
                     return htmlColors;
+                }
+                else if (lexerType == LexerType.WindowsPowerShell)
+                {
+                    return powerShellColors;
                 }
                 return result;
             }
@@ -230,6 +239,14 @@ namespace VPKSoft.ScintillaLexers
                         throw new ArgumentOutOfRangeException("value");
                     }
                     htmlColors = value;
+                }
+                else if (lexerType == LexerType.WindowsPowerShell)
+                {
+                    if (value == null || value.Count != powerShellColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException("value");
+                    }
+                    powerShellColors = value;
                 }
             }
         }
@@ -556,6 +573,38 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 0, 0), // #FF0000 
                 Color.FromArgb(253, 248, 227), // #FF0000 
             });
+
+        List<Color> powerShellColors = new List<Color>(new Color[]
+         {
+            Color.FromArgb(0, 0, 0), // #000000 
+            Color.FromArgb(255, 255, 255), // #000000 
+            Color.FromArgb(0, 128, 0), // #008000 
+            Color.FromArgb(255, 255, 255), // #008000 
+            Color.FromArgb(128, 128, 128), // #808080 
+            Color.FromArgb(255, 255, 255), // #808080 
+            Color.FromArgb(128, 128, 128), // #808080 
+            Color.FromArgb(255, 255, 255), // #808080 
+            Color.FromArgb(255, 128, 0), // #FF8000 
+            Color.FromArgb(255, 255, 255), // #FF8000 
+            Color.FromArgb(0, 0, 0), // #000000 
+            Color.FromArgb(255, 255, 255), // #000000 
+            Color.FromArgb(0, 0, 128), // #000080 
+            Color.FromArgb(255, 255, 255), // #000080 
+            Color.FromArgb(0, 0, 255), // #0000FF 
+            Color.FromArgb(255, 255, 255), // #0000FF 
+            Color.FromArgb(128, 0, 255), // #8000FF 
+            Color.FromArgb(255, 255, 255), // #8000FF 
+            Color.FromArgb(0, 128, 255), // #0080FF 
+            Color.FromArgb(255, 255, 255), // #0080FF 
+            Color.FromArgb(0, 128, 128), // #008080 
+            Color.FromArgb(255, 255, 255), // #008080 
+            Color.FromArgb(128, 128, 128), // #808080 
+            Color.FromArgb(255, 255, 255), // #808080 
+            Color.FromArgb(128, 128, 128), // #808080 
+            Color.FromArgb(255, 255, 255), // #808080 
+            Color.FromArgb(0, 128, 128), // #008080 
+            Color.FromArgb(255, 255, 255), // #008080 
+         });
         #endregion
 
         #region InteralColorIndexList
@@ -995,6 +1044,54 @@ namespace VPKSoft.ScintillaLexers
                     new KeyValuePair<int, string>(28, "HQuestionFore"),
                     new KeyValuePair<int, string>(29, "HQuestionBack"),
 
+                });
+
+        private List<KeyValuePair<int, string>> PowerShellColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new KeyValuePair<int, string>[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "CommentFore"),
+                    new KeyValuePair<int, string>(3, "CommentBack"),
+
+                    new KeyValuePair<int, string>(4, "StringFore"),
+                    new KeyValuePair<int, string>(5, "StringBack"),
+
+                    new KeyValuePair<int, string>(6, "CharacterFore"),
+                    new KeyValuePair<int, string>(7, "CharacterBack"),
+
+                    new KeyValuePair<int, string>(8, "NumberFore"),
+                    new KeyValuePair<int, string>(9, "NumberBack"),
+
+                    new KeyValuePair<int, string>(10, "VariableFore"),
+                    new KeyValuePair<int, string>(11, "VariableBack"),
+
+                    new KeyValuePair<int, string>(12, "OperatorFore"),
+                    new KeyValuePair<int, string>(13, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(14, "InstructionWordFore"),
+                    new KeyValuePair<int, string>(15, "InstructionWordBack"),
+
+                    new KeyValuePair<int, string>(16, "CommandletFore"),
+                    new KeyValuePair<int, string>(17, "CommandletBack"),
+
+                    new KeyValuePair<int, string>(18, "AliasFore"),
+                    new KeyValuePair<int, string>(19, "AliasBack"),
+
+                    new KeyValuePair<int, string>(20, "CommentStreamFore"),
+                    new KeyValuePair<int, string>(21, "CommentStreamBack"),
+
+                    new KeyValuePair<int, string>(22, "HereStringFore"),
+                    new KeyValuePair<int, string>(23, "HereStringBack"),
+
+                    new KeyValuePair<int, string>(24, "HereCharacterFore"),
+                    new KeyValuePair<int, string>(25, "HereCharacterBack"),
+
+                    new KeyValuePair<int, string>(26, "CommentDocKeywordFore"),
+                    new KeyValuePair<int, string>(27, "CommentDocKeywordBack"),
                 }
             );
         #endregion
@@ -1161,6 +1258,11 @@ namespace VPKSoft.ScintillaLexers
                 int idx = HTMLColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
+            else if (lexerType == LexerType.WindowsPowerShell)
+            {
+                int idx = PowerShellColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
             return -1;
         }
 
@@ -1206,6 +1308,10 @@ namespace VPKSoft.ScintillaLexers
             else if (lexerType == LexerType.HTML)
             {
                 return HTMLColorIndexes.Select(f => f.Value);
+            }
+            else if (lexerType == LexerType.WindowsPowerShell)
+            {
+                return PowerShellColorIndexes.Select(f => f.Value);
             }
             return new List<string>();
         }
@@ -1265,6 +1371,11 @@ namespace VPKSoft.ScintillaLexers
         /// File extensions for the HTML markup language.
         /// </summary>
         public const string HTMLExtensions = ".html .htm .shtml .shtm .xhtml .xht .hta";
+
+        /// <summary>
+        /// File extensions for the Windows PowerShell script files.
+        /// </summary>
+        public const string PowerShellExtensions = ".ps1 .psd1 .psm1";
 
         /// <summary>
         /// Gets or sets the value of a LexerColors class instance.
@@ -1336,6 +1447,12 @@ namespace VPKSoft.ScintillaLexers
             if (extensions.Contains(ext))
             {
                 return LexerType.HTML;
+            }
+
+            extensions = PowerShellExtensions.Split(' ');
+            if (extensions.Contains(ext))
+            {
+                return LexerType.WindowsPowerShell;
             }
 
             return LexerType.Unknown;
@@ -1966,6 +2083,85 @@ namespace VPKSoft.ScintillaLexers
                 SetScriptedHTML(lexerType, ref scintilla);
 
                 AddFolding(scintilla);
+                return true;
+            }
+            else if (lexerType == LexerType.WindowsPowerShell)
+            {
+                ClearStyle(scintilla);
+
+                // DEFAULT, fontStyle = 0, styleId = 0
+                scintilla.Styles[Style.PowerShell.Default].ForeColor = LexerColors[LexerType.WindowsPowerShell, "DefaultFore"];
+                scintilla.Styles[Style.PowerShell.Default].BackColor = LexerColors[LexerType.WindowsPowerShell, "DefaultBack"];
+
+                // COMMENT, fontStyle = 0, styleId = 1
+                scintilla.Styles[Style.PowerShell.Comment].ForeColor = LexerColors[LexerType.WindowsPowerShell, "CommentFore"];
+                scintilla.Styles[Style.PowerShell.Comment].BackColor = LexerColors[LexerType.WindowsPowerShell, "CommentBack"];
+
+                // STRING, fontStyle = 0, styleId = 2
+                scintilla.Styles[Style.PowerShell.String].ForeColor = LexerColors[LexerType.WindowsPowerShell, "StringFore"];
+                scintilla.Styles[Style.PowerShell.String].BackColor = LexerColors[LexerType.WindowsPowerShell, "StringBack"];
+
+                // CHARACTER, fontStyle = 0, styleId = 3
+                scintilla.Styles[Style.PowerShell.Character].ForeColor = LexerColors[LexerType.WindowsPowerShell, "CharacterFore"];
+                scintilla.Styles[Style.PowerShell.Character].BackColor = LexerColors[LexerType.WindowsPowerShell, "CharacterBack"];
+
+                // NUMBER, fontStyle = 0, styleId = 4
+                scintilla.Styles[Style.PowerShell.Number].ForeColor = LexerColors[LexerType.WindowsPowerShell, "NumberFore"];
+                scintilla.Styles[Style.PowerShell.Number].BackColor = LexerColors[LexerType.WindowsPowerShell, "NumberBack"];
+
+                // VARIABLE, fontStyle = 1, styleId = 5
+                scintilla.Styles[Style.PowerShell.Variable].Bold = true;
+                scintilla.Styles[Style.PowerShell.Variable].ForeColor = LexerColors[LexerType.WindowsPowerShell, "VariableFore"];
+                scintilla.Styles[Style.PowerShell.Variable].BackColor = LexerColors[LexerType.WindowsPowerShell, "VariableBack"];
+
+                // OPERATOR, fontStyle = 1, styleId = 6
+                scintilla.Styles[Style.PowerShell.Operator].Bold = true;
+                scintilla.Styles[Style.PowerShell.Operator].ForeColor = LexerColors[LexerType.WindowsPowerShell, "OperatorFore"];
+                scintilla.Styles[Style.PowerShell.Operator].BackColor = LexerColors[LexerType.WindowsPowerShell, "OperatorBack"];
+
+                // INSTRUCTION WORD, fontStyle = 1, styleId = 8
+                scintilla.Styles[Style.PowerShell.Keyword].Bold = true;
+                scintilla.Styles[Style.PowerShell.Keyword].ForeColor = LexerColors[LexerType.WindowsPowerShell, "InstructionWordFore"];
+                scintilla.Styles[Style.PowerShell.Keyword].BackColor = LexerColors[LexerType.WindowsPowerShell, "InstructionWordBack"];
+
+                // CMDLET, fontStyle = 0, styleId = 9
+                scintilla.Styles[Style.PowerShell.Cmdlet].ForeColor = LexerColors[LexerType.WindowsPowerShell, "CommandletFore"];
+                scintilla.Styles[Style.PowerShell.Cmdlet].BackColor = LexerColors[LexerType.WindowsPowerShell, "CommandletBack"];
+
+                // ALIAS, fontStyle = 0, styleId = 10
+                scintilla.Styles[Style.PowerShell.Alias].ForeColor = LexerColors[LexerType.WindowsPowerShell, "AliasFore"];
+                scintilla.Styles[Style.PowerShell.Alias].BackColor = LexerColors[LexerType.WindowsPowerShell, "AliasBack"];
+
+                // COMMENT STREAM, fontStyle = 0, styleId = 13
+                scintilla.Styles[Style.PowerShell.CommentStream].ForeColor = LexerColors[LexerType.WindowsPowerShell, "CommentStreamFore"];
+                scintilla.Styles[Style.PowerShell.CommentStream].BackColor = LexerColors[LexerType.WindowsPowerShell, "CommentStreamBack"];
+
+                // HERE STRING, fontStyle = 0, styleId = 14
+                scintilla.Styles[Style.PowerShell.HereString].ForeColor = LexerColors[LexerType.WindowsPowerShell, "HereStringFore"];
+                scintilla.Styles[Style.PowerShell.HereString].BackColor = LexerColors[LexerType.WindowsPowerShell, "HereStringBack"];
+
+                // HERE CHARACTER, fontStyle = 0, styleId = 15
+                scintilla.Styles[Style.PowerShell.HereCharacter].ForeColor = LexerColors[LexerType.WindowsPowerShell, "HereCharacterFore"];
+                scintilla.Styles[Style.PowerShell.HereCharacter].BackColor = LexerColors[LexerType.WindowsPowerShell, "HereCharacterBack"];
+
+                // COMMENT DOC KEYWORD, fontStyle = 1, styleId = 16
+                scintilla.Styles[Style.PowerShell.CommentDocKeyword].Bold = true;
+                scintilla.Styles[Style.PowerShell.CommentDocKeyword].ForeColor = LexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordFore"];
+                scintilla.Styles[Style.PowerShell.CommentDocKeyword].BackColor = LexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordBack"];
+
+                // Name: instre1
+                scintilla.SetKeywords(0, "break continue do else elseif filter for foreach function if in return switch until where while");
+                // Name: instre2
+                scintilla.SetKeywords(1, "add-content add-history add-member add-pssnapin clear-content clear-item clear-itemproperty clear-variable compare-object convertfrom-securestring convert-path convertto-html convertto-securestring copy-item copy-itemproperty export-alias export-clixml export-console export-csv foreach-object format-custom format-list format-table format-wide get-acl get-alias get-authenticodesignature get-childitem get-command get-content get-credential get-culture get-date get-eventlog get-executionpolicy get-help get-history get-host get-item get-itemproperty get-location get-member get-pfxcertificate get-process get-psdrive get-psprovider get-pssnapin get-service get-tracesource get-uiculture get-unique get-variable get-wmiobject group-object import-alias import-clixml import-csv invoke-expression invoke-history invoke-item join-path measure-command measure-object move-item move-itemproperty new-alias new-item new-itemproperty new-object new-psdrive new-service new-timespan new-variable out-default out-file out-host out-null out-printer out-string pop-location push-location read-host remove-item remove-itemproperty remove-psdrive remove-pssnapin remove-variable rename-item rename-itemproperty resolve-path restart-service resume-service select-object select-string set-acl set-alias set-authenticodesignature set-content set-date set-executionpolicy set-item set-itemproperty set-location set-psdebug set-service set-tracesource set-variable sort-object split-path start-service start-sleep start-transcript stop-process stop-service stop-transcript suspend-service tee-object test-path trace-command update-formatdata update-typedata where-object write-debug write-error write-host write-output write-progress write-verbose write-warning");
+                // Name: type1
+                scintilla.SetKeywords(2, "ac asnp clc cli clp clv cpi cpp cvpa diff epal epcsv fc fl foreach ft fw gal gc gci gcm gdr ghy gi gl gm gp gps group gsv gsnp gu gv gwmi iex ihy ii ipal ipcsv mi mp nal ndr ni nv oh rdr ri rni rnp rp rsnp rv rvpa sal sasv sc select si sl sleep sort sp spps spsv sv tee where write cat cd clear cp h history kill lp ls mount mv popd ps pushd pwd r rm rmdir echo cls chdir copy del dir erase move rd ren set type");
+                // Name: type4
+                scintilla.SetKeywords(3, "component description example externalhelp forwardhelpcategory forwardhelptargetname functionality inputs link notes outputs parameter remotehelprunspace role synopsis");
+
+                scintilla.Lexer = Lexer.PowerShell;
+
+                AddFolding(scintilla);
+
                 return true;
             }
             else // a lexer wasn't found..
