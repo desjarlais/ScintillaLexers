@@ -10,7 +10,7 @@
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Removed the supid [FLAGS] attribute from the LexerType enumeration.</releaseNotes>
+    <releaseNotes>Added Windows PowerShell lexer.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper scintilla ScintillaNET lexer</tags>
     <license type="expression">MIT</license>

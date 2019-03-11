@@ -105,6 +105,11 @@ namespace VPKSoft.ScintillaLexers
         /// A lexer type for the Windows PowerShell scripting language.
         /// </summary>
         WindowsPowerShell = 11,
+
+        /// <summary>
+        /// An INI file lexer.
+        /// </summary>
+        INI = 12
     }
 
     /// <summary>
@@ -162,6 +167,10 @@ namespace VPKSoft.ScintillaLexers
                 else if (lexerType == LexerType.WindowsPowerShell)
                 {
                     return powerShellColors;
+                }
+                else if (lexerType == LexerType.INI)
+                {
+                    return iniColors;
                 }
                 return result;
             }
@@ -248,6 +257,14 @@ namespace VPKSoft.ScintillaLexers
                     }
                     powerShellColors = value;
                 }
+                else if (lexerType == LexerType.INI)
+                {
+                    if (value == null || value.Count != iniColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException("value");
+                    }
+                    iniColors = value;
+                }
             }
         }
 
@@ -318,11 +335,11 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #008000 
                 Color.FromArgb(0, 128, 128), // #008080 
                 Color.FromArgb(255, 255, 255) // #008080 
-                });
+            });
 
         private List<Color> nsisColors =
             new List<Color>(new Color[]
-             {
+            {
                 Color.FromArgb(0, 0, 0), // #000000 
                 Color.FromArgb(255, 255, 255), // #000000 
                 Color.FromArgb(0, 128, 0), // #008000 
@@ -361,11 +378,11 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #0000FF 
                 Color.FromArgb(0, 128, 0), // #008000 
                 Color.FromArgb(255, 255, 255), // #008000 
-             });
+            });
 
         private List<Color> csColors =
             new List<Color>(new Color[]
-             {
+            {
                 Color.FromArgb(128, 64, 0), // #804000 
                 Color.FromArgb(255, 255, 255), // #804000 
                 Color.FromArgb(0, 0, 0), // #000000 
@@ -402,11 +419,11 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #008000 
                 Color.FromArgb(0, 128, 128), // #008080 
                 Color.FromArgb(255, 255, 255), // #008080 
-             });
+            });
 
         private List<Color> xmlColors =
             new List<Color>(new Color[]
-             {
+            {
                 Color.FromArgb(255, 0, 0), // #FF0000 
                 Color.FromArgb(255, 255, 0), // #FF0000 
                 Color.FromArgb(255, 0, 0), // #FF0000 
@@ -437,9 +454,9 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #FF8000 
                 Color.FromArgb(0, 0, 0), // #000000 
                 Color.FromArgb(254, 253, 224), // #000000 
-             });
+            });
 
-        private List<Color> sqlColors = 
+        private List<Color> sqlColors =
             new List<Color>(new Color[]
             {
                 Color.FromArgb(0, 0, 255), // #0000FF 
@@ -458,7 +475,7 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #008000 
             });
 
-        private List<Color> batchColors = 
+        private List<Color> batchColors =
             new List<Color>(new Color[]
             {
                 Color.FromArgb(0, 0, 0), // #000000 
@@ -479,7 +496,7 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #FF0000 
             });
 
-        List<Color> pascalColors = 
+        List<Color> pascalColors =
             new List<Color>(new Color[]
             {
                 Color.FromArgb(128, 128, 128), // #808080 
@@ -512,7 +529,7 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #000000 
             });
 
-        List<Color> phpColors = 
+        List<Color> phpColors =
             new List<Color>(new Color[]
             {
                 Color.FromArgb(255, 0, 0), // #FF0000 
@@ -539,7 +556,7 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(254, 252, 245), // #8000FF 
             });
 
-        List<Color> htmlColors = 
+        List<Color> htmlColors =
             new List<Color>(new Color[]
             {
                 Color.FromArgb(0, 0, 0), // #000000 
@@ -574,37 +591,53 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(253, 248, 227), // #FF0000 
             });
 
-        List<Color> powerShellColors = new List<Color>(new Color[]
-         {
-            Color.FromArgb(0, 0, 0), // #000000 
-            Color.FromArgb(255, 255, 255), // #000000 
-            Color.FromArgb(0, 128, 0), // #008000 
-            Color.FromArgb(255, 255, 255), // #008000 
-            Color.FromArgb(128, 128, 128), // #808080 
-            Color.FromArgb(255, 255, 255), // #808080 
-            Color.FromArgb(128, 128, 128), // #808080 
-            Color.FromArgb(255, 255, 255), // #808080 
-            Color.FromArgb(255, 128, 0), // #FF8000 
-            Color.FromArgb(255, 255, 255), // #FF8000 
-            Color.FromArgb(0, 0, 0), // #000000 
-            Color.FromArgb(255, 255, 255), // #000000 
-            Color.FromArgb(0, 0, 128), // #000080 
-            Color.FromArgb(255, 255, 255), // #000080 
-            Color.FromArgb(0, 0, 255), // #0000FF 
-            Color.FromArgb(255, 255, 255), // #0000FF 
-            Color.FromArgb(128, 0, 255), // #8000FF 
-            Color.FromArgb(255, 255, 255), // #8000FF 
-            Color.FromArgb(0, 128, 255), // #0080FF 
-            Color.FromArgb(255, 255, 255), // #0080FF 
-            Color.FromArgb(0, 128, 128), // #008080 
-            Color.FromArgb(255, 255, 255), // #008080 
-            Color.FromArgb(128, 128, 128), // #808080 
-            Color.FromArgb(255, 255, 255), // #808080 
-            Color.FromArgb(128, 128, 128), // #808080 
-            Color.FromArgb(255, 255, 255), // #808080 
-            Color.FromArgb(0, 128, 128), // #008080 
-            Color.FromArgb(255, 255, 255), // #008080 
-         });
+        List<Color> powerShellColors =
+            new List<Color>(new Color[]
+            {
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 0, 128), // #000080 
+                Color.FromArgb(255, 255, 255), // #000080 
+                Color.FromArgb(0, 0, 255), // #0000FF 
+                Color.FromArgb(255, 255, 255), // #0000FF 
+                Color.FromArgb(128, 0, 255), // #8000FF 
+                Color.FromArgb(255, 255, 255), // #8000FF 
+                Color.FromArgb(0, 128, 255), // #0080FF 
+                Color.FromArgb(255, 255, 255), // #0080FF 
+                Color.FromArgb(0, 128, 128), // #008080 
+                Color.FromArgb(255, 255, 255), // #008080 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(0, 128, 128), // #008080 
+                Color.FromArgb(255, 255, 255), // #008080 
+            });
+
+        List<Color> iniColors = new List<Color>(
+            new Color[]
+            {
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(128, 0, 255), // #8000FF 
+                Color.FromArgb(242, 244, 255), // #8000FF 
+                Color.FromArgb(255, 0, 0), // #FF0000 
+                Color.FromArgb(255, 255, 255), // #FF0000 
+                Color.FromArgb(255, 0, 0), // #FF0000 
+                Color.FromArgb(255, 255, 255), // #FF0000 
+            });
         #endregion
 
         #region InteralColorIndexList
@@ -1094,6 +1127,27 @@ namespace VPKSoft.ScintillaLexers
                     new KeyValuePair<int, string>(27, "CommentDocKeywordBack"),
                 }
             );
+
+        private List<KeyValuePair<int, string>> INIColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new KeyValuePair<int, string>[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "CommentFore"),
+                    new KeyValuePair<int, string>(3, "CommentBack"),
+
+                    new KeyValuePair<int, string>(4, "SectionFore"),
+                    new KeyValuePair<int, string>(5, "SectionBack"),
+
+                    new KeyValuePair<int, string>(6, "AssignmentFore"),
+                    new KeyValuePair<int, string>(7, "AssignmentBack"),
+
+                    new KeyValuePair<int, string>(8, "DefValFore"),
+                    new KeyValuePair<int, string>(9, "DefValBack"),
+                });
         #endregion
 
         /// <summary>
@@ -1263,6 +1317,11 @@ namespace VPKSoft.ScintillaLexers
                 int idx = PowerShellColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
+            else if (lexerType == LexerType.INI)
+            {
+                int idx = INIColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
             return -1;
         }
 
@@ -1312,6 +1371,10 @@ namespace VPKSoft.ScintillaLexers
             else if (lexerType == LexerType.WindowsPowerShell)
             {
                 return PowerShellColorIndexes.Select(f => f.Value);
+            }
+            else if (lexerType == LexerType.INI)
+            {
+                return INIColorIndexes.Select(f => f.Value);
             }
             return new List<string>();
         }
@@ -1376,6 +1439,11 @@ namespace VPKSoft.ScintillaLexers
         /// File extensions for the Windows PowerShell script files.
         /// </summary>
         public const string PowerShellExtensions = ".ps1 .psd1 .psm1";
+
+        /// <summary>
+        /// File extensions for the INI setting files.
+        /// </summary>
+        public const string INIExtensions = ".ini";
 
         /// <summary>
         /// Gets or sets the value of a LexerColors class instance.
@@ -1453,6 +1521,12 @@ namespace VPKSoft.ScintillaLexers
             if (extensions.Contains(ext))
             {
                 return LexerType.WindowsPowerShell;
+            }
+
+            extensions = INIExtensions.Split(' ');
+            if (extensions.Contains(ext))
+            {
+                return LexerType.INI;
             }
 
             return LexerType.Unknown;
@@ -2159,6 +2233,38 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.SetKeywords(3, "component description example externalhelp forwardhelpcategory forwardhelptargetname functionality inputs link notes outputs parameter remotehelprunspace role synopsis");
 
                 scintilla.Lexer = Lexer.PowerShell;
+
+                AddFolding(scintilla);
+
+                return true;
+            }
+            else if (lexerType == LexerType.INI)
+            {
+                ClearStyle(scintilla);
+
+                // DEFAULT, fontStyle = 0, styleId = 0
+                scintilla.Styles[Style.Properties.Default].ForeColor = LexerColors[LexerType.INI, "DefaultFore"];
+                scintilla.Styles[Style.Properties.Default].BackColor = LexerColors[LexerType.INI, "DefaultBack"];
+
+                // COMMENT, fontStyle = 0, styleId = 1
+                scintilla.Styles[Style.Properties.Comment].ForeColor = LexerColors[LexerType.INI, "CommentFore"];
+                scintilla.Styles[Style.Properties.Comment].BackColor = LexerColors[LexerType.INI, "CommentBack"];
+
+                // SECTION, fontStyle = 1, styleId = 2
+                scintilla.Styles[Style.Properties.Section].Bold = true;
+                scintilla.Styles[Style.Properties.Section].ForeColor = LexerColors[LexerType.INI, "SectionFore"];
+                scintilla.Styles[Style.Properties.Section].BackColor = LexerColors[LexerType.INI, "SectionBack"];
+
+                // ASSIGNMENT, fontStyle = 1, styleId = 3
+                scintilla.Styles[Style.Properties.Assignment].Bold = true;
+                scintilla.Styles[Style.Properties.Assignment].ForeColor = LexerColors[LexerType.INI, "AssignmentFore"];
+                scintilla.Styles[Style.Properties.Assignment].BackColor = LexerColors[LexerType.INI, "AssignmentBack"];
+
+                // DEFVAL, fontStyle = 0, styleId = 4
+                scintilla.Styles[Style.Properties.DefVal].ForeColor = LexerColors[LexerType.INI, "DefValFore"];
+                scintilla.Styles[Style.Properties.DefVal].BackColor = LexerColors[LexerType.INI, "DefValBack"];
+
+                scintilla.Lexer = Lexer.Properties;
 
                 AddFolding(scintilla);
 
