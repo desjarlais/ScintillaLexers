@@ -109,7 +109,12 @@ namespace VPKSoft.ScintillaLexers
         /// <summary>
         /// An INI file lexer.
         /// </summary>
-        INI = 12
+        INI = 12,
+
+        /// <summary>
+        /// A lexer for the Python programming language.
+        /// </summary>
+        Python = 13,
     }
 
     /// <summary>
@@ -171,6 +176,10 @@ namespace VPKSoft.ScintillaLexers
                 else if (lexerType == LexerType.INI)
                 {
                     return iniColors;
+                }
+                else if (lexerType == LexerType.Python)
+                {
+                    return pythonColors;
                 }
                 return result;
             }
@@ -264,6 +273,14 @@ namespace VPKSoft.ScintillaLexers
                         throw new ArgumentOutOfRangeException("value");
                     }
                     iniColors = value;
+                }
+                else if (lexerType == LexerType.Python)
+                {
+                    if (value == null || value.Count != pythonColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException("value");
+                    }
+                    pythonColors = value;
                 }
             }
         }
@@ -637,6 +654,39 @@ namespace VPKSoft.ScintillaLexers
                 Color.FromArgb(255, 255, 255), // #FF0000 
                 Color.FromArgb(255, 0, 0), // #FF0000 
                 Color.FromArgb(255, 255, 255), // #FF0000 
+            });
+
+        List<Color> pythonColors = 
+            new List<Color>(new Color[]
+            {
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(255, 0, 0), // #FF0000 
+                Color.FromArgb(255, 255, 255), // #FF0000 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(128, 128, 128), // #808080 
+                Color.FromArgb(255, 255, 255), // #808080 
+                Color.FromArgb(0, 0, 255), // #0000FF 
+                Color.FromArgb(255, 255, 255), // #0000FF 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(255, 0, 255), // #FF00FF 
+                Color.FromArgb(255, 255, 255), // #FF00FF 
+                Color.FromArgb(0, 0, 128), // #000080 
+                Color.FromArgb(255, 255, 255), // #000080 
+                Color.FromArgb(0, 0, 0), // #000000 
+                Color.FromArgb(255, 255, 255), // #000000 
+                Color.FromArgb(0, 128, 0), // #008000 
+                Color.FromArgb(255, 255, 255), // #008000 
+                Color.FromArgb(255, 128, 0), // #FF8000 
+                Color.FromArgb(255, 255, 255), // #FF8000 
             });
         #endregion
 
@@ -1148,6 +1198,54 @@ namespace VPKSoft.ScintillaLexers
                     new KeyValuePair<int, string>(8, "DefValFore"),
                     new KeyValuePair<int, string>(9, "DefValBack"),
                 });
+
+        private List<KeyValuePair<int, string>> PythonColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new KeyValuePair<int, string>[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "CommentLineFore"),
+                    new KeyValuePair<int, string>(3, "CommentLineBack"),
+
+                    new KeyValuePair<int, string>(4, "NumberFore"),
+                    new KeyValuePair<int, string>(5, "NumberBack"),
+
+                    new KeyValuePair<int, string>(6, "StringFore"),
+                    new KeyValuePair<int, string>(7, "StringBack"),
+
+                    new KeyValuePair<int, string>(8, "CharacterFore"),
+                    new KeyValuePair<int, string>(9, "CharacterBack"),
+
+                    new KeyValuePair<int, string>(10, "WordFore"),
+                    new KeyValuePair<int, string>(11, "WordBack"),
+
+                    new KeyValuePair<int, string>(12, "TripleFore"),
+                    new KeyValuePair<int, string>(13, "TripleBack"),
+
+                    new KeyValuePair<int, string>(14, "TripleDoubleFore"),
+                    new KeyValuePair<int, string>(15, "TripleDoubleBack"),
+
+                    new KeyValuePair<int, string>(16, "ClassNameFore"),
+                    new KeyValuePair<int, string>(17, "ClassNameBack"),
+
+                    new KeyValuePair<int, string>(18, "DefNameFore"),
+                    new KeyValuePair<int, string>(19, "DefNameBack"),
+
+                    new KeyValuePair<int, string>(20, "OperatorFore"),
+                    new KeyValuePair<int, string>(21, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(22, "IdentifierFore"),
+                    new KeyValuePair<int, string>(23, "IdentifierBack"),
+
+                    new KeyValuePair<int, string>(24, "CommentBlockFore"),
+                    new KeyValuePair<int, string>(25, "CommentBlockBack"),
+
+                    new KeyValuePair<int, string>(26, "DecoratorFore"),
+                    new KeyValuePair<int, string>(27, "DecoratorBack"),
+                });
         #endregion
 
         /// <summary>
@@ -1322,6 +1420,11 @@ namespace VPKSoft.ScintillaLexers
                 int idx = INIColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
+            else if (lexerType == LexerType.Python)
+            {
+                int idx = PythonColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
             return -1;
         }
 
@@ -1375,6 +1478,10 @@ namespace VPKSoft.ScintillaLexers
             else if (lexerType == LexerType.INI)
             {
                 return INIColorIndexes.Select(f => f.Value);
+            }
+            else if (lexerType == LexerType.Python)
+            {
+                return PythonColorIndexes.Select(f => f.Value);
             }
             return new List<string>();
         }
@@ -1444,6 +1551,11 @@ namespace VPKSoft.ScintillaLexers
         /// File extensions for the INI setting files.
         /// </summary>
         public const string INIExtensions = ".ini";
+
+        /// <summary>
+        /// File extension for the Python programming language files.
+        /// </summary>
+        public const string PythonExtensions = ".py .pyw";
 
         /// <summary>
         /// Gets or sets the value of a LexerColors class instance.
@@ -1527,6 +1639,12 @@ namespace VPKSoft.ScintillaLexers
             if (extensions.Contains(ext))
             {
                 return LexerType.INI;
+            }
+
+            extensions = PythonExtensions.Split(' ');
+            if (extensions.Contains(ext))
+            {
+                return LexerType.Python;
             }
 
             return LexerType.Unknown;
@@ -2265,6 +2383,79 @@ namespace VPKSoft.ScintillaLexers
                 scintilla.Styles[Style.Properties.DefVal].BackColor = LexerColors[LexerType.INI, "DefValBack"];
 
                 scintilla.Lexer = Lexer.Properties;
+
+                AddFolding(scintilla);
+
+                return true;
+            }
+            else if (lexerType == LexerType.Python)
+            {
+                ClearStyle(scintilla);
+
+                // DEFAULT, fontStyle = 0, styleId = 0
+                scintilla.Styles[Style.Python.Default].ForeColor = LexerColors[LexerType.Python, "DefaultFore"];
+                scintilla.Styles[Style.Python.Default].BackColor = LexerColors[LexerType.Python, "DefaultBack"];
+
+                // COMMENTLINE, fontStyle = 0, styleId = 1
+                scintilla.Styles[Style.Python.CommentLine].ForeColor = LexerColors[LexerType.Python, "CommentLineFore"];
+                scintilla.Styles[Style.Python.CommentLine].BackColor = LexerColors[LexerType.Python, "CommentLineBack"];
+
+                // NUMBER, fontStyle = 0, styleId = 2
+                scintilla.Styles[Style.Python.Number].ForeColor = LexerColors[LexerType.Python, "NumberFore"];
+                scintilla.Styles[Style.Python.Number].BackColor = LexerColors[LexerType.Python, "NumberBack"];
+
+                // STRING, fontStyle = 0, styleId = 3
+                scintilla.Styles[Style.Python.String].ForeColor = LexerColors[LexerType.Python, "StringFore"];
+                scintilla.Styles[Style.Python.String].BackColor = LexerColors[LexerType.Python, "StringBack"];
+
+                // CHARACTER, fontStyle = 0, styleId = 4
+                scintilla.Styles[Style.Python.Character].ForeColor = LexerColors[LexerType.Python, "CharacterFore"];
+                scintilla.Styles[Style.Python.Character].BackColor = LexerColors[LexerType.Python, "CharacterBack"];
+
+                // KEYWORDS, fontStyle = 1, styleId = 5
+                scintilla.Styles[Style.Python.Word].Bold = true;
+                scintilla.Styles[Style.Python.Word].ForeColor = LexerColors[LexerType.Python, "WordFore"];
+                scintilla.Styles[Style.Python.Word].BackColor = LexerColors[LexerType.Python, "WordBack"];
+
+                // TRIPLE, fontStyle = 0, styleId = 6
+                scintilla.Styles[Style.Python.Triple].ForeColor = LexerColors[LexerType.Python, "TripleFore"];
+                scintilla.Styles[Style.Python.Triple].BackColor = LexerColors[LexerType.Python, "TripleBack"];
+
+                // TRIPLEDOUBLE, fontStyle = 0, styleId = 7
+                scintilla.Styles[Style.Python.TripleDouble].ForeColor = LexerColors[LexerType.Python, "TripleDoubleFore"];
+                scintilla.Styles[Style.Python.TripleDouble].BackColor = LexerColors[LexerType.Python, "TripleDoubleBack"];
+
+                // CLASSNAME, fontStyle = 1, styleId = 8
+                scintilla.Styles[Style.Python.ClassName].Bold = true;
+                scintilla.Styles[Style.Python.ClassName].ForeColor = LexerColors[LexerType.Python, "ClassNameFore"];
+                scintilla.Styles[Style.Python.ClassName].BackColor = LexerColors[LexerType.Python, "ClassNameBack"];
+
+                // DEFNAME, fontStyle = 0, styleId = 9
+                scintilla.Styles[Style.Python.DefName].ForeColor = LexerColors[LexerType.Python, "DefNameFore"];
+                scintilla.Styles[Style.Python.DefName].BackColor = LexerColors[LexerType.Python, "DefNameBack"];
+
+                // OPERATOR, fontStyle = 1, styleId = 10
+                scintilla.Styles[Style.Python.Operator].Bold = true;
+                scintilla.Styles[Style.Python.Operator].ForeColor = LexerColors[LexerType.Python, "OperatorFore"];
+                scintilla.Styles[Style.Python.Operator].BackColor = LexerColors[LexerType.Python, "OperatorBack"];
+
+                // IDENTIFIER, fontStyle = 0, styleId = 11
+                scintilla.Styles[Style.Python.Identifier].ForeColor = LexerColors[LexerType.Python, "IdentifierFore"];
+                scintilla.Styles[Style.Python.Identifier].BackColor = LexerColors[LexerType.Python, "IdentifierBack"];
+
+                // COMMENTBLOCK, fontStyle = 0, styleId = 12
+                scintilla.Styles[Style.Python.CommentBlock].ForeColor = LexerColors[LexerType.Python, "CommentBlockFore"];
+                scintilla.Styles[Style.Python.CommentBlock].BackColor = LexerColors[LexerType.Python, "CommentBlockBack"];
+
+                // DECORATOR, fontStyle = 2, styleId = 15
+                scintilla.Styles[Style.Python.Decorator].Italic = true;
+                scintilla.Styles[Style.Python.Decorator].ForeColor = LexerColors[LexerType.Python, "DecoratorFore"];
+                scintilla.Styles[Style.Python.Decorator].BackColor = LexerColors[LexerType.Python, "DecoratorBack"];
+
+                scintilla.Lexer = Lexer.Python;
+
+                // Name: instre1
+                scintilla.SetKeywords(0, "and as assert break class continue def del elif else except exec False finally for from global if import in is lambda None not or pass print raise return True try while with yield async await");
 
                 AddFolding(scintilla);
 
