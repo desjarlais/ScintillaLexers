@@ -128,11 +128,11 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="lexerType">The lexer's type.</param>
         /// <returns>A list of color belonging to a specific lexer.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public List<Color> this[LexerType lexerType]
+        public List<Tuple<Color, string, bool>> this[LexerType lexerType]
         {
             get
             {
-                List<Color> result = new List<Color>();
+                List<Tuple<Color, string, bool>> result = new List<Tuple<Color, string, bool>>();
                 if (lexerType == LexerType.Cpp)
                 {
                     result.AddRange(cppColors);
@@ -286,6 +286,37 @@ namespace VPKSoft.ScintillaLexers
         }
 
         /// <summary>
+        /// Gets or sets the color uses by the SciTE color name and a value indicating whether a foreground or a background color is requested.
+        /// <note type="note">URL: https://www.scintilla.org/SciTE.html</note>
+        /// </summary>
+        /// <param name="lexerType">The type of the lexer.</param>
+        /// <param name="colorName">The name of the color in the SciTE.</param>
+        /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
+        /// <returns>A color with the specified lexer, a specified SciTE name and a flag indicating whether the color in question is a background or a foreground color.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">value</exception>
+        public Color this[LexerType lexerType, string colorName, bool isForeground]
+        {
+            get
+            {
+                return this[lexerType][GetColorIndexBySciTEName(colorName, lexerType, isForeground)].Item1;
+            }
+
+            set
+            {
+                try
+                {
+                    var tuple = this[lexerType][GetColorIndexBySciTEName(colorName, lexerType, isForeground)];
+                    this[lexerType][GetColorIndexBySciTEName(colorName, lexerType, isForeground)] =
+                        Tuple.Create(value, tuple.Item2, tuple.Item3);
+                }
+                catch
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the <see cref="Color"/> with the specified lexer type and the color's name.
         /// </summary>
         /// <param name="lexerType">The type of the lexer.</param>
@@ -296,14 +327,15 @@ namespace VPKSoft.ScintillaLexers
         {
             get
             {
-                return this[lexerType][GetColorIndexByName(colorName, lexerType)];
+                return this[lexerType][GetColorIndexByName(colorName, lexerType)].Item1;
             }
 
             set
             {
                 try
                 {
-                    this[lexerType][GetColorIndexByName(colorName, lexerType)] = value;
+                    this[lexerType][GetColorIndexByName(colorName, lexerType)] =
+                        Tuple.Create(value, this[lexerType][GetColorIndexByName(colorName, lexerType)].Item2, this[lexerType][GetColorIndexByName(colorName, lexerType)].Item3);
                 }
                 catch
                 {
@@ -313,381 +345,368 @@ namespace VPKSoft.ScintillaLexers
         }
 
         #region InternalColorList
-        private List<Color> cppColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(128, 64, 0), // #804000 
-                Color.FromArgb(255, 255, 255), // #804000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255) // #008080 
-            });
+        List<Tuple<Color, string, bool>> cppColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "TYPE WORD", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TYPE WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "VERBATIM", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "VERBATIM", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "REGEX", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "REGEX", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT LINE DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "PREPROCESSOR COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "PREPROCESSOR COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false), // #FFFFFF 
+        });
 
-        private List<Color> nsisColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(238, 238, 238), // #808080 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(192, 192, 192), // #000080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(192, 192, 192), // #000000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 128), // #FF0000 
-                Color.FromArgb(253, 255, 236), // #FDFFEC 
-                Color.FromArgb(255, 128, 255), // #FDFFEC 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(128, 128, 64), // #808040 
-                Color.FromArgb(255, 255, 255), // #808040 
-                Color.FromArgb(128, 0, 0), // #800000 
-                Color.FromArgb(255, 255, 255), // #800000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(239, 239, 239), // #FF8000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-            });
+        List<Tuple<Color, string, bool>> nsisColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTLINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENTLINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING DOUBLE QUOTE", true), // #808080 
+            Tuple.Create(Color.FromArgb(238, 238, 238), "STRING DOUBLE QUOTE", false), // #EEEEEE 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "STRING LEFT QUOTE", true), // #000080 
+            Tuple.Create(Color.FromArgb(192, 192, 192), "STRING LEFT QUOTE", false), // #C0C0C0 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "STRING RIGHT QUOTE", true), // #000000 
+            Tuple.Create(Color.FromArgb(192, 192, 192), "STRING RIGHT QUOTE", false), // #C0C0C0 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "FUNCTION", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "FUNCTION", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "VARIABLE", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "VARIABLE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "LABEL", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 128), "LABEL", false), // #FFFF80 
+            Tuple.Create(Color.FromArgb(253, 255, 236), "USER DEFINED", true), // #FDFFEC 
+            Tuple.Create(Color.FromArgb(255, 128, 255), "USER DEFINED", false), // #FF80FF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "SECTION", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "SECTION", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "SUBSECTION", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "SUBSECTION", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 64), "IF DEFINE", true), // #808040 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "IF DEFINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 0), "MACRO", true), // #800000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "MACRO", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "STRING VAR", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(239, 239, 239), "STRING VAR", false), // #EFEFEF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "NUMBER", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "SECTION GROUP", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "SECTION GROUP", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "PAGE EX", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PAGE EX", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "FUNCTION DEFINITIONS", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "FUNCTION DEFINITIONS", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+        });
 
-        private List<Color> csColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(128, 64, 0), // #804000 
-                Color.FromArgb(255, 255, 255), // #804000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-            });
+        List<Tuple<Color, string, bool>> csColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "TYPE WORD", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TYPE WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "VERBATIM", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "VERBATIM", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "REGEX", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "REGEX", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT LINE DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "PREPROCESSOR COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "PREPROCESSOR COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false), // #FFFFFF 
+        });
 
-        private List<Color> xmlColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 0), // #FF0000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 0), // #FF0000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(166, 202, 240), // #000000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(254, 253, 224), // #000000 
-            });
+        List<Tuple<Color, string, bool>> xmlColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(255, 0, 0), "XMLSTART", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 0), "XMLSTART", false), // #FFFF00 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "XMLEND", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 0), "XMLEND", false), // #FFFF00 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "NUMBER", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "DOUBLESTRING", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DOUBLESTRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "SINGLESTRING", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "SINGLESTRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "TAG", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAG", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "TAGEND", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAGEND", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "TAGUNKNOWN", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAGUNKNOWN", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "ATTRIBUTE", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ATTRIBUTE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "ATTRIBUTEUNKNOWN", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ATTRIBUTEUNKNOWN", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "SGMLDEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(166, 202, 240), "SGMLDEFAULT", false), // #A6CAF0 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "CDATA", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CDATA", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "ENTITY", true), // #000000 
+            Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false), // #FEFDE0 
+        });
 
-        private List<Color> sqlColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-            });
+        List<Tuple<Color, string, bool>> sqlColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 255), "KEYWORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "KEYWORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING2", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING2", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+        });
 
-        private List<Color> batchColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 128), // #FF0000 
-                Color.FromArgb(255, 0, 255), // #FF00FF 
-                Color.FromArgb(255, 255, 255), // #FF00FF 
-                Color.FromArgb(0, 128, 255), // #0080FF 
-                Color.FromArgb(255, 255, 255), // #0080FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(252, 255, 240), // #FF8000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-            });
+        List<Tuple<Color, string, bool>> batchColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "KEYWORDS", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "KEYWORDS", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "LABEL", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 128), "LABEL", false), // #FFFF80 
+            Tuple.Create(Color.FromArgb(255, 0, 255), "HIDE SYBOL", true), // #FF00FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "HIDE SYBOL", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 255), "COMMAND", true), // #0080FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMAND", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "VARIABLE", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(252, 255, 240), "VARIABLE", false), // #FCFFF0 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "OPERATOR", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+        });
 
-        List<Color> pascalColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(128, 64, 0), // #804000 
-                Color.FromArgb(255, 255, 255), // #804000 
-                Color.FromArgb(128, 64, 0), // #804000 
-                Color.FromArgb(255, 255, 255), // #804000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-            });
+        List<Tuple<Color, string, bool>> pascalColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(128, 128, 128), "DEFAULT", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "IDENTIFIER", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "IDENTIFIER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR2", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR2", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "HEX NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "HEX NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "ASM", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false), // #FFFFFF 
+        });
 
-        List<Color> phpColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(253, 248, 227), // #FF0000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(254, 252, 245), // #000000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(254, 252, 245), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(254, 252, 245), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(254, 252, 245), // #808080 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(254, 252, 245), // #0000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(254, 252, 245), // #FF8000 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(254, 252, 245), // #000080 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(254, 252, 245), // #008000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(254, 252, 245), // #008000 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(254, 252, 245), // #8000FF 
-            });
+        List<Tuple<Color, string, bool>> phpColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(255, 0, 0), "QUESTION MARK", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(253, 248, 227), "QUESTION MARK", false), // #FDF8E3 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "DEFAULT", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "STRING", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING VARIABLE", true), // #808080 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "STRING VARIABLE", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "SIMPLESTRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "SIMPLESTRING", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "WORD", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "NUMBER", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "VARIABLE", true), // #000080 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "VARIABLE", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "COMMENT", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTLINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "COMMENTLINE", false), // #FEFCF5 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "OPERATOR", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(254, 252, 245), "OPERATOR", false), // #FEFCF5 
+        });
 
-        List<Color> htmlColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(166, 202, 240), // #000000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(254, 253, 224), // #FF8000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(254, 253, 224), // #000000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(253, 248, 227), // #FF0000 
-            });
+        List<Tuple<Color, string, bool>> htmlColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "NUMBER", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "DOUBLESTRING", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DOUBLESTRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "SINGLESTRING", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "SINGLESTRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "TAG", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAG", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "TAGEND", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAGEND", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "TAGUNKNOWN", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TAGUNKNOWN", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "ATTRIBUTE", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ATTRIBUTE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "ATTRIBUTEUNKNOWN", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ATTRIBUTEUNKNOWN", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "SGMLDEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(166, 202, 240), "SGMLDEFAULT", false), // #A6CAF0 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "CDATA", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CDATA", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "VALUE", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(254, 253, 224), "VALUE", false), // #FEFDE0 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "ENTITY", true), // #000000 
+            Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false), // #FEFDE0 
+        });
 
-        List<Color> powerShellColors =
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(255, 255, 255), // #8000FF 
-                Color.FromArgb(0, 128, 255), // #0080FF 
-                Color.FromArgb(255, 255, 255), // #0080FF 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 128, 128), // #008080 
-                Color.FromArgb(255, 255, 255), // #008080 
-            });
+        List<Tuple<Color, string, bool>> powerShellColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "VARIABLE", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "VARIABLE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "CMDLET", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CMDLET", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 255), "ALIAS", true), // #0080FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ALIAS", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT STREAM", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT STREAM", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "HERE STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "HERE STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "HERE CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "HERE CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
+        });
 
-        List<Color> iniColors = new List<Color>(
-            new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(128, 0, 255), // #8000FF 
-                Color.FromArgb(242, 244, 255), // #8000FF 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-            });
 
-        List<Color> pythonColors = 
-            new List<Color>(new Color[]
-            {
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(255, 0, 0), // #FF0000 
-                Color.FromArgb(255, 255, 255), // #FF0000 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(128, 128, 128), // #808080 
-                Color.FromArgb(255, 255, 255), // #808080 
-                Color.FromArgb(0, 0, 255), // #0000FF 
-                Color.FromArgb(255, 255, 255), // #0000FF 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(255, 0, 255), // #FF00FF 
-                Color.FromArgb(255, 255, 255), // #FF00FF 
-                Color.FromArgb(0, 0, 128), // #000080 
-                Color.FromArgb(255, 255, 255), // #000080 
-                Color.FromArgb(0, 0, 0), // #000000 
-                Color.FromArgb(255, 255, 255), // #000000 
-                Color.FromArgb(0, 128, 0), // #008000 
-                Color.FromArgb(255, 255, 255), // #008000 
-                Color.FromArgb(255, 128, 0), // #FF8000 
-                Color.FromArgb(255, 255, 255), // #FF8000 
-            });
+        List<Tuple<Color, string, bool>> iniColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 0, 255), "SECTION", true), // #8000FF 
+            Tuple.Create(Color.FromArgb(242, 244, 255), "SECTION", false), // #F2F4FF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "ASSIGNMENT", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ASSIGNMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "DEFVAL", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFVAL", false), // #FFFFFF 
+        });
+
+        List<Tuple<Color, string, bool>> pythonColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTLINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENTLINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "NUMBER", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "KEYWORDS", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "KEYWORDS", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "TRIPLE", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TRIPLE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "TRIPLEDOUBLE", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TRIPLEDOUBLE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "CLASSNAME", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CLASSNAME", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 255), "DEFNAME", true), // #FF00FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFNAME", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "IDENTIFIER", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "IDENTIFIER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTBLOCK", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENTBLOCK", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "DECORATOR", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DECORATOR", false), // #FFFFFF 
+        });
         #endregion
 
         #region InteralColorIndexList
@@ -1353,6 +1372,80 @@ namespace VPKSoft.ScintillaLexers
         }
 
         /// <summary>
+        /// Gets the color uses by the SciTE color name and a value indicating whether a foreground or a background color is requested.
+        /// <note type="note">URL: https://www.scintilla.org/SciTE.html</note>
+        /// </summary>
+        /// <param name="name">The name of the color (SciTE).</param>
+        /// <param name="lexerType">Type of the lexer.</param>
+        /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
+        /// <returns>An index >= 0 if successful; otherwise -1.</returns>
+        public int GetColorIndexBySciTEName(string name, LexerType lexerType, bool isForeground)
+        {
+            if (lexerType == LexerType.Cs)
+            {
+                int idx = csColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Cpp)
+            {
+                int idx = cppColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Xml)
+            {
+                int idx = xmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Nsis)
+            {
+                int idx = nsisColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.SQL)
+            {
+                int idx = sqlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Batch)
+            {
+                int idx = batchColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Pascal)
+            {
+                int idx = pascalColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.PHP)
+            {
+                int idx = phpColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.HTML)
+            {
+                int idx = htmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.WindowsPowerShell)
+            {
+                int idx = powerShellColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.INI)
+            {
+                int idx = iniColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            else if (lexerType == LexerType.Python)
+            {
+                int idx = pythonColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+            return -1;
+        }
+
+
+        /// <summary>
         /// Gets the index of the color by name.
         /// </summary>
         /// <param name="name">The name of the color.</param>
@@ -1383,11 +1476,6 @@ namespace VPKSoft.ScintillaLexers
             else if (lexerType == LexerType.SQL)
             {
                 int idx = SqlColorIndexes.FindIndex(f => f.Value == name);
-                return idx;
-            }
-            else if (lexerType == LexerType.SQL)
-            {
-                int idx = BatchColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
             else if (lexerType == LexerType.Batch)
