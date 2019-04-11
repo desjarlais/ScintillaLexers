@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreatePascalLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreatePascalLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -106,9 +108,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Pascal.Asm].BackColor = lexerColors[LexerType.Pascal, "ForeColorBack"];
             scintilla.Lexer = Lexer.Pascal;
 
-            // Name: instre1
-            scintilla.SetKeywords(0,
-                "and array asm begin case cdecl class const constructor default destructor div do downto else end end. except exit exports external far file finalization finally for function goto if implementation in index inherited initialization inline interface label library message mod near nil not object of on or out overload override packed pascal private procedure program property protected public published raise read record register repeat resourcestring safecall set shl shr stdcall stored string then threadvar to try type unit until uses var virtual while with write xor");
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Pascal);
 
             AddFolding(scintilla);
             return true;

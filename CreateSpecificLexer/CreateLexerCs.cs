@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateCsLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreateCsLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -154,10 +156,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 
             scintilla.Lexer = Lexer.Cpp;
 
-            scintilla.SetKeywords(0,
-                "abstract add alias as ascending async await base break case catch checked continue default delegate descending do dynamic else event explicit extern false finally fixed for foreach from get global goto group if implicit in interface internal into is join let lock namespace new null object operator orderby out override params partial private protected public readonly ref remove return sealed select set sizeof stackalloc switch this throw true try typeof unchecked unsafe using value virtual where while yield");
-            scintilla.SetKeywords(1,
-                "bool byte char class const decimal double enum float int long sbyte short static string struct uint ulong ushort var void");
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cs);
 
             AddFolding(scintilla);
 

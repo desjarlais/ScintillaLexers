@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateCppLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreateCppLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -132,12 +134,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 
             scintilla.Lexer = Lexer.Cpp;
 
-            scintilla.SetKeywords(0,
-                "alignof and and_eq bitand bitor break case catch compl const_cast continue default delete do dynamic_cast else false for goto if namespace new not not_eq nullptr operator or or_eq reinterpret_cast return sizeof static_assert static_cast switch this throw true try typedef typeid using while xor xor_eq NULL");
-            scintilla.SetKeywords(1,
-                "alignas asm auto bool char char16_t char32_t class clock_t const constexpr decltype double enum explicit export extern final float friend inline int int8_t int16_t int32_t int64_t int_fast8_t int_fast16_t int_fast32_t int_fast64_t intmax_t intptr_t long mutable noexcept override private protected ptrdiff_t public register short signed size_t ssize_t static struct template thread_local time_t typename uint8_t uint16_t uint32_t uint64_t uint_fast8_t uint_fast16_t uint_fast32_t uint_fast64_t uintmax_t uintptr_t union unsigned virtual void volatile wchar_t");
-            scintilla.SetKeywords(2,
-                "a addindex addtogroup anchor arg attention author authors b brief bug c callergraph callgraph category cite class code cond copybrief copydetails copydoc copyright date def defgroup deprecated details diafile dir docbookonly dontinclude dot dotfile e else elseif em endcode endcond enddocbookonly enddot endhtmlonly endif endinternal endlatexonly endlink endmanonly endmsc endparblock endrtfonly endsecreflist enduml endverbatim endxmlonly enum example exception extends f$ f[ f] file fn f{ f} headerfile hidecallergraph hidecallgraph hideinitializer htmlinclude htmlonly idlexcept if ifnot image implements include includelineno ingroup interface internal invariant latexinclude latexonly li line link mainpage manonly memberof msc mscfile n name namespace nosubgrouping note overload p package page par paragraph param parblock post pre private privatesection property protected protectedsection protocol public publicsection pure ref refitem related relatedalso relates relatesalso remark remarks result return returns retval rtfonly sa secreflist section see short showinitializer since skip skipline snippet startuml struct subpage subsection subsubsection tableofcontents test throw throws todo tparam typedef union until var verbatim verbinclude version vhdlflow warning weakgroup xmlonly xrefitem");
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cpp);
 
             AddFolding(scintilla);
 

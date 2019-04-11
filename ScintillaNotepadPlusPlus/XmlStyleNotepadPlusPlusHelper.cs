@@ -1,12 +1,12 @@
 ﻿using System.Drawing;
 using System.Xml.Linq;
 
-namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
+namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus
 {
     /// <summary>
     /// A helper class for Notepad++ XML style definition files.
     /// </summary>
-    public class XmlStyleNotepadPlusHelper
+    public class XmlStyleNotepadPlusPlusHelper
     {
         /// <summary>
         /// Gets or sets the name of the style definition.
@@ -104,10 +104,10 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
         /// Creates a new instance of this class based on the given <see cref="XElement"/>
         /// </summary>
         /// <param name="element">The element to get the style definition from.</param>
-        /// <returns>A <see cref="XmlStyleNotepadPlusHelper"/> class instance filled with the style definition data.</returns>
-        public static XmlStyleNotepadPlusHelper FromXElement(XElement element)
+        /// <returns>A <see cref="XmlStyleNotepadPlusPlusHelper"/> class instance filled with the style definition data.</returns>
+        public static XmlStyleNotepadPlusPlusHelper FromXElement(XElement element)
         {
-            return new XmlStyleNotepadPlusHelper
+            return new XmlStyleNotepadPlusPlusHelper
             {
                 Name = GetAttributeValue(element, "name", "None"),
                 Bold = int.Parse(GetAttributeValue(element, "fontStyle", "0")) == 1,

@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateBatchLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreateBatchLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -82,10 +84,8 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Batch.Operator].ForeColor = lexerColors[LexerType.Batch, "OperatorFore"];
             scintilla.Styles[Style.Batch.Operator].BackColor = lexerColors[LexerType.Batch, "OperatorBack"];
             scintilla.Lexer = Lexer.Batch;
-
-            // Name: instre1
-            scintilla.SetKeywords(0,
-                "assoc aux break call cd chcp chdir choice cls cmdextversion color com com1 com2 com3 com4 con copy country ctty date defined del dir do dpath echo else endlocal erase errorlevel exist exit for ftype goto if in loadfix loadhigh lpt lpt1 lpt2 lpt3 lpt4 md mkdir move not nul path pause popd prn prompt pushd rd rem ren rename rmdir set setlocal shift start time title type ver verify vol");
+            
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Batch);
 
             AddFolding(scintilla);
             return true;

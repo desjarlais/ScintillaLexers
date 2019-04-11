@@ -64,15 +64,15 @@
     <Compile Include="CreateSpecificLexer\CreateLexerSql.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerXml.cs" />
     <Compile Include="CreateSpecificLexer\LexerFoldProperties.cs" />
-    <Compile Include="LexerColors.cs" />
+    <Compile Include="LexerColors\LexerColors.cs" />
     <Compile Include="LexerEnumerations.cs" />
-    <Compile Include="LexerFileExtensions.cs" />
-    <Compile Include="LexerTypeName.cs" />
-    <Compile Include="ScintillaKeyWords.cs" />
-    <Compile Include="ScintillaNotepadPlus\ScintillaNotepadPlusStyles.cs" />
+    <Compile Include="HelperClasses\LexerFileExtensions.cs" />
+    <Compile Include="HelperClasses\LexerTypeName.cs" />
+    <Compile Include="HelperClasses\ScintillaKeyWords.cs" />
+    <Compile Include="ScintillaNotepadPlusPlus\ScintillaNotepadPlusPlusStyles.cs" />
     <Compile Include="ScintillaLexers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScintillaNotepadPlus\XmlStyleNotepadPlusHelper.cs" />
+    <Compile Include="ScintillaNotepadPlusPlus\XmlStyleNotepadPlusPlusHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

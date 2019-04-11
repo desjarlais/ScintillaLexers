@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreatePowerShellLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreatePowerShellLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -132,18 +134,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.PowerShell.CommentDocKeyword].BackColor =
                 lexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordBack"];
 
-            // Name: instre1
-            scintilla.SetKeywords(0,
-                "break continue do else elseif filter for foreach function if in return switch until where while");
-            // Name: instre2
-            scintilla.SetKeywords(1,
-                "add-content add-history add-member add-pssnapin clear-content clear-item clear-itemproperty clear-variable compare-object convertfrom-securestring convert-path convertto-html convertto-securestring copy-item copy-itemproperty export-alias export-clixml export-console export-csv foreach-object format-custom format-list format-table format-wide get-acl get-alias get-authenticodesignature get-childitem get-command get-content get-credential get-culture get-date get-eventlog get-executionpolicy get-help get-history get-host get-item get-itemproperty get-location get-member get-pfxcertificate get-process get-psdrive get-psprovider get-pssnapin get-service get-tracesource get-uiculture get-unique get-variable get-wmiobject group-object import-alias import-clixml import-csv invoke-expression invoke-history invoke-item join-path measure-command measure-object move-item move-itemproperty new-alias new-item new-itemproperty new-object new-psdrive new-service new-timespan new-variable out-default out-file out-host out-null out-printer out-string pop-location push-location read-host remove-item remove-itemproperty remove-psdrive remove-pssnapin remove-variable rename-item rename-itemproperty resolve-path restart-service resume-service select-object select-string set-acl set-alias set-authenticodesignature set-content set-date set-executionpolicy set-item set-itemproperty set-location set-psdebug set-service set-tracesource set-variable sort-object split-path start-service start-sleep start-transcript stop-process stop-service stop-transcript suspend-service tee-object test-path trace-command update-formatdata update-typedata where-object write-debug write-error write-host write-output write-progress write-verbose write-warning");
-            // Name: type1
-            scintilla.SetKeywords(2,
-                "ac asnp clc cli clp clv cpi cpp cvpa diff epal epcsv fc fl foreach ft fw gal gc gci gcm gdr ghy gi gl gm gp gps group gsv gsnp gu gv gwmi iex ihy ii ipal ipcsv mi mp nal ndr ni nv oh rdr ri rni rnp rp rsnp rv rvpa sal sasv sc select si sl sleep sort sp spps spsv sv tee where write cat cd clear cp h history kill lp ls mount mv popd ps pushd pwd r rm rmdir echo cls chdir copy del dir erase move rd ren set type");
-            // Name: type4
-            scintilla.SetKeywords(3,
-                "component description example externalhelp forwardhelpcategory forwardhelptargetname functionality inputs link notes outputs parameter remotehelprunspace role synopsis");
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.WindowsPowerShell);
 
             scintilla.Lexer = Lexer.PowerShell;
 

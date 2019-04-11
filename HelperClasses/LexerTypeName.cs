@@ -28,9 +28,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ScintillaNET;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers
+namespace VPKSoft.ScintillaLexers.HelperClasses
 {
     /// <summary>
     /// A helper class for Class LexerTypeName.
@@ -45,22 +44,22 @@ namespace VPKSoft.ScintillaLexers
         /// <summary>
         /// A list of currently supported lexers by this library.
         /// </summary>
-        private static readonly List<Tuple<LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerType, string, Lexer>>(
+        private static readonly List<Tuple<LexerEnumerations.LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerEnumerations.LexerType, string, Lexer>>(
             new[]
             {
-                Tuple.Create(LexerType.Unknown, "text", Lexer.Null),
-                Tuple.Create(LexerType.Cs, "cs", Lexer.Cpp),
-                Tuple.Create(LexerType.Cpp, "cpp", Lexer.Cpp),
-                Tuple.Create(LexerType.Xml, "xml", Lexer.Xml),
-                Tuple.Create(LexerType.Text, "text", Lexer.Null),
-                Tuple.Create(LexerType.Nsis, "nsis", (Lexer)SCLEX_NSIS),
-                Tuple.Create(LexerType.SQL, "sql", Lexer.Xml),
-                Tuple.Create(LexerType.Batch, "batch", Lexer.Batch),
-                Tuple.Create(LexerType.Pascal, "pascal", Lexer.Pascal),
-                Tuple.Create(LexerType.PHP, "php", Lexer.PhpScript),
-                Tuple.Create(LexerType.WindowsPowerShell, "powershell", Lexer.PowerShell),
-                Tuple.Create(LexerType.INI, "ini", Lexer.Properties),
-                Tuple.Create(LexerType.Python, "python", Lexer.Python)
+                Tuple.Create(LexerEnumerations.LexerType.Unknown, "text", Lexer.Null),
+                Tuple.Create(LexerEnumerations.LexerType.Cs, "cs", Lexer.Cpp),
+                Tuple.Create(LexerEnumerations.LexerType.Cpp, "cpp", Lexer.Cpp),
+                Tuple.Create(LexerEnumerations.LexerType.Xml, "xml", Lexer.Xml),
+                Tuple.Create(LexerEnumerations.LexerType.Text, "text", Lexer.Null),
+                Tuple.Create(LexerEnumerations.LexerType.Nsis, "nsis", (Lexer)SCLEX_NSIS),
+                Tuple.Create(LexerEnumerations.LexerType.SQL, "sql", Lexer.Xml),
+                Tuple.Create(LexerEnumerations.LexerType.Batch, "batch", Lexer.Batch),
+                Tuple.Create(LexerEnumerations.LexerType.Pascal, "pascal", Lexer.Pascal),
+                Tuple.Create(LexerEnumerations.LexerType.PHP, "php", Lexer.PhpScript),
+                Tuple.Create(LexerEnumerations.LexerType.WindowsPowerShell, "powershell", Lexer.PowerShell),
+                Tuple.Create(LexerEnumerations.LexerType.INI, "ini", Lexer.Properties),
+                Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.Python)
             });
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace VPKSoft.ScintillaLexers
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>The name of the lexer used in Notepad++'s XML style files if successful; otherwise "text".</returns>
-        public static string GetLexerXmlName(LexerType lexerType)
+        public static string GetLexerXmlName(LexerEnumerations.LexerType lexerType)
         {
             var result = LexerTypeNameList.FirstOrDefault(f => f.Item1 == lexerType);
             return result == null ? "text" : result.Item2;
@@ -86,11 +85,11 @@ namespace VPKSoft.ScintillaLexers
         }
 
         /// <summary>
-        /// Gets the type of the lexer by a given <see cref="LexerType"/> enumeration.
+        /// Gets the type of the lexer by a given <see cref="LexerEnumerations.LexerType"/> enumeration.
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
-        /// <returns>A <see cref="Lexer"/> matching the given <see cref="LexerType"/> enumeration.</returns>
-        public static Lexer GetLexerByLexerType(LexerType lexerType)
+        /// <returns>A <see cref="Lexer"/> matching the given <see cref="LexerEnumerations.LexerType"/> enumeration.</returns>
+        public static Lexer GetLexerByLexerType(LexerEnumerations.LexerType lexerType)
         {
             var result = LexerTypeNameList.FirstOrDefault(f => f.Item1 == lexerType);
             return result?.Item3 ?? Lexer.Null;

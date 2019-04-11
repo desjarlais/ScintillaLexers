@@ -3,14 +3,23 @@ using System.Linq;
 using System.Xml.Linq;
 using ScintillaNET;
 using VPKSoft.ScintillaLexers.CreateSpecificLexer;
+using VPKSoft.ScintillaLexers.HelperClasses;
 
-namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
+namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus
 {
     /// <summary>
     /// A class for loading global styles for the <see cref="Scintilla"/> from 
     /// </summary>
-    public class ScintillaNotepadPlusStyles
+    public class ScintillaNotepadPlusPlusStyles
     {
+        /// <summary>
+        /// Sets the global and default styles for the given <see cref="Scintilla"/> instance depending on the other parameters.
+        /// </summary>
+        /// <param name="document">A XML document containing the lexer style data.</param>
+        /// <param name="scintilla">The scintilla instance of which style to set.</param>
+        /// <param name="useGlobalOverride">if set to <c>true</c> the "Global override" style is read from the <paramref name="document"/>.</param>
+        /// <param name="font">If set to <c>true</c> the font name and size is read from the <paramref name="document"/>..</param>
+        /// <returns><c>true</c> if the operation was successful, <c>false</c> otherwise.</returns>
         public static bool SetGlobalDefaultStyles(XDocument document, Scintilla scintilla, bool useGlobalOverride, bool font)
         {
             try
@@ -24,7 +33,7 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
 
                 if (globalStyle != null && useGlobalOverride)
                 {
-                    SetStyle(scintilla, XmlStyleNotepadPlusHelper.FromXElement(globalStyle), font);
+                    SetStyle(scintilla, XmlStyleNotepadPlusPlusHelper.FromXElement(globalStyle), font);
                 }
 
                 var defaultStyle =
@@ -32,7 +41,7 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
                         f.Attribute("name") != null &&
                         f.Attribute("name").Value == "Default Style");
 
-                SetStyle(scintilla, XmlStyleNotepadPlusHelper.FromXElement(defaultStyle), font);
+                SetStyle(scintilla, XmlStyleNotepadPlusPlusHelper.FromXElement(defaultStyle), font);
 
                 scintilla.StyleClearAll();
 
@@ -44,6 +53,12 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
             }
         }
 
+        /// <summary>
+        /// Sets the folding of a <see cref="Scintilla"/> based on the "Fold" style defined in the XML document.
+        /// </summary>
+        /// <param name="document">The XML document to read the folding style from.</param>
+        /// <param name="scintilla">The instance to a scintilla of which folding style to set.</param>
+        /// <returns><c>true</c> if the operation was successful, <c>false</c> otherwise.</returns>
         public static bool SetFolding(XDocument document, Scintilla scintilla)
         {
             try
@@ -58,12 +73,12 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
                     return false;
                 }
 
-                var style = XmlStyleNotepadPlusHelper.FromXElement(foldStyle);
+                var style = XmlStyleNotepadPlusPlusHelper.FromXElement(foldStyle);
 
                 // the default colors as in the example.. (C)::https://github.com/jacobslusser/ScintillaNET/wiki/Automatic-Code-Folding
 
                 // Instruct the lexer to calculate folding..
-                LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.DefaultFolding);
+                LexerFoldProperties.FoldDefault(scintilla);
 
                 // Configure a margin to display folding symbols
                 scintilla.Margins[2].Type = MarginType.Symbol;
@@ -98,7 +113,13 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
             }
         }
 
-        private static void SetStyle(Scintilla scintilla, XmlStyleNotepadPlusHelper style, bool font)
+        /// <summary>
+        /// Sets the style of a given <see cref="Scintilla"/> with a given style.
+        /// </summary>
+        /// <param name="scintilla">The scintilla instance of which style to set.</param>
+        /// <param name="style">The style to set for the <paramref name="scintilla"/>.</param>
+        /// <param name="font">If set to <c>true</c> the font is also set from the given style.</param>
+        private static void SetStyle(Scintilla scintilla, XmlStyleNotepadPlusPlusHelper style, bool font)
         {
             if (style.ColorForeground != Color.Empty)
             {
@@ -112,7 +133,7 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
 
             scintilla.Styles[style.StyleId].Italic = style.Italic;
             scintilla.Styles[style.StyleId].Bold = style.Bold;
-            if (style.StyleId == 0 || style.StyleId == Style.Default)
+            if (font)
             {
                 scintilla.Styles[style.StyleId].Font = style.FontName;
                 scintilla.Styles[style.StyleId].Size = style.FontSize;
@@ -122,22 +143,23 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
         /// <summary>
         /// Loads the Scintilla global styles from a Notepad++ style definition XML file.
         /// </summary>
-        /// <param name="fileName">The name of the file.</param>
+        /// <param name="document">The XML document to read the global style from.</param>
         /// <param name="scintilla">The Scintilla of which global styles to set.</param>
+        /// <param name="useWhiteSpace">A flag indicating whether to color the white space symbol.</param>
+        /// <param name="useSelectionColors">A flag indicating whether to color the selection.</param>
+        /// <param name="useMarginColors">A flag indicating whether to color the margin.</param>
         /// <returns><c>true</c> if the operations was successful, <c>false</c> otherwise.</returns>
         public static bool LoadScintillaStyleFromNotepadPlusXml(XDocument document, Scintilla scintilla,
-            bool useWhiteSpace, bool useGlobalOverride, bool font)
+            bool useWhiteSpace, bool useSelectionColors, bool useMarginColors)
         {
             try
             {
-                SetGlobalDefaultStyles(document, scintilla, useGlobalOverride, font);
-
                 var nodes = document.Descendants(XName.Get("WidgetStyle"));
                 // loop through the color definition elements..
 
                 foreach (var node in nodes)
                 {
-                    var style = XmlStyleNotepadPlusHelper.FromXElement(node);
+                    var style = XmlStyleNotepadPlusPlusHelper.FromXElement(node);
 
                     if (style.Name == "Indent guideline style" ||
                         style.Name == "Brace highlight style" ||
@@ -166,16 +188,15 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
 
                         scintilla.Styles[style.StyleId].Italic = style.Italic;
                         scintilla.Styles[style.StyleId].Bold = style.Bold;
-                        if (style.StyleId == 0 || style.StyleId == Style.Default)
-                        {
-                            scintilla.Styles[style.StyleId].Font = style.FontName;
-                            scintilla.Styles[style.StyleId].Size = style.FontSize;
-                        }
+                    }
+                    else if (style.Name == "Current line background colour")
+                    {
+                        scintilla.CaretLineBackColor = style.ColorBackground;
                     }
                     else if (style.Name == "Selected text colour")
                     {
-                        scintilla.SetSelectionForeColor(true, style.ColorForeground);
-                        scintilla.SetSelectionBackColor(true, style.ColorBackground);
+                        scintilla.SetSelectionForeColor(useSelectionColors, style.ColorForeground);
+                        scintilla.SetSelectionBackColor(useSelectionColors, style.ColorBackground);
                     }
                     else if (style.Name == "Caret colour")
                     {
@@ -190,8 +211,8 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
                     }
                     else if (style.Name == "Fold margin") // <WidgetStyle name="Fold margin"..
                     {
-                        scintilla.SetFoldMarginHighlightColor(true, style.ColorForeground);
-                        scintilla.SetFoldMarginColor(true, style.ColorBackground);
+                        scintilla.SetFoldMarginHighlightColor(useMarginColors, style.ColorForeground);
+                        scintilla.SetFoldMarginColor(useMarginColors, style.ColorBackground);
                     }
                     else if (style.Name == "White space symbol") // <WidgetStyle name="White space symbol"..
                     {
@@ -211,8 +232,8 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
         /// <summary>
         /// Gets the styles for a <see cref="Scintilla"/> from the Notepad++'s XML style files for a given lexer.
         /// </summary>
+        /// <param name="document">The XML document to read the lexer style from.</param>
         /// <param name="scintilla">The <see cref="Scintilla"/> which lexer style to set.</param>
-        /// <param name="fileName">The name of the XML file.</param>
         /// <param name="lexerType">A <see cref="LexerEnumerations.LexerType"/> enumeration.</param>
         /// <returns><c>true</c> if the operations was successful, <c>false</c> otherwise.</returns>
         public static bool LoadLexerStyleFromNotepadPlusXml(XDocument document, Scintilla scintilla, 
@@ -226,16 +247,17 @@ namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlus
                 // loop through the color definition elements..
                 foreach (var node in nodes)
                 {
-                    var style = XmlStyleNotepadPlusHelper.FromXElement(node);
+                    var style = XmlStyleNotepadPlusPlusHelper.FromXElement(node);
 
-                    if (style.ColorForeground == Color.Empty || style.ColorBackground == Color.Empty)
+                    if (style.ColorForeground != Color.Empty)
                     {
-                        break;
+                        scintilla.Styles[style.StyleId].ForeColor = style.ColorForeground;
                     }
 
-                    scintilla.Styles[style.StyleId].ForeColor = style.ColorForeground;
-
-                    scintilla.Styles[style.StyleId].BackColor = style.ColorBackground;
+                    if (style.ColorBackground != Color.Empty)
+                    {
+                        scintilla.Styles[style.StyleId].BackColor = style.ColorBackground;
+                    }
 
                     scintilla.Styles[style.StyleId].Bold = style.Bold;
                     scintilla.Styles[style.StyleId].Italic = style.Italic;

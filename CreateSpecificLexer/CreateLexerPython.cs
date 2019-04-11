@@ -25,6 +25,8 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
+using VPKSoft.ScintillaLexers.HelperClasses;
+using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
@@ -42,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreatePythonLexer(Scintilla scintilla, LexerColors lexerColors)
+        public static bool CreatePythonLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
 
@@ -107,10 +109,8 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Python.Decorator].BackColor = lexerColors[LexerType.Python, "DecoratorBack"];
 
             scintilla.Lexer = Lexer.Python;
-
-            // Name: instre1
-            scintilla.SetKeywords(0,
-                "and as assert break class continue def del elif else except exec False finally for from global if import in is lambda None not or pass print raise return True try while with yield async await");
+            
+            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Python);
 
             AddFolding(scintilla);
 

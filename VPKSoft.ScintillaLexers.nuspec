@@ -10,7 +10,7 @@
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added Scintilla/SciTE lexer color support.</releaseNotes>
+    <releaseNotes>Added support for loading lexer styles from the famous Notepad++ style definition XML files.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper scintilla ScintillaNET lexer</tags>
     <license type="expression">MIT</license>

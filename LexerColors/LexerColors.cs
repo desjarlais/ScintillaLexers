@@ -31,9 +31,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers
+namespace VPKSoft.ScintillaLexers.LexerColors
 {
     /// <summary>
     /// A class containing the colors for the lexers.
@@ -46,66 +45,66 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="lexerType">The type of the lexer.</param>
         /// <returns>A list of color belonging to a specific lexer.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public List<Tuple<Color, string, bool>> this[LexerType lexerType]
+        public List<Tuple<Color, string, bool>> this[LexerEnumerations.LexerType lexerType]
         {
             get
             {
-                if (lexerType == LexerType.Cpp)
+                if (lexerType == LexerEnumerations.LexerType.Cpp)
                 {
                     return cppColors;
                 }
 
-                if (lexerType == LexerType.Nsis)
+                if (lexerType == LexerEnumerations.LexerType.Nsis)
                 {
                     return nsisColors;
                 }
 
-                if (lexerType == LexerType.Cs)
+                if (lexerType == LexerEnumerations.LexerType.Cs)
                 {
                     return csColors;
                 }
 
-                if (lexerType == LexerType.Xml)
+                if (lexerType == LexerEnumerations.LexerType.Xml)
                 {
                     return xmlColors;
                 }
 
-                if (lexerType == LexerType.SQL)
+                if (lexerType == LexerEnumerations.LexerType.SQL)
                 {
                     return sqlColors;
                 }
 
-                if (lexerType == LexerType.Batch)
+                if (lexerType == LexerEnumerations.LexerType.Batch)
                 {
                     return batchColors;
                 }
 
-                if (lexerType == LexerType.Pascal)
+                if (lexerType == LexerEnumerations.LexerType.Pascal)
                 {
                     return pascalColors;
                 }
 
-                if (lexerType == LexerType.PHP)
+                if (lexerType == LexerEnumerations.LexerType.PHP)
                 {
                     return phpColors;
                 }
 
-                if (lexerType == LexerType.HTML)
+                if (lexerType == LexerEnumerations.LexerType.HTML)
                 {
                     return htmlColors;
                 }
 
-                if (lexerType == LexerType.WindowsPowerShell)
+                if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
                 {
                     return powerShellColors;
                 }
 
-                if (lexerType == LexerType.INI)
+                if (lexerType == LexerEnumerations.LexerType.INI)
                 {
                     return iniColors;
                 }
 
-                if (lexerType == LexerType.Python)
+                if (lexerType == LexerEnumerations.LexerType.Python)
                 {
                     return pythonColors;
                 }
@@ -114,7 +113,7 @@ namespace VPKSoft.ScintillaLexers
 
             set
             {
-                if (lexerType == LexerType.Cpp)
+                if (lexerType == LexerEnumerations.LexerType.Cpp)
                 {
                     if (value == null || value.Count != cppColors.Count)
                     {
@@ -122,7 +121,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     cppColors = value;
                 }
-                else if (lexerType == LexerType.Nsis)
+                else if (lexerType == LexerEnumerations.LexerType.Nsis)
                 {
                     if (value == null || value.Count != nsisColors.Count)
                     {
@@ -130,7 +129,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     nsisColors = value;
                 }
-                else if (lexerType == LexerType.Cs)
+                else if (lexerType == LexerEnumerations.LexerType.Cs)
                 {
                     if (value == null || value.Count != csColors.Count)
                     {
@@ -138,7 +137,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     csColors = value;
                 }
-                else if (lexerType == LexerType.Xml)
+                else if (lexerType == LexerEnumerations.LexerType.Xml)
                 {
                     if (value == null || value.Count != xmlColors.Count)
                     {
@@ -146,7 +145,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     xmlColors = value;
                 }
-                else if (lexerType == LexerType.SQL)
+                else if (lexerType == LexerEnumerations.LexerType.SQL)
                 {
                     if (value == null || value.Count != sqlColors.Count)
                     {
@@ -154,7 +153,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     sqlColors = value;
                 }
-                else if (lexerType == LexerType.Batch)
+                else if (lexerType == LexerEnumerations.LexerType.Batch)
                 {
                     if (value == null || value.Count != batchColors.Count)
                     {
@@ -162,7 +161,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     batchColors = value;
                 }
-                else if (lexerType == LexerType.Pascal)
+                else if (lexerType == LexerEnumerations.LexerType.Pascal)
                 {
                     if (value == null || value.Count != pascalColors.Count)
                     {
@@ -170,7 +169,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     pascalColors = value;
                 }
-                else if (lexerType == LexerType.PHP)
+                else if (lexerType == LexerEnumerations.LexerType.PHP)
                 {
                     if (value == null || value.Count != phpColors.Count)
                     {
@@ -178,7 +177,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     phpColors = value;
                 }
-                else if (lexerType == LexerType.HTML)
+                else if (lexerType == LexerEnumerations.LexerType.HTML)
                 {
                     if (value == null || value.Count != htmlColors.Count)
                     {
@@ -186,7 +185,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     htmlColors = value;
                 }
-                else if (lexerType == LexerType.WindowsPowerShell)
+                else if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
                 {
                     if (value == null || value.Count != powerShellColors.Count)
                     {
@@ -194,7 +193,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     powerShellColors = value;
                 }
-                else if (lexerType == LexerType.INI)
+                else if (lexerType == LexerEnumerations.LexerType.INI)
                 {
                     if (value == null || value.Count != iniColors.Count)
                     {
@@ -202,7 +201,7 @@ namespace VPKSoft.ScintillaLexers
                     }
                     iniColors = value;
                 }
-                else if (lexerType == LexerType.Python)
+                else if (lexerType == LexerEnumerations.LexerType.Python)
                 {
                     if (value == null || value.Count != pythonColors.Count)
                     {
@@ -222,7 +221,7 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
         /// <returns>A color with the specified lexer, a specified SciTE name and a flag indicating whether the color in question is a background or a foreground color.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public Color this[LexerType lexerType, string colorName, bool isForeground]
+        public Color this[LexerEnumerations.LexerType lexerType, string colorName, bool isForeground]
         {
             get
             {
@@ -251,7 +250,7 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="colorName">The name of the color.</param>
         /// <returns>A color with the specified lexer type and with a specified name.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public Color this[LexerType lexerType, string colorName]
+        public Color this[LexerEnumerations.LexerType lexerType, string colorName]
         {
             get
             {
@@ -1201,7 +1200,7 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="fileName">Name of the file where to save the lexer's color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool DescribeLexerColors(string fileName, LexerType lexerType)
+        public bool DescribeLexerColors(string fileName, LexerEnumerations.LexerType lexerType)
         {
             try
             {
@@ -1219,7 +1218,7 @@ namespace VPKSoft.ScintillaLexers
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>An instance to a XDocument class containing the color definitions.</returns>
-        public XDocument DescribeLexerColors(LexerType lexerType)
+        public XDocument DescribeLexerColors(LexerEnumerations.LexerType lexerType)
         {
             // create an element for color value entries..
             XElement entryElement = new XElement("Colors", new XAttribute("Lexer", lexerType.ToString()));
@@ -1251,7 +1250,7 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="document">The document containing the lexer's color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool LoadDescribedLexerColorsFromXml(XDocument document, LexerType lexerType)
+        public bool LoadDescribedLexerColorsFromXml(XDocument document, LexerEnumerations.LexerType lexerType)
         {
             try
             {
@@ -1283,7 +1282,7 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="fileName">Name of the file from where to load the lexer color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool LoadDescribedLexerColorsFromXml(string fileName, LexerType lexerType)
+        public bool LoadDescribedLexerColorsFromXml(string fileName, LexerEnumerations.LexerType lexerType)
         {
             if (File.Exists(fileName)) // the file must exist..
             {
@@ -1312,75 +1311,75 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="lexerType">Type of the lexer.</param>
         /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
         /// <returns>An index >= 0 if successful; otherwise -1.</returns>
-        public int GetColorIndexBySciTEName(string name, LexerType lexerType, bool isForeground)
+        public int GetColorIndexBySciTEName(string name, LexerEnumerations.LexerType lexerType, bool isForeground)
         {
-            if (lexerType == LexerType.Cs)
+            if (lexerType == LexerEnumerations.LexerType.Cs)
             {
                 int idx = csColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Cpp)
+            if (lexerType == LexerEnumerations.LexerType.Cpp)
             {
                 int idx = cppColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Xml)
+            if (lexerType == LexerEnumerations.LexerType.Xml)
             {
                 int idx = xmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Nsis)
+            if (lexerType == LexerEnumerations.LexerType.Nsis)
             {
                 int idx = nsisColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.SQL)
+            if (lexerType == LexerEnumerations.LexerType.SQL)
             {
                 int idx = sqlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Batch)
+            if (lexerType == LexerEnumerations.LexerType.Batch)
             {
                 int idx = batchColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Pascal)
+            if (lexerType == LexerEnumerations.LexerType.Pascal)
             {
                 int idx = pascalColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.PHP)
+            if (lexerType == LexerEnumerations.LexerType.PHP)
             {
                 int idx = phpColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.HTML)
+            if (lexerType == LexerEnumerations.LexerType.HTML)
             {
                 int idx = htmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.WindowsPowerShell)
+            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
             {
                 int idx = powerShellColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.INI)
+            if (lexerType == LexerEnumerations.LexerType.INI)
             {
                 int idx = iniColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerType.Python)
+            if (lexerType == LexerEnumerations.LexerType.Python)
             {
                 int idx = pythonColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
@@ -1394,75 +1393,75 @@ namespace VPKSoft.ScintillaLexers
         /// <param name="name">The name of the color.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>An index >= 0 if successful; otherwise -1.</returns>
-        public int GetColorIndexByName(string name, LexerType lexerType)
+        public int GetColorIndexByName(string name, LexerEnumerations.LexerType lexerType)
         {
-            if (lexerType == LexerType.Cs)
+            if (lexerType == LexerEnumerations.LexerType.Cs)
             {
                 int idx = CsColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Cpp)
+            if (lexerType == LexerEnumerations.LexerType.Cpp)
             {
                 int idx = CppColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Xml)
+            if (lexerType == LexerEnumerations.LexerType.Xml)
             {
                 int idx = XmlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Nsis)
+            if (lexerType == LexerEnumerations.LexerType.Nsis)
             {
                 int idx = NsisColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.SQL)
+            if (lexerType == LexerEnumerations.LexerType.SQL)
             {
                 int idx = SqlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Batch)
+            if (lexerType == LexerEnumerations.LexerType.Batch)
             {
                 int idx = BatchColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Pascal)
+            if (lexerType == LexerEnumerations.LexerType.Pascal)
             {
                 int idx = PascalColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.PHP)
+            if (lexerType == LexerEnumerations.LexerType.PHP)
             {
                 int idx = PhpColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.HTML)
+            if (lexerType == LexerEnumerations.LexerType.HTML)
             {
                 int idx = HtmlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.WindowsPowerShell)
+            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
             {
                 int idx = PowerShellColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.INI)
+            if (lexerType == LexerEnumerations.LexerType.INI)
             {
                 int idx = IniColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerType.Python)
+            if (lexerType == LexerEnumerations.LexerType.Python)
             {
                 int idx = PythonColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
@@ -1475,64 +1474,64 @@ namespace VPKSoft.ScintillaLexers
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>A collection of color names of the given lexer type if successful; otherwise an empty collection is returned.</returns>
-        public IEnumerable<string> GetColorNames(LexerType lexerType)
+        public IEnumerable<string> GetColorNames(LexerEnumerations.LexerType lexerType)
         {
-            if (lexerType == LexerType.Cs)
+            if (lexerType == LexerEnumerations.LexerType.Cs)
             {
                 return CsColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Cpp)
+            if (lexerType == LexerEnumerations.LexerType.Cpp)
             {
                 return CppColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Xml)
+            if (lexerType == LexerEnumerations.LexerType.Xml)
             {
                 return XmlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Nsis)
+            if (lexerType == LexerEnumerations.LexerType.Nsis)
             {
                 return NsisColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.SQL)
+            if (lexerType == LexerEnumerations.LexerType.SQL)
             {
                 return SqlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Batch)
+            if (lexerType == LexerEnumerations.LexerType.Batch)
             {
                 return BatchColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Pascal)
+            if (lexerType == LexerEnumerations.LexerType.Pascal)
             {
                 return PascalColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.PHP)
+            if (lexerType == LexerEnumerations.LexerType.PHP)
             {
                 return PhpColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.HTML)
+            if (lexerType == LexerEnumerations.LexerType.HTML)
             {
                 return HtmlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.WindowsPowerShell)
+            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
             {
                 return PowerShellColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.INI)
+            if (lexerType == LexerEnumerations.LexerType.INI)
             {
                 return IniColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerType.Python)
+            if (lexerType == LexerEnumerations.LexerType.Python)
             {
                 return PythonColorIndexes.Select(f => f.Value);
             }

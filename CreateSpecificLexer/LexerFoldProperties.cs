@@ -26,6 +26,7 @@ SOFTWARE.
 
 using System.Collections.Generic;
 using ScintillaNET;
+using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 {
@@ -56,12 +57,18 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             new LexerFoldProperties {FoldPropertyName = "fold.preprocessor", FoldPropertyValue = "1"},
         });
 
+        /// <summary>
+        /// Gets or sets the additional folding properties for the XML (eXtensible Markup Language) lexer.
+        /// </summary>
         public static List<LexerFoldProperties> XmlFolding { get; set; } = new List<LexerFoldProperties>(new[]
         {
             new LexerFoldProperties {FoldPropertyName = "fold.html", FoldPropertyValue = "1"},
             new LexerFoldProperties {FoldPropertyName = "html.tags.case.sensitive", FoldPropertyValue = "1"},
         });
 
+        /// <summary>
+        /// Gets or sets the additional folding properties for the SQL (Structured Query Language) lexer.
+        /// </summary>
         public static List<LexerFoldProperties> SqlFolding { get; set; } = new List<LexerFoldProperties>(new[]
         {
             new LexerFoldProperties {FoldPropertyName = "fold.sql.at.else", FoldPropertyValue = "1"}, // for a SQL lexer..
@@ -71,6 +78,9 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             new LexerFoldProperties {FoldPropertyName = "lexer.sql.allow.dotted.word", FoldPropertyValue = "1"}, // for a SQL lexer.. (set to 1 to colorize recognized words with dots (recommended for Oracle PL/SQL objects))
         });
 
+        /// <summary>
+        /// Gets or sets the additional folding properties for the HTML (Hypertext Markup Language) lexer.
+        /// </summary>
         public static List<LexerFoldProperties> HyperTextFolding { get; set; } = new List<LexerFoldProperties>(new[]
         {
             new LexerFoldProperties {FoldPropertyName = "fold.hypertext.comment", FoldPropertyValue = "1"},
@@ -89,6 +99,35 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             foreach (var foldProperty in foldProperties)
             {
                 scintilla.SetProperty(foldProperty.FoldPropertyName, foldProperty.FoldPropertyValue);
+            }
+        }
+
+        /// <summary>
+        /// Sets the default folding for all lexers.
+        /// </summary>
+        /// <param name="scintilla">The <see cref="Scintilla"/> instance of which default folding properties to set.</param>
+        public static void FoldDefault(Scintilla scintilla)
+        {
+            SetScintillaProperties(scintilla, DefaultFolding);
+        }
+
+        /// <summary>
+        /// Sets the fold properties to a given lexer type.
+        /// </summary>
+        /// <param name="scintilla">The <see cref="Scintilla"/> of which fold properties to set.</param>
+        /// <param name="lexerType">Type of the lexer.</param>
+        public static void SetFoldProperties(Scintilla scintilla, LexerType lexerType)
+        {
+            switch (lexerType)
+            {
+                case LexerType.HTML:
+                    SetScintillaProperties(scintilla, HyperTextFolding); break;
+                case LexerType.SQL:
+                    SetScintillaProperties(scintilla, SqlFolding); break;
+                case LexerType.Xml:
+                    SetScintillaProperties(scintilla, XmlFolding); break;
+                default:
+                    SetScintillaProperties(scintilla, DefaultFolding); break;
             }
         }
     }
