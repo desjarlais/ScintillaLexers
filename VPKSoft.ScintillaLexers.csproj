@@ -69,6 +69,7 @@
     <Compile Include="HelperClasses\LexerFileExtensions.cs" />
     <Compile Include="HelperClasses\LexerTypeName.cs" />
     <Compile Include="HelperClasses\ScintillaKeyWords.cs" />
+    <Compile Include="ScintillaNotepadPlusPlus\MarkColors.cs" />
     <Compile Include="ScintillaNotepadPlusPlus\ScintillaNotepadPlusPlusStyles.cs" />
     <Compile Include="ScintillaLexers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
