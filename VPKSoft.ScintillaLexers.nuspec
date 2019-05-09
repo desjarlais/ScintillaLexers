@@ -10,7 +10,7 @@
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added possibility to load the style mark colors from the famous Notepad++ XML style defintion file.</releaseNotes>
+    <releaseNotes>Added possibility to change the font size and family library wide.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper scintilla ScintillaNET lexer</tags>
     <license type="expression">MIT</license>

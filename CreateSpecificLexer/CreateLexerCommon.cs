@@ -24,13 +24,12 @@ SOFTWARE.
 */
 #endregion
 
-using System;
 using System.Drawing;
 using System.Linq;
 using ScintillaNET;
 using VPKSoft.ScintillaLexers.HelperClasses;
-using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static VPKSoft.ScintillaLexers.GlobalScintillaFont;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 {
@@ -46,9 +45,8 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         public static void ClearStyle(Scintilla scintilla)
         {
             scintilla.StyleResetDefault();
-            scintilla.Styles[Style.Default].Font = "Consolas";
-            scintilla.Styles[Style.Default].Size = 10;
-            scintilla.Styles[Style.Default].Size = 10;
+            scintilla.Styles[Style.Default].Font = FontFamilyName;
+            scintilla.Styles[Style.Default].Size = FontSize;
             scintilla.StyleClearAll();
         }
 

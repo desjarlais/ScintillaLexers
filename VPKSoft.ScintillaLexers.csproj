@@ -64,6 +64,7 @@
     <Compile Include="CreateSpecificLexer\CreateLexerSql.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerXml.cs" />
     <Compile Include="CreateSpecificLexer\LexerFoldProperties.cs" />
+    <Compile Include="GlobalScintillaFont.cs" />
     <Compile Include="LexerColors\LexerColors.cs" />
     <Compile Include="LexerEnumerations.cs" />
     <Compile Include="HelperClasses\LexerFileExtensions.cs" />
