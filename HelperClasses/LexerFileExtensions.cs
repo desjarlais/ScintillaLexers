@@ -89,6 +89,9 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
             // File extension for the Python programming language files.
             new LexerFileExtensions { LexerType = LexerEnumerations.LexerType.Python, FileExtensionList = ".py .pyw" },
 
+            // File extension for the YAML (YAML Ain't Markup Language) language files.
+            new LexerFileExtensions { LexerType = LexerEnumerations.LexerType.Python, FileExtensionList = ".yml .yaml" },
+
             // new LexerFileExtensions { LexerType = LexerType.xxx, FileExtensionList = "" },
         }); 
 

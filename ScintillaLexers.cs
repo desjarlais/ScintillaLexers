@@ -256,6 +256,11 @@ namespace VPKSoft.ScintillaLexers
                 return CreateLexerPython.CreatePythonLexer(scintilla, LexerColors);
             }
 
+            if (lexerType == LexerType.YAML)
+            {
+                return CreateLexerYaml.CreateYamlLexer(scintilla, LexerColors);
+            }
+
             // a lexer wasn't found..
             return false;
         }

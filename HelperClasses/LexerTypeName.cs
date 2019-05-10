@@ -42,6 +42,11 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         public const int SCLEX_NSIS = 43;
 
         /// <summary>
+        /// The YAML (YAML Ain't Markup Language) lexer value.
+        /// </summary>
+        public const int SCLEX_YAML = 48;
+
+        /// <summary>
         /// A list of currently supported lexers by this library.
         /// </summary>
         public static readonly List<Tuple<LexerEnumerations.LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerEnumerations.LexerType, string, Lexer>>(
@@ -59,7 +64,8 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
                 Tuple.Create(LexerEnumerations.LexerType.PHP, "php", Lexer.PhpScript),
                 Tuple.Create(LexerEnumerations.LexerType.WindowsPowerShell, "powershell", Lexer.PowerShell),
                 Tuple.Create(LexerEnumerations.LexerType.INI, "ini", Lexer.Properties),
-                Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.Python)
+                Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.Python),
+                Tuple.Create(LexerEnumerations.LexerType.YAML, "yaml", (Lexer)SCLEX_YAML),
             });
 
         /// <summary>

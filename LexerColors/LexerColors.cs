@@ -108,6 +108,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 {
                     return pythonColors;
                 }
+
+                if (lexerType == LexerEnumerations.LexerType.YAML)
+                {
+                    return yamlColors;
+                }
                 return new List<Tuple<Color, string, bool>>();
             }
 
@@ -208,6 +213,14 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                         throw new ArgumentOutOfRangeException(nameof(value));
                     }
                     pythonColors = value;
+                }
+                else if (lexerType == LexerEnumerations.LexerType.YAML)
+                {
+                    if (value == null || value.Count != yamlColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    yamlColors = value;
                 }
             }
         }
@@ -634,6 +647,28 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             Tuple.Create(Color.FromArgb(255, 128, 0), "DECORATOR", true), // #FF8000 
             Tuple.Create(Color.FromArgb(255, 255, 255), "DECORATOR", false) // #FFFFFF 
         });
+
+        private List<Tuple<Color, string, bool>> yamlColors = new List<Tuple<Color, string, bool>>(new[]
+        {
+            Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "IDENTIFIER", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "IDENTIFIER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 64), "NUMBER", true), // #FF8040 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 64, 0), "REFERENCE", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "REFERENCE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "DOCUMENT", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DOCUMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "TEXT", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "TEXT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 0, 0), "ERROR", true), // #FF0000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ERROR", false), // #FFFFFF 
+        });
         #endregion
 
         #region InteralColorIndexList
@@ -810,6 +845,40 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     new KeyValuePair<int, string>(29, "EntityBack")
                 }
             );
+
+        private List<KeyValuePair<int, string>> YamlColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "IdentifierFore"),
+                    new KeyValuePair<int, string>(3, "IdentifierBack"),
+
+                    new KeyValuePair<int, string>(4, "CommentFore"),
+                    new KeyValuePair<int, string>(5, "CommentBack"),
+
+                    new KeyValuePair<int, string>(6, "InstructionWordFore"),
+                    new KeyValuePair<int, string>(7, "InstructionWordBack"),
+
+                    new KeyValuePair<int, string>(8, "NumberFore"),
+                    new KeyValuePair<int, string>(9, "NumberBack"),
+
+                    new KeyValuePair<int, string>(10, "ReferenceFore"),
+                    new KeyValuePair<int, string>(11, "ReferenceBack"),
+
+                    new KeyValuePair<int, string>(12, "DocumentFore"),
+                    new KeyValuePair<int, string>(13, "DocumentBack"),
+
+                    new KeyValuePair<int, string>(14, "TextFore"),
+                    new KeyValuePair<int, string>(15, "TextBack"),
+
+                    new KeyValuePair<int, string>(16, "ErrorFore"),
+                    new KeyValuePair<int, string>(17, "ErrortBack"),
+                });
+
 
         private List<KeyValuePair<int, string>> NsisColorIndexes { get; } =
             new List<KeyValuePair<int, string>>
@@ -1384,6 +1453,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 int idx = pythonColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
+
+            if (lexerType == LexerEnumerations.LexerType.YAML)
+            {
+                int idx = yamlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
             return -1;
         }
 
@@ -1466,6 +1541,13 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 int idx = PythonColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
+
+            if (lexerType == LexerEnumerations.LexerType.YAML)
+            {
+                int idx = YamlColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
             return -1;
         }
 
@@ -1534,6 +1616,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             if (lexerType == LexerEnumerations.LexerType.Python)
             {
                 return PythonColorIndexes.Select(f => f.Value);
+            }
+
+            if (lexerType == LexerEnumerations.LexerType.YAML)
+            {
+                return YamlColorIndexes.Select(f => f.Value);
             }
             return new List<string>();
         }

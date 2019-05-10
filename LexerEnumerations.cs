@@ -105,6 +105,11 @@ namespace VPKSoft.ScintillaLexers
             /// A lexer for the Python programming language.
             /// </summary>
             Python = 13,
+
+            /// <summary>
+            /// A lexer for the YAML Ain't Markup Language.
+            /// </summary>
+            YAML = 14,
         }
     }
 }
