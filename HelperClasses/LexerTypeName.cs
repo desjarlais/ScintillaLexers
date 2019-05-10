@@ -44,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         /// <summary>
         /// A list of currently supported lexers by this library.
         /// </summary>
-        private static readonly List<Tuple<LexerEnumerations.LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerEnumerations.LexerType, string, Lexer>>(
+        public static readonly List<Tuple<LexerEnumerations.LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerEnumerations.LexerType, string, Lexer>>(
             new[]
             {
                 Tuple.Create(LexerEnumerations.LexerType.Unknown, "text", Lexer.Null),
