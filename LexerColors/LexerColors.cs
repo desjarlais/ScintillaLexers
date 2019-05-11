@@ -668,6 +668,8 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             Tuple.Create(Color.FromArgb(255, 255, 255), "TEXT", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(255, 0, 0), "ERROR", true), // #FF0000 
             Tuple.Create(Color.FromArgb(255, 255, 255), "ERROR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
         });
         #endregion
 
