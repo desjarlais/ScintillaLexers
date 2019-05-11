@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers.csproj", "{29857765-069A-4497-A616-E6A813F5736A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLexer", "..\TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLexer", "TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
