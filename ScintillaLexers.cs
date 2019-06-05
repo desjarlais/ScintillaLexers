@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Petteri Kautonen
+Copyright(c) 2019 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -259,6 +259,21 @@ namespace VPKSoft.ScintillaLexers
             if (lexerType == LexerType.YAML)
             {
                 return CreateLexerYaml.CreateYamlLexer(scintilla, LexerColors);
+            }
+
+            if (lexerType == LexerType.Java)
+            {
+                return CreateLexerJava.CreateJavaLexer(scintilla, LexerColors);
+            }
+
+            if (lexerType == LexerType.JavaScript)
+            {
+                return CreateLexerJavaScript.CreateJavaScriptLexer(scintilla, LexerColors);
+            }
+
+            if (lexerType == LexerType.Css)
+            {
+                return CreateLexerCss.CreateCssLexer(scintilla, LexerColors);
             }
 
             // a lexer wasn't found..

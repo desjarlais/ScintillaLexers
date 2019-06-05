@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Petteri Kautonen
+Copyright(c) 2019 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.LexerColors
 {
@@ -45,80 +46,96 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="lexerType">The type of the lexer.</param>
         /// <returns>A list of color belonging to a specific lexer.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public List<Tuple<Color, string, bool>> this[LexerEnumerations.LexerType lexerType]
+        public List<Tuple<Color, string, bool>> this[LexerType lexerType]
         {
             get
             {
-                if (lexerType == LexerEnumerations.LexerType.Cpp)
+                if (lexerType == LexerType.Cpp)
                 {
                     return cppColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Nsis)
+                if (lexerType == LexerType.Nsis)
                 {
                     return nsisColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Cs)
+                if (lexerType == LexerType.Cs)
                 {
                     return csColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Xml)
+                if (lexerType == LexerType.Xml)
                 {
                     return xmlColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.SQL)
+                if (lexerType == LexerType.SQL)
                 {
                     return sqlColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Batch)
+                if (lexerType == LexerType.Batch)
                 {
                     return batchColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Pascal)
+                if (lexerType == LexerType.Pascal)
                 {
                     return pascalColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.PHP)
+                if (lexerType == LexerType.PHP)
                 {
                     return phpColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.HTML)
+                if (lexerType == LexerType.HTML)
                 {
                     return htmlColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
+                if (lexerType == LexerType.WindowsPowerShell)
                 {
                     return powerShellColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.INI)
+                if (lexerType == LexerType.INI)
                 {
                     return iniColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.Python)
+                if (lexerType == LexerType.Python)
                 {
                     return pythonColors;
                 }
 
-                if (lexerType == LexerEnumerations.LexerType.YAML)
+                if (lexerType == LexerType.YAML)
                 {
                     return yamlColors;
                 }
+
+                if (lexerType == LexerType.Java)
+                {
+                    return javaColors;
+                }
+
+                if (lexerType == LexerType.JavaScript)
+                {
+                    return javascriptColors;
+                }
+
+                if (lexerType == LexerType.Css)
+                {
+                    return cssColors;
+                }
+
                 return new List<Tuple<Color, string, bool>>();
             }
 
             set
             {
-                if (lexerType == LexerEnumerations.LexerType.Cpp)
+                if (lexerType == LexerType.Cpp)
                 {
                     if (value == null || value.Count != cppColors.Count)
                     {
@@ -126,7 +143,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     cppColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Nsis)
+                else if (lexerType == LexerType.Nsis)
                 {
                     if (value == null || value.Count != nsisColors.Count)
                     {
@@ -134,7 +151,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     nsisColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Cs)
+                else if (lexerType == LexerType.Cs)
                 {
                     if (value == null || value.Count != csColors.Count)
                     {
@@ -142,7 +159,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     csColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Xml)
+                else if (lexerType == LexerType.Xml)
                 {
                     if (value == null || value.Count != xmlColors.Count)
                     {
@@ -150,7 +167,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     xmlColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.SQL)
+                else if (lexerType == LexerType.SQL)
                 {
                     if (value == null || value.Count != sqlColors.Count)
                     {
@@ -158,7 +175,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     sqlColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Batch)
+                else if (lexerType == LexerType.Batch)
                 {
                     if (value == null || value.Count != batchColors.Count)
                     {
@@ -166,7 +183,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     batchColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Pascal)
+                else if (lexerType == LexerType.Pascal)
                 {
                     if (value == null || value.Count != pascalColors.Count)
                     {
@@ -174,7 +191,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     pascalColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.PHP)
+                else if (lexerType == LexerType.PHP)
                 {
                     if (value == null || value.Count != phpColors.Count)
                     {
@@ -182,7 +199,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     phpColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.HTML)
+                else if (lexerType == LexerType.HTML)
                 {
                     if (value == null || value.Count != htmlColors.Count)
                     {
@@ -190,7 +207,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     htmlColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
+                else if (lexerType == LexerType.WindowsPowerShell)
                 {
                     if (value == null || value.Count != powerShellColors.Count)
                     {
@@ -198,7 +215,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     powerShellColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.INI)
+                else if (lexerType == LexerType.INI)
                 {
                     if (value == null || value.Count != iniColors.Count)
                     {
@@ -206,7 +223,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     iniColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.Python)
+                else if (lexerType == LexerType.Python)
                 {
                     if (value == null || value.Count != pythonColors.Count)
                     {
@@ -214,13 +231,37 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     pythonColors = value;
                 }
-                else if (lexerType == LexerEnumerations.LexerType.YAML)
+                else if (lexerType == LexerType.YAML)
                 {
                     if (value == null || value.Count != yamlColors.Count)
                     {
                         throw new ArgumentOutOfRangeException(nameof(value));
                     }
                     yamlColors = value;
+                }
+                else if (lexerType == LexerType.Java)
+                {
+                    if (value == null || value.Count != javaColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    javaColors = value;
+                }
+                else if (lexerType == LexerType.JavaScript)
+                {
+                    if (value == null || value.Count != javascriptColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    javascriptColors = value;
+                }
+                else if (lexerType == LexerType.Css)
+                {
+                    if (value == null || value.Count != cssColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    cssColors = value;
                 }
             }
         }
@@ -234,7 +275,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
         /// <returns>A color with the specified lexer, a specified SciTE name and a flag indicating whether the color in question is a background or a foreground color.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public Color this[LexerEnumerations.LexerType lexerType, string colorName, bool isForeground]
+        public Color this[LexerType lexerType, string colorName, bool isForeground]
         {
             get
             {
@@ -251,7 +292,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 }
                 catch
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
             }
         }
@@ -263,7 +304,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="colorName">The name of the color.</param>
         /// <returns>A color with the specified lexer type and with a specified name.</returns>
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
-        public Color this[LexerEnumerations.LexerType lexerType, string colorName]
+        public Color this[LexerType lexerType, string colorName]
         {
             get
             {
@@ -279,7 +320,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 }
                 catch
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
             }
         }
@@ -669,8 +710,115 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             Tuple.Create(Color.FromArgb(255, 0, 0), "ERROR", true), // #FF0000 
             Tuple.Create(Color.FromArgb(255, 255, 255), "ERROR", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
-            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false) // #FFFFFF 
         });
+
+        private List<Tuple<Color, string, bool>> javaColors = new List<Tuple<Color, string, bool>>(
+            new[]
+            {
+                Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 0, 255), "TYPE WORD", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "TYPE WORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "VERBATIM", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "VERBATIM", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "REGEX", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "REGEX", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT LINE DOC", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE DOC", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false) // #FFFFFF 
+            });
+
+        private List<Tuple<Color, string, bool>> javascriptColors = new List<Tuple<Color, string, bool>>(
+            new[]
+            {
+                Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 0, 255), "TYPE WORD", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "TYPE WORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 64, 0), "WINDOW INSTRUCTION", true), // #804000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "WINDOW INSTRUCTION", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 128), "STRINGRAW", true), // #000080 
+                Tuple.Create(Color.FromArgb(192, 192, 192), "STRINGRAW", false), // #C0C0C0 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "VERBATIM", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "VERBATIM", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "REGEX", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "REGEX", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT LINE DOC", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE DOC", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false) // #FFFFFF 
+            });
+
+        private List<Tuple<Color, string, bool>> cssColors = new List<Tuple<Color, string, bool>>(
+            new[]
+            {
+                Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "TAG", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "TAG", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 0, 0), "CLASS", true), // #FF0000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "CLASS", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 128, 0), "PSEUDOCLASS", true), // #FF8000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "PSEUDOCLASS", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 128, 128), "UNKNOWN_PSEUDOCLASS", true), // #FF8080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "UNKNOWN_PSEUDOCLASS", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "OPERATOR", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 192), "IDENTIFIER", true), // #8080C0 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "IDENTIFIER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "UNKNOWN_IDENTIFIER", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "UNKNOWN_IDENTIFIER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "VALUE", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "VALUE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 255), "ID", true), // #0080FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "ID", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 0, 0), "IMPORTANT", true), // #FF0000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "IMPORTANT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 255), "DIRECTIVE", true), // #0080FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DIRECTIVE", false) // #FFFFFF 
+            });
         #endregion
 
         #region InteralColorIndexList
@@ -878,7 +1026,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     new KeyValuePair<int, string>(15, "TextBack"),
 
                     new KeyValuePair<int, string>(16, "ErrorFore"),
-                    new KeyValuePair<int, string>(17, "ErrortBack"),
+                    new KeyValuePair<int, string>(17, "ErrortBack")
                 });
 
 
@@ -1263,6 +1411,163 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     new KeyValuePair<int, string>(26, "DecoratorFore"),
                     new KeyValuePair<int, string>(27, "DecoratorBack")
                 });
+
+
+        private List<KeyValuePair<int, string>> JavaColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "PreprocessorFore"),
+                    new KeyValuePair<int, string>(1, "PreprocessorBack"),
+
+                    new KeyValuePair<int, string>(2, "DefaultFore"),
+                    new KeyValuePair<int, string>(3, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(4, "InstructionWordFore"),
+                    new KeyValuePair<int, string>(5, "InstructionWordBack"),
+
+                    new KeyValuePair<int, string>(6, "TypeWordFore"),
+                    new KeyValuePair<int, string>(7, "TypeWordBack"),
+
+                    new KeyValuePair<int, string>(8, "NumberFore"),
+                    new KeyValuePair<int, string>(9, "NumberBack"),
+
+                    new KeyValuePair<int, string>(10, "StringFore"),
+                    new KeyValuePair<int, string>(11, "StringBack"),
+
+                    new KeyValuePair<int, string>(12, "CharacterFore"),
+                    new KeyValuePair<int, string>(13, "CharacterBack"),
+
+                    new KeyValuePair<int, string>(14, "OperatorFore"),
+                    new KeyValuePair<int, string>(15, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(16, "VerbatimFore"),
+                    new KeyValuePair<int, string>(17, "VerbatimBack"),
+
+                    new KeyValuePair<int, string>(18, "RegexFore"),
+                    new KeyValuePair<int, string>(19, "RegexBack"),
+
+                    new KeyValuePair<int, string>(20, "CommentFore"),
+                    new KeyValuePair<int, string>(21, "CommentBack"),
+
+                    new KeyValuePair<int, string>(22, "CommentLineFore"),
+                    new KeyValuePair<int, string>(23, "CommentLineBack"),
+
+                    new KeyValuePair<int, string>(24, "CommentDocFore"),
+                    new KeyValuePair<int, string>(25, "CommentDocBack"),
+
+                    new KeyValuePair<int, string>(26, "CommentLineDocFore"),
+                    new KeyValuePair<int, string>(27, "CommentLineDocBack"),
+
+                    new KeyValuePair<int, string>(28, "CommentDocKeywordFore"),
+                    new KeyValuePair<int, string>(29, "CommentDocKeywordBack"),
+
+                    new KeyValuePair<int, string>(30, "CommentDocKeywordErrorFore"),
+                    new KeyValuePair<int, string>(31, "CommentDocKeywordErrorBack")
+                });
+
+        private List<KeyValuePair<int, string>> JavaScriptColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "InstructionWordFore"),
+                    new KeyValuePair<int, string>(3, "InstructionWordBack"),
+
+                    new KeyValuePair<int, string>(4, "TypeWordFore"),
+                    new KeyValuePair<int, string>(5, "TypeWordBack"),
+
+                    new KeyValuePair<int, string>(6, "WindowInstructionFore"),
+                    new KeyValuePair<int, string>(7, "WindowInstructionBack"),
+
+                    new KeyValuePair<int, string>(8, "NumberFore"),
+                    new KeyValuePair<int, string>(9, "NumberBack"),
+
+                    new KeyValuePair<int, string>(10, "StringFore"),
+                    new KeyValuePair<int, string>(11, "StringBack"),
+
+                    new KeyValuePair<int, string>(12, "StringRawFore"),
+                    new KeyValuePair<int, string>(13, "StringRawBack"),
+
+                    new KeyValuePair<int, string>(14, "CharacterFore"),
+                    new KeyValuePair<int, string>(15, "CharacterBack"),
+
+                    new KeyValuePair<int, string>(16, "OperatorFore"),
+                    new KeyValuePair<int, string>(17, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(18, "VerbatimFore"),
+                    new KeyValuePair<int, string>(19, "VerbatimBack"),
+
+                    new KeyValuePair<int, string>(20, "RegexFore"),
+                    new KeyValuePair<int, string>(21, "RegexBack"),
+
+                    new KeyValuePair<int, string>(22, "CommentFore"),
+                    new KeyValuePair<int, string>(23, "CommentBack"),
+
+                    new KeyValuePair<int, string>(24, "CommentLineFore"),
+                    new KeyValuePair<int, string>(25, "CommentLineBack"),
+
+                    new KeyValuePair<int, string>(26, "CommentDocFore"),
+                    new KeyValuePair<int, string>(27, "CommentDocBack"),
+
+                    new KeyValuePair<int, string>(28, "CommentLineDocFore"),
+                    new KeyValuePair<int, string>(29, "CommentLineDocBack"),
+
+                    new KeyValuePair<int, string>(30, "CommentDocKeywordFore"),
+                    new KeyValuePair<int, string>(31, "CommentDocKeywordBack"),
+
+                    new KeyValuePair<int, string>(32, "CommentDocKeywordErrorFore"),
+                    new KeyValuePair<int, string>(33, "CommentDocKeywordErrorBack")
+                });
+
+        private List<KeyValuePair<int, string>> CssColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "TagFore"),
+                    new KeyValuePair<int, string>(3, "TagBack"),
+
+                    new KeyValuePair<int, string>(4, "ClassFore"),
+                    new KeyValuePair<int, string>(5, "ClassBack"),
+
+                    new KeyValuePair<int, string>(6, "PseudoClassFore"),
+                    new KeyValuePair<int, string>(7, "PseudoClassBack"),
+
+                    new KeyValuePair<int, string>(8, "UnknownPseudoClassFore"),
+                    new KeyValuePair<int, string>(9, "UnknownPseudoClassBack"),
+
+                    new KeyValuePair<int, string>(10, "OperatorFore"),
+                    new KeyValuePair<int, string>(11, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(12, "IdentifierFore"),
+                    new KeyValuePair<int, string>(13, "IdentifierBack"),
+
+                    new KeyValuePair<int, string>(14, "UnknownIdentifierFore"),
+                    new KeyValuePair<int, string>(15, "UnknownIdentifierBack"),
+
+                    new KeyValuePair<int, string>(16, "ValueFore"),
+                    new KeyValuePair<int, string>(17, "ValueBack"),
+
+                    new KeyValuePair<int, string>(18, "CommentFore"),
+                    new KeyValuePair<int, string>(19, "CommentBack"),
+
+                    new KeyValuePair<int, string>(20, "IdFore"),
+                    new KeyValuePair<int, string>(21, "IdBack"),
+
+                    new KeyValuePair<int, string>(22, "ImportantFore"),
+                    new KeyValuePair<int, string>(23, "ImportantBack"),
+
+                    new KeyValuePair<int, string>(24, "DirectiveFore"),
+                    new KeyValuePair<int, string>(25, "DirectiveBack")
+                });
         #endregion
 
         /// <summary>
@@ -1271,7 +1576,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="fileName">Name of the file where to save the lexer's color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool DescribeLexerColors(string fileName, LexerEnumerations.LexerType lexerType)
+        public bool DescribeLexerColors(string fileName, LexerType lexerType)
         {
             try
             {
@@ -1289,7 +1594,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>An instance to a XDocument class containing the color definitions.</returns>
-        public XDocument DescribeLexerColors(LexerEnumerations.LexerType lexerType)
+        public XDocument DescribeLexerColors(LexerType lexerType)
         {
             // create an element for color value entries..
             XElement entryElement = new XElement("Colors", new XAttribute("Lexer", lexerType.ToString()));
@@ -1316,12 +1621,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         }
 
         /// <summary>
-        /// Loads the lexer's color definition from a XDocument class instance.
+        /// Loads the lexer color definition from a XDocument class instance.
         /// </summary>
         /// <param name="document">The document containing the lexer's color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool LoadDescribedLexerColorsFromXml(XDocument document, LexerEnumerations.LexerType lexerType)
+        public bool LoadDescribedLexerColorsFromXml(XDocument document, LexerType lexerType)
         {
             try
             {
@@ -1348,12 +1653,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         }
 
         /// <summary>
-        /// Loads the lexer's color definition from a XML file.
+        /// Loads the lexer color definition from a XML file.
         /// </summary>
         /// <param name="fileName">Name of the file from where to load the lexer color definitions.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
-        public bool LoadDescribedLexerColorsFromXml(string fileName, LexerEnumerations.LexerType lexerType)
+        public bool LoadDescribedLexerColorsFromXml(string fileName, LexerType lexerType)
         {
             if (File.Exists(fileName)) // the file must exist..
             {
@@ -1382,85 +1687,104 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="lexerType">Type of the lexer.</param>
         /// <param name="isForeground">A flag indicating whether a foreground or a background color is requested.</param>
         /// <returns>An index >= 0 if successful; otherwise -1.</returns>
-        public int GetColorIndexBySciTEName(string name, LexerEnumerations.LexerType lexerType, bool isForeground)
+        // ReSharper disable once InconsistentNaming
+        public int GetColorIndexBySciTEName(string name, LexerType lexerType, bool isForeground)
         {
-            if (lexerType == LexerEnumerations.LexerType.Cs)
+            if (lexerType == LexerType.Cs)
             {
                 int idx = csColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Cpp)
+            if (lexerType == LexerType.Cpp)
             {
                 int idx = cppColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Xml)
+            if (lexerType == LexerType.Xml)
             {
                 int idx = xmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Nsis)
+            if (lexerType == LexerType.Nsis)
             {
                 int idx = nsisColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.SQL)
+            if (lexerType == LexerType.SQL)
             {
                 int idx = sqlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Batch)
+            if (lexerType == LexerType.Batch)
             {
                 int idx = batchColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Pascal)
+            if (lexerType == LexerType.Pascal)
             {
                 int idx = pascalColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.PHP)
+            if (lexerType == LexerType.PHP)
             {
                 int idx = phpColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.HTML)
+            if (lexerType == LexerType.HTML)
             {
                 int idx = htmlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
+            if (lexerType == LexerType.WindowsPowerShell)
             {
                 int idx = powerShellColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.INI)
+            if (lexerType == LexerType.INI)
             {
                 int idx = iniColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Python)
+            if (lexerType == LexerType.Python)
             {
                 int idx = pythonColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.YAML)
+            if (lexerType == LexerType.YAML)
             {
                 int idx = yamlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }
+
+            if (lexerType == LexerType.Java)
+            {
+                int idx = javaColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }            
+
+            if (lexerType == LexerType.JavaScript)
+            {
+                int idx = javascriptColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }           
+
+            if (lexerType == LexerType.Css)
+            {
+                int idx = cssColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }           
             return -1;
         }
 
@@ -1470,83 +1794,101 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <param name="name">The name of the color.</param>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>An index >= 0 if successful; otherwise -1.</returns>
-        public int GetColorIndexByName(string name, LexerEnumerations.LexerType lexerType)
+        public int GetColorIndexByName(string name, LexerType lexerType)
         {
-            if (lexerType == LexerEnumerations.LexerType.Cs)
+            if (lexerType == LexerType.Cs)
             {
                 int idx = CsColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Cpp)
+            if (lexerType == LexerType.Cpp)
             {
                 int idx = CppColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Xml)
+            if (lexerType == LexerType.Xml)
             {
                 int idx = XmlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Nsis)
+            if (lexerType == LexerType.Nsis)
             {
                 int idx = NsisColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.SQL)
+            if (lexerType == LexerType.SQL)
             {
                 int idx = SqlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Batch)
+            if (lexerType == LexerType.Batch)
             {
                 int idx = BatchColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Pascal)
+            if (lexerType == LexerType.Pascal)
             {
                 int idx = PascalColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.PHP)
+            if (lexerType == LexerType.PHP)
             {
                 int idx = PhpColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.HTML)
+            if (lexerType == LexerType.HTML)
             {
                 int idx = HtmlColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
+            if (lexerType == LexerType.WindowsPowerShell)
             {
                 int idx = PowerShellColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.INI)
+            if (lexerType == LexerType.INI)
             {
                 int idx = IniColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Python)
+            if (lexerType == LexerType.Python)
             {
                 int idx = PythonColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
-            if (lexerType == LexerEnumerations.LexerType.YAML)
+            if (lexerType == LexerType.YAML)
             {
                 int idx = YamlColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
+            if (lexerType == LexerType.Java)
+            {
+                int idx = JavaColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
+            if (lexerType == LexerType.JavaScript)
+            {
+                int idx = JavaScriptColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
+            if (lexerType == LexerType.Css)
+            {
+                int idx = CssColorIndexes.FindIndex(f => f.Value == name);
                 return idx;
             }
 
@@ -1558,72 +1900,88 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>A collection of color names of the given lexer type if successful; otherwise an empty collection is returned.</returns>
-        public IEnumerable<string> GetColorNames(LexerEnumerations.LexerType lexerType)
+        public IEnumerable<string> GetColorNames(LexerType lexerType)
         {
-            if (lexerType == LexerEnumerations.LexerType.Cs)
+            if (lexerType == LexerType.Cs)
             {
                 return CsColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Cpp)
+            if (lexerType == LexerType.Cpp)
             {
                 return CppColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Xml)
+            if (lexerType == LexerType.Xml)
             {
                 return XmlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Nsis)
+            if (lexerType == LexerType.Nsis)
             {
                 return NsisColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.SQL)
+            if (lexerType == LexerType.SQL)
             {
                 return SqlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Batch)
+            if (lexerType == LexerType.Batch)
             {
                 return BatchColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Pascal)
+            if (lexerType == LexerType.Pascal)
             {
                 return PascalColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.PHP)
+            if (lexerType == LexerType.PHP)
             {
                 return PhpColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.HTML)
+            if (lexerType == LexerType.HTML)
             {
                 return HtmlColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.WindowsPowerShell)
+            if (lexerType == LexerType.WindowsPowerShell)
             {
                 return PowerShellColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.INI)
+            if (lexerType == LexerType.INI)
             {
                 return IniColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.Python)
+            if (lexerType == LexerType.Python)
             {
                 return PythonColorIndexes.Select(f => f.Value);
             }
 
-            if (lexerType == LexerEnumerations.LexerType.YAML)
+            if (lexerType == LexerType.YAML)
             {
                 return YamlColorIndexes.Select(f => f.Value);
             }
+
+            if (lexerType == LexerType.Java)
+            {
+                return JavaColorIndexes.Select(f => f.Value);
+            }            
+
+            if (lexerType == LexerType.JavaScript)
+            {
+                return JavaScriptColorIndexes.Select(f => f.Value);
+            }   
+
+            if (lexerType == LexerType.Css)
+            {
+                return CssColorIndexes.Select(f => f.Value);
+            }   
+
             return new List<string>();
         }
     }

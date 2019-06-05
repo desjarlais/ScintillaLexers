@@ -1,4 +1,6 @@
-﻿#region License
+﻿extensions: designer.cs generated.cs WordWrapToSize.cs IpcClientServer.cs MessageHelper.cs
+extensions: .cs .cpp .h
+#region License
 /*
 MIT License
 
@@ -24,24 +26,6 @@ SOFTWARE.
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-
-namespace TestLexer
-{
-    static class Program
-    {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
-        }
-    }
-}
+extensions: .aspx .ascx
+extensions: .vb
+extensions:  .xml .config .xsd

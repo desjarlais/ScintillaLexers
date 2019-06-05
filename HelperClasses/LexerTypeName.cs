@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Petteri Kautonen
+Copyright(c) 2019 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,6 +66,8 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
                 Tuple.Create(LexerEnumerations.LexerType.INI, "ini", Lexer.Properties),
                 Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.Python),
                 Tuple.Create(LexerEnumerations.LexerType.YAML, "yaml", (Lexer)SCLEX_YAML),
+                Tuple.Create(LexerEnumerations.LexerType.Java, "java", Lexer.Cpp),
+                Tuple.Create(LexerEnumerations.LexerType.Css, "css", Lexer.Css),
             });
 
         /// <summary>

@@ -49,12 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateSpecificLexer\CreateLexerCss.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerIni.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerCommon.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerBatch.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerCpp.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerCs.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerHtml.cs" />
+    <Compile Include="CreateSpecificLexer\CreateLexerJava.cs" />
+    <Compile Include="CreateSpecificLexer\CreateLexerJavaScript.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerNsis.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerNull.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerPascal.cs" />

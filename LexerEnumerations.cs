@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Petteri Kautonen
+Copyright(c) 2019 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -110,6 +110,21 @@ namespace VPKSoft.ScintillaLexers
             /// A lexer for the YAML Ain't Markup Language.
             /// </summary>
             YAML = 14,
+
+            /// <summary>
+            /// A lexer for the Java programming language.
+            /// </summary>
+            Java = 15,
+
+            /// <summary>
+            /// A lexer for the JavaScript scripting language.
+            /// </summary>
+            JavaScript = 16,
+
+            /// <summary>
+            /// A lexer for the Cascading Style Sheets (CSS).
+            /// </summary>
+            Css = 17,
         }
     }
 }

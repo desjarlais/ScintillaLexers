@@ -8,9 +8,9 @@
     <owners>$author$</owners>
     <projectUrl>https://github.com/VPKSoft/ScintillaLexers</projectUrl>
     <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added missing operator color for the YAML lexer.</releaseNotes>
+    <releaseNotes>Added Java, JavaScript and Css lexers.</releaseNotes>
     <copyright>Copyright © 2019 VPKSoft</copyright>
     <tags>wrapper scintilla ScintillaNET lexer</tags>
     <license type="expression">MIT</license>
