@@ -60,6 +60,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     return nsisColors;
                 }
 
+                if (lexerType == LexerType.InnoSetup)
+                {
+                    return innoSetupColors;
+                }
+
                 if (lexerType == LexerType.Cs)
                 {
                     return csColors;
@@ -150,6 +155,14 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                         throw new ArgumentOutOfRangeException(nameof(value));
                     }
                     nsisColors = value;
+                }
+                else if (lexerType == LexerType.InnoSetup)
+                {
+                    if (value == null || value.Count != innoSetupColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    innoSetupColors = value;
                 }
                 else if (lexerType == LexerType.Cs)
                 {
@@ -406,6 +419,38 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             Tuple.Create(Color.FromArgb(255, 255, 255), "FUNCTION DEFINITIONS", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
             Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false) // #FFFFFF 
+        });
+
+        private List<Tuple<Color, string, bool>> innoSetupColors = new List<Tuple<Color, string, bool>>(new[]
+        {
+            Tuple.Create(Color.FromArgb(128, 128, 128), "DEFAULT", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "IDENTIFIER", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "IDENTIFIER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC", true), // #008080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR2", true), // #804000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR2", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 128, 0), "HEX NUMBER", true), // #FF8000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "HEX NUMBER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 255), "INSTRUCTION WORD", true), // #0000FF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "INSTRUCTION WORD", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(128, 128, 128), "CHARACTER", true), // #808080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "CHARACTER", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+            Tuple.Create(Color.FromArgb(0, 0, 0), "ASM", true), // #000000 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false) // #FFFFFF 
         });
 
         private List<Tuple<Color, string, bool>> csColors = new List<Tuple<Color, string, bool>>(new[]
@@ -1094,6 +1139,55 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 }
             );
 
+        private List<KeyValuePair<int, string>> InnoSetupColorIndexes { get; } =
+        new List<KeyValuePair<int, string>>
+        (
+            new[]
+            {
+                        new KeyValuePair<int, string>(0, "DefaultFore"),
+                        new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                        new KeyValuePair<int, string>(2, "IdentifierFore"),
+                        new KeyValuePair<int, string>(3, "IdentifierBack"),
+
+                        new KeyValuePair<int, string>(4, "CommentFore"),
+                        new KeyValuePair<int, string>(5, "CommentBack"),
+
+                        new KeyValuePair<int, string>(6, "Comment2Fore"),
+                        new KeyValuePair<int, string>(7, "Comment2Back"),
+
+                        new KeyValuePair<int, string>(8, "CommentLineFore"),
+                        new KeyValuePair<int, string>(9, "CommentLineBack"),
+
+                        new KeyValuePair<int, string>(10, "PreprocessorFore"),
+                        new KeyValuePair<int, string>(11, "PreprocessorBack"),
+
+                        new KeyValuePair<int, string>(12, "Preprocessor2Fore"),
+                        new KeyValuePair<int, string>(13, "Preprocessor2Back"),
+
+                        new KeyValuePair<int, string>(14, "NumberFore"),
+                        new KeyValuePair<int, string>(15, "NumberBack"),
+
+                        new KeyValuePair<int, string>(16, "HexNumberFore"),
+                        new KeyValuePair<int, string>(17, "HexNumberBack"),
+
+                        new KeyValuePair<int, string>(18, "WordFore"),
+                        new KeyValuePair<int, string>(19, "WordBack"),
+
+                        new KeyValuePair<int, string>(20, "StringFore"),
+                        new KeyValuePair<int, string>(21, "StringBack"),
+
+                        new KeyValuePair<int, string>(22, "CharacterFore"),
+                        new KeyValuePair<int, string>(23, "CharacterBack"),
+
+                        new KeyValuePair<int, string>(24, "OperatorFore"),
+                        new KeyValuePair<int, string>(25, "OperatorBack"),
+
+                        new KeyValuePair<int, string>(26, "ForeColorFore"),
+                        new KeyValuePair<int, string>(27, "ForeColorBack")
+            }
+        );
+
         private List<KeyValuePair<int, string>> SqlColorIndexes { get; } =
             new List<KeyValuePair<int, string>>
             (
@@ -1714,6 +1808,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 return idx;
             }
 
+            if (lexerType == LexerType.InnoSetup)
+            {
+                int idx = innoSetupColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+
             if (lexerType == LexerType.SQL)
             {
                 int idx = sqlColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
@@ -1820,6 +1920,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 return idx;
             }
 
+            if (lexerType == LexerType.InnoSetup)
+            {
+                int idx = InnoSetupColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
             if (lexerType == LexerType.SQL)
             {
                 int idx = SqlColorIndexes.FindIndex(f => f.Value == name);
@@ -1920,6 +2026,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             if (lexerType == LexerType.Nsis)
             {
                 return NsisColorIndexes.Select(f => f.Value);
+            }
+
+            if (lexerType == LexerType.InnoSetup)
+            {
+                return InnoSetupColorIndexes.Select(f => f.Value);
             }
 
             if (lexerType == LexerType.SQL)

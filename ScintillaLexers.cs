@@ -164,6 +164,8 @@ namespace VPKSoft.ScintillaLexers
 
                 ScintillaNotepadPlusPlusStyles.SetFolding(document, scintilla);
 
+                System.Diagnostics.Debug.WriteLine(scintilla.DescribeKeywordSets());
+
                 return true;
             }
             catch
@@ -214,6 +216,11 @@ namespace VPKSoft.ScintillaLexers
             if (lexerType == LexerType.Nsis)
             {
                 return CreateLexerNsis.CreateNsisLexer(scintilla, LexerColors);
+            }
+
+            if (lexerType == LexerType.InnoSetup)
+            {
+                return CreateLexerInnoSetup.CreateInnoSetupLexer(scintilla, LexerColors);
             }
 
             if (lexerType == LexerType.SQL)
