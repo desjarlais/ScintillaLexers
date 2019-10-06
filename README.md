@@ -9,4 +9,4 @@ A class library containing lexer definitions for the ScintillaNET.
 
 ![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)
 
-* @tSlappy for the InnoSetup script language lexer.
+* [tSlappy](https://github.com/tSlappy) for the InnoSetup script language lexer.
