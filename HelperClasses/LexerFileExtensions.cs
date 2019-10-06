@@ -72,6 +72,9 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
             // File extensions for the NSIS (Nullsoft Scriptable Install System).
             new LexerFileExtensions { LexerType = LexerType.Nsis, FileExtensionList = ".nsi .nsh" },
 
+            // File extensions for the Inno Setup programming language.
+            new LexerFileExtensions { LexerType = LexerType.InnoSetup, FileExtensionList = ".iss" },
+
             // File extensions for the Pascal programming language.
             new LexerFileExtensions { LexerType = LexerType.Pascal, FileExtensionList = ".pas" },
 

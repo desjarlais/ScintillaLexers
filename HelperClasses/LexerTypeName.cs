@@ -42,6 +42,11 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         public const int SCLEX_NSIS = 43;
 
         /// <summary>
+        /// The Inno Setup lexer value.
+        /// </summary>
+        public const int SCLEX_INNOSETUP = 76;
+
+        /// <summary>
         /// The YAML (YAML Ain't Markup Language) lexer value.
         /// </summary>
         public const int SCLEX_YAML = 48;
@@ -58,6 +63,7 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
                 Tuple.Create(LexerEnumerations.LexerType.Xml, "xml", Lexer.Xml),
                 Tuple.Create(LexerEnumerations.LexerType.Text, "text", Lexer.Null),
                 Tuple.Create(LexerEnumerations.LexerType.Nsis, "nsis", (Lexer)SCLEX_NSIS),
+                Tuple.Create(LexerEnumerations.LexerType.InnoSetup, "inno", (Lexer)SCLEX_INNOSETUP),
                 Tuple.Create(LexerEnumerations.LexerType.SQL, "sql", Lexer.Xml),
                 Tuple.Create(LexerEnumerations.LexerType.Batch, "batch", Lexer.Batch),
                 Tuple.Create(LexerEnumerations.LexerType.Pascal, "pascal", Lexer.Pascal),

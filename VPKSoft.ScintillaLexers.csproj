@@ -60,6 +60,7 @@
     <Compile Include="CreateSpecificLexer\CreateLexerJavaScript.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerNsis.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerNull.cs" />
+    <Compile Include="CreateSpecificLexer\CreateLexerInnoSetup.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerPascal.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerPhp.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerPowerShell.cs" />

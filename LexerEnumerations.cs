@@ -125,6 +125,11 @@ namespace VPKSoft.ScintillaLexers
             /// A lexer for the Cascading Style Sheets (CSS).
             /// </summary>
             Css = 17,
+
+            /// <summary>
+            /// A lexer for the Inno Setup.
+            /// </summary>
+            InnoSetup = 18,
         }
     }
 }
