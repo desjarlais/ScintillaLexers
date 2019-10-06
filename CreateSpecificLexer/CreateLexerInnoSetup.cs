@@ -31,84 +31,106 @@ using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 {
-
+    // ReSharper disable once CommentTypo
+    /// <summary>
+    /// Constants for the InnoSetup script language.
+    /// </summary>
+    // ReSharper disable once IdentifierTypo
     public static class InnoSetup
     {
-        //
-        // Summary:
-        //     Default style index.
+        ///
+        /// Summary:
+        ///     Default style index.
         public const int Default = 0;
-        //
-        // Summary:
-        //     Identifier style index.
+
+        ///
+        /// Summary:
+        ///     Identifier style index.
         public const int Identifier = 1;
-        //
-        // Summary:
-        //     Comment style '{' index.
+
+        ///
+        /// Summary:
+        ///     Comment style '{' index.
         public const int Comment = 2;
-        //
-        // Summary:
-        //     Comment style 2 "(*" index.
+
+        ///
+        /// Summary:
+        ///     Comment style 2 "(*" index.
         public const int Comment2 = 3;
-        //
-        // Summary:
-        //     Comment line style "//" index.
+
+        ///
+        /// Summary:
+        ///     Comment line style "//" index.
         public const int CommentLine = 4;
-        //
-        // Summary:
-        //     Preprocessor style "{$" index.
+
+        ///
+        /// Summary:
+        ///     Preprocessor style "{$" index.
         public const int Preprocessor = 5;
-        //
-        // Summary:
-        //     Preprocessor style 2 "(*$" index.
+
+        ///
+        /// Summary:
+        ///     Preprocessor style 2 "(*$" index.
         public const int Preprocessor2 = 6;
-        //
-        // Summary:
-        //     Number style index.
+
+        ///
+        /// Summary:
+        ///     Number style index.
         public const int Number = 7;
-        //
-        // Summary:
-        //     Hexadecimal number style index.
+
+        ///
+        /// Summary:
+        ///     Hexadecimal number style index.
         public const int HexNumber = 8;
-        //
-        // Summary:
-        //     Word (keyword set 0) style index.
+
+        ///
+        /// Summary:
+        ///     Word (keyword set 0) style index.
         public const int Word = 9;
-        //
-        // Summary:
-        //     Double-quoted string style index.
+
+        ///
+        /// Summary:
+        ///     Double-quoted string style index.
         public const int String = 10;
-        //
-        // Summary:
-        //     Unclosed string EOL style index.
+
+        ///
+        /// Summary:
+        ///     Unclosed string EOL style index.
         public const int StringEol = 11;
-        //
-        // Summary:
-        //     Single-quoted string style index.
+
+        ///
+        /// Summary:
+        ///     Single-quoted string style index.
         public const int Character = 12;
-        //
-        // Summary:
-        //     Operator style index.
+
+        ///
+        /// Summary:
+        ///     Operator style index.
         public const int Operator = 13;
-        //
-        // Summary:
-        //     Assembly style index.
+
+        ///
+        /// Summary:
+        ///     Assembly style index.
         public const int Asm = 14;
     }
 
+    // ReSharper disable once CommentTypo
     /// <summary>
     /// A class for the InnoSetup lexer.
     /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
     /// </summary>
     /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    // ReSharper disable once IdentifierTypo
     public class CreateLexerInnoSetup: CreateLexerCommon
     {
+        // ReSharper disable once CommentTypo
         /// <summary>
         /// Creates the lexer for a given Scintilla class instance for the InnoSetup programming language.
         /// </summary>
         /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
         /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
         /// <returns>True if the operation was successful; otherwise false.</returns>
+        // ReSharper disable once IdentifierTypo
         public static bool CreateInnoSetupLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
         {
             ClearStyle(scintilla);
@@ -180,6 +202,11 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             return true;
         }
 
+        /// <summary>
+        /// Creates a color value of a given integer containing an RGB color value.
+        /// </summary>
+        /// <param name="rgb">The RGB color value.</param>
+        /// <returns>System.Drawing.Color.</returns>
         public static System.Drawing.Color IntToColor(int rgb)
         {
             return System.Drawing.Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
