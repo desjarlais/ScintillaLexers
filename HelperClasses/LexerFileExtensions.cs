@@ -52,7 +52,8 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         public static List<LexerFileExtensions> FileExtensions { get; set; } = new List<LexerFileExtensions>(new []
         {
             // File extensions for XML files.
-            new LexerFileExtensions { LexerType = LexerType.Xml, FileExtensionList = ".xml .xaml .xsl .xslt .xsd .xul .kml .svg .mxml .xsml .wsdl .xlf .xliff .xbl .sxbl .sitemap .gml .gpx .plist" },
+            new LexerFileExtensions { LexerType = LexerType.Xml, FileExtensionList = ".xml .xaml .xsl .xslt .xsd .xul .kml .svg .mxml .xsml .wsdl .xlf " +
+                                                                                     ".xliff .xbl .sxbl .sitemap .gml .gpx .plist .resx .csproj .nuspec" },
 
             // File extensions for C# files.
             new LexerFileExtensions { LexerType = LexerType.Cs, FileExtensionList = ".cs" },
