@@ -24,9 +24,11 @@ SOFTWARE.
 */
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.HelperClasses
@@ -47,6 +49,67 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         public string FileExtensionList { get; set; }
 
         /// <summary>
+        /// A list of strings used to detect if a file by it's starting contents is a XML file.
+        /// </summary>
+        public static List<string> XmlFileDetectionStrings = new List<string>(
+            new []{"<?xml "}
+            );
+
+        /// <summary>
+        /// Gets a value indicating if the given file is an XML file.
+        /// There are so many different extensions for XML files so it's better to peek inside the file if necessary.
+        /// </summary>
+        /// <param name="fileName">Name of the file to check for being a XML file.</param>
+        /// <returns></returns>
+        public static bool IsXmlFile(string fileName)
+        {
+            string ext = Path.GetExtension(fileName)?.ToLowerInvariant();
+
+            var extensions = FileExtensions.FirstOrDefault(f => f.FileExtensionList.ToLowerInvariant().Split(' ').Contains(ext));
+
+            if (extensions != null && // first through extensions as it is faster..
+                extensions.LexerType == LexerType.Xml)
+            {
+                return true;
+            }
+
+            try
+            {
+                using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    using (var textReader = new StreamReader(fileStream))
+                    {
+                        var bufferSize = XmlFileDetectionStrings.Max(f => f.Length);
+                        var buffer = new char[bufferSize];
+                        textReader.ReadBlock(buffer, 0, bufferSize);
+                        var stringBuilder = new StringBuilder();
+                        stringBuilder.Append(buffer);
+                        var compareString = stringBuilder.ToString();
+
+                        foreach (var xmlFileDetectionString in XmlFileDetectionStrings)
+                        {
+                            if (compareString.StartsWith(xmlFileDetectionString, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return true;
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the value whether to peek inside to a file to check if the file is a XML file.
+        /// </summary>
+        public static bool DetectXmlFileFromFileContents { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the file extensions for specified lexers.
         /// </summary>
         public static List<LexerFileExtensions> FileExtensions { get; set; } = new List<LexerFileExtensions>(new []
@@ -54,7 +117,6 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
             // File extensions for XML files.
             new LexerFileExtensions { LexerType = LexerType.Xml, FileExtensionList = ".xml .xaml .xsl .xslt .xsd .xul .kml .svg .mxml .xsml .wsdl .xlf " +
                                                                                      ".xliff .xbl .sxbl .sitemap .gml .gpx .plist .resx .csproj .nuspec" },
-
             // File extensions for C# files.
             new LexerFileExtensions { LexerType = LexerType.Cs, FileExtensionList = ".cs" },
 
@@ -124,6 +186,11 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
             if (extensions != null)
             {
                 return extensions.LexerType;
+            }
+
+            if (DetectXmlFileFromFileContents && IsXmlFile(fileName))
+            {
+                return LexerType.Xml;
             }
 
             return LexerType.Unknown;
