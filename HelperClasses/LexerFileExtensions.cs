@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright(c) 2019 Petteri Kautonen
+Copyright(c) 2020 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -167,6 +167,9 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
 
             // File extension for the Cascading Style Sheets (CSS).
             new LexerFileExtensions { LexerType = LexerType.Css, FileExtensionList = ".css" },
+
+            // File extensions for the Visual Basic .NET programming language.
+            new LexerFileExtensions { LexerType = LexerType.VbDotNet, FileExtensionList = ".vb" },
 
             // new LexerFileExtensions { LexerType = LexerType.xxx, FileExtensionList = "" },
         }); 

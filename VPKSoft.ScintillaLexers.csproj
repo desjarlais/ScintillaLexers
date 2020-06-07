@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateSpecificLexer\CreateLexerVb.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerCss.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerIni.cs" />
     <Compile Include="CreateSpecificLexer\CreateLexerCommon.cs" />

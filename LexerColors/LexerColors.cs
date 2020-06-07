@@ -2,7 +2,7 @@
 /*
 MIT License
 
-Copyright(c) 2019 Petteri Kautonen
+Copyright(c) 2020 Petteri Kautonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -133,6 +133,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 if (lexerType == LexerType.Css)
                 {
                     return cssColors;
+                }
+
+                if (lexerType == LexerType.VbDotNet)
+                {
+                    return vbDotNetColors;
                 }
 
                 return new List<Tuple<Color, string, bool>>();
@@ -276,6 +281,14 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     }
                     cssColors = value;
                 }
+                else if (lexerType == LexerType.VbDotNet)
+                {
+                    if (value == null || value.Count != vbDotNetColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    vbDotNetColors = value;
+                }
             }
         }
 
@@ -290,10 +303,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
         public Color this[LexerType lexerType, string colorName, bool isForeground]
         {
-            get
-            {
-                return this[lexerType][GetColorIndexBySciTEName(colorName, lexerType, isForeground)].Item1;
-            }
+            get => this[lexerType][GetColorIndexBySciTEName(colorName, lexerType, isForeground)].Item1;
 
             set
             {
@@ -319,10 +329,7 @@ namespace VPKSoft.ScintillaLexers.LexerColors
         /// <exception cref="ArgumentOutOfRangeException">value</exception>
         public Color this[LexerType lexerType, string colorName]
         {
-            get
-            {
-                return this[lexerType][GetColorIndexByName(colorName, lexerType)].Item1;
-            }
+            get => this[lexerType][GetColorIndexByName(colorName, lexerType)].Item1;
 
             set
             {
@@ -864,6 +871,31 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 Tuple.Create(Color.FromArgb(0, 128, 255), "DIRECTIVE", true), // #0080FF 
                 Tuple.Create(Color.FromArgb(255, 255, 255), "DIRECTIVE", false) // #FFFFFF 
             });
+
+        private List<Tuple<Color, string, bool>> vbDotNetColors = new List<Tuple<Color, string, bool>>(
+            new[]
+            {
+                Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 0, 0), "NUMBER", true), // #FF0000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "WORD", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "WORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "WORD2", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "WORD2", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "STRING", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 0, 0), "PREPROCESSOR", true), // #FF0000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "OPERATOR", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 255, 0), "DATE", true), // #00FF00 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DATE", false), // #FFFFFF 
+            });
+
+        
         #endregion
 
         #region InteralColorIndexList
@@ -1662,6 +1694,40 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     new KeyValuePair<int, string>(24, "DirectiveFore"),
                     new KeyValuePair<int, string>(25, "DirectiveBack")
                 });
+
+        private List<KeyValuePair<int, string>> VbDotNetColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "DefaultFore"),
+                    new KeyValuePair<int, string>(1, "DefaultBack"),
+
+                    new KeyValuePair<int, string>(2, "CommentFore"),
+                    new KeyValuePair<int, string>(3, "CommentBack"),
+
+                    new KeyValuePair<int, string>(4, "NumberFore"),
+                    new KeyValuePair<int, string>(5, "NumberBack"),
+
+                    new KeyValuePair<int, string>(6, "WordFore"),
+                    new KeyValuePair<int, string>(7, "WordBack"),
+
+                    new KeyValuePair<int, string>(8, "Word2Fore"),
+                    new KeyValuePair<int, string>(9, "Word2Back"),
+
+                    new KeyValuePair<int, string>(10, "StringFore"),
+                    new KeyValuePair<int, string>(11, "StringBack"),
+
+                    new KeyValuePair<int, string>(12, "PreprocessorFore"),
+                    new KeyValuePair<int, string>(13, "PreprocessorBack"),
+
+                    new KeyValuePair<int, string>(14, "OperatorFore"),
+                    new KeyValuePair<int, string>(15, "OperatorBack"),
+
+                    new KeyValuePair<int, string>(16, "DateFore"),
+                    new KeyValuePair<int, string>(17, "DateBack"),
+                });
+
         #endregion
 
         /// <summary>
@@ -1885,6 +1951,13 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 int idx = cssColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
                 return idx;
             }           
+
+            if (lexerType == LexerType.VbDotNet)
+            {
+                int idx = vbDotNetColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }                  
+            
             return -1;
         }
 
@@ -1998,6 +2071,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 return idx;
             }
 
+            if (lexerType == LexerType.VbDotNet)
+            {
+                int idx = VbDotNetColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
             return -1;
         }
 
@@ -2091,6 +2170,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             if (lexerType == LexerType.Css)
             {
                 return CssColorIndexes.Select(f => f.Value);
+            }   
+
+            if (lexerType == LexerType.VbDotNet)
+            {
+                return VbDotNetColorIndexes.Select(f => f.Value);
             }   
 
             return new List<string>();

@@ -33,8 +33,8 @@
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.odFile = new System.Windows.Forms.OpenFileDialog();
             this.mnuTestMarkLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.odFile = new System.Windows.Forms.OpenFileDialog();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,20 +71,20 @@
             // mnuOpen
             // 
             this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(180, 22);
+            this.mnuOpen.Size = new System.Drawing.Size(150, 22);
             this.mnuOpen.Text = "Open";
             this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
-            // 
-            // odFile
-            // 
-            this.odFile.Filter = "All files|*.*";
             // 
             // mnuTestMarkLoad
             // 
             this.mnuTestMarkLoad.Name = "mnuTestMarkLoad";
-            this.mnuTestMarkLoad.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestMarkLoad.Size = new System.Drawing.Size(150, 22);
             this.mnuTestMarkLoad.Text = "Test mark load";
             this.mnuTestMarkLoad.Click += new System.EventHandler(this.MnuTestMarkLoad_Click);
+            // 
+            // odFile
+            // 
+            this.odFile.Filter = "All files|*.*";
             // 
             // FormMain
             // 
@@ -96,7 +96,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMain;
             this.Name = "FormMain";
-            this.Text = "A test program for the ScintillaNET lexers © VPKSoft 2019";
+            this.Text = "A test program for the ScintillaNET lexers © VPKSoft 2020";
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
             this.ResumeLayout(false);
