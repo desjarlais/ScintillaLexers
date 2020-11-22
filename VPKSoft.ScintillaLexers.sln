@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers.csproj", "{29857765-069A-4497-A616-E6A813F5736A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLexer", "TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLexer", "TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers\VPKSoft.ScintillaLexers.csproj", "{182FB840-C6F2-42D1-9C98-55F0E9FF572C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers.SUO", "VPKSoft.ScintillaLexers.SUO\VPKSoft.ScintillaLexers.SUO.csproj", "{02661DD9-74E2-41CA-9879-6D7B6F802302}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{961E8E38-5FDE-48A0-831D-9FA94719D64E}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet-Push.ps1 = NuGet-Push.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29857765-069A-4497-A616-E6A813F5736A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29857765-069A-4497-A616-E6A813F5736A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29857765-069A-4497-A616-E6A813F5736A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29857765-069A-4497-A616-E6A813F5736A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02661DD9-74E2-41CA-9879-6D7B6F802302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02661DD9-74E2-41CA-9879-6D7B6F802302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02661DD9-74E2-41CA-9879-6D7B6F802302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02661DD9-74E2-41CA-9879-6D7B6F802302}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
