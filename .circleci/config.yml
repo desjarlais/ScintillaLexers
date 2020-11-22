@@ -23,5 +23,5 @@
        - run: 
           name: Push to NuGet
           command: |
-            NuGet-Push.ps1
+            ./NuGet-Push.ps1
             
