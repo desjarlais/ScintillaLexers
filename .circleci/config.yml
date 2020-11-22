@@ -15,13 +15,13 @@
     
      steps:
        - checkout
-       - run: msbuild ScintillaLexers/VPKSoft.ScintillaLexers/VPKSoft.ScintillaLexers.csproj /t:restore
-       - run: msbuild ScintillaLexers/VPKSoft.ScintillaLexers/VPKSoft.ScintillaLexers.csproj /p:Configuration=Release
-       - run: msbuild ScintillaLexers/VPKSoft.ScintillaLexers.SUO/VPKSoft.ScintillaLexers.SUO.csproj /t:restore
-       - run: msbuild ScintillaLexers/VPKSoft.ScintillaLexers.SUO/VPKSoft.ScintillaLexers.SUO.csproj /p:Configuration=Release
+       - run: msbuild VPKSoft.ScintillaLexers/VPKSoft.ScintillaLexers.csproj /t:restore
+       - run: msbuild VPKSoft.ScintillaLexers/VPKSoft.ScintillaLexers.csproj /p:Configuration=Release
+       - run: msbuild VPKSoft.ScintillaLexers.SUO/VPKSoft.ScintillaLexers.SUO.csproj /t:restore
+       - run: msbuild VPKSoft.ScintillaLexers.SUO/VPKSoft.ScintillaLexers.SUO.csproj /p:Configuration=Release
 # No need for bleeding edge       - run: dotnet tool install --global PowerShell
        - run: 
           name: Push to NuGet
           command: |
-            ScintillaLexers/NuGet-Push.ps1
+            NuGet-Push.ps1
             
