@@ -12,5 +12,6 @@ The SUO stands for [unofficial.ScintillaNET](https://www.nuget.org/packages/unof
 ## Thanks to
 * [JetBrains](https://www.jetbrains.com/?from=ScintillaLexers) for their open source license(s).
 * [tSlappy](https://github.com/tSlappy) for the InnoSetup script language lexer.
+* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaLexers.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaLexers) 
 
 [![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)](https://www.jetbrains.com/?from=ScintillaLexers)
