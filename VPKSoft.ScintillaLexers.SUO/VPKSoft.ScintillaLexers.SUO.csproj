@@ -76,7 +76,7 @@
     <Folder Include="ScintillaNotepadPlusPlus\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="unofficial.ScintillaNET" Version="3.6.6" />
+    <PackageReference Include="unofficial.ScintillaNET" Version="3.6.51" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\vpksoft_logo.png">
