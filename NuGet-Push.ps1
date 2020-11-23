@@ -33,7 +33,7 @@ Write-Output "Download file:  $download_url ..."
 Write-Output "Download done."
 
 # application parameters..
-$application = "ScintillaLexers"
+$application = "."
 $environment_cryptor = "CryptEnvVar.exe"
 
 # create the digital signature..
@@ -41,7 +41,7 @@ $arguments = @("-s", $Env:SECRET_KEY, "-e", "CERT_1;CERT_2;CERT_3;CERT_4;CERT_5;
 & (-join($application, "\", $environment_cryptor)) $arguments
 
 #create nuget.config file..
-$arguments = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", "nuget.config", "-w", "80", "-i", "-v")
+$arguments = @("-s", $Env:SECRET_KEY, "-e", "NUGET_CONFIG", "-f", ".\nuget.config", "-w", "80", "-i", "-v")
 & (-join($application, "\", $environment_cryptor)) $arguments
 
 # register the certificate to the CI image..
