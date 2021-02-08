@@ -45,7 +45,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <PackageReference Include="VPKSoft.ScintillaLexers" Version="1.1.1" />
+    <PackageReference Include="VPKSoft.ScintillaLexers" Version="1.1.2" />
     <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
