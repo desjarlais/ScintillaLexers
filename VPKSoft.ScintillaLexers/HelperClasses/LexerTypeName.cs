@@ -75,6 +75,7 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
                 Tuple.Create(LexerEnumerations.LexerType.Java, "java", Lexer.Cpp),
                 Tuple.Create(LexerEnumerations.LexerType.Css, "css", Lexer.Css),
                 Tuple.Create(LexerEnumerations.LexerType.VbDotNet, "vb", Lexer.Vb),
+                Tuple.Create(LexerEnumerations.LexerType.Json, "json", Lexer.Json),
             });
 
         /// <summary>

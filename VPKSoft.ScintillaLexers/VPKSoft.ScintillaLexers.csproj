@@ -6,9 +6,9 @@
     <Product>VPKSoft.ScintillaLexers</Product>
     <Description>A class library containing lexer definitions for the ScintillaNET.</Description>
     <Copyright>Copyright © 2020 VPKSoft</Copyright>
-    <Version>1.1.2</Version>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.6</Version>
+    <AssemblyVersion>1.1.6.0</AssemblyVersion>
+    <FileVersion>1.1.6.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <DocumentationFile>bin\$(Configuration)\VPKSoft.ScintillaLexers.xml</DocumentationFile>
     <Authors>VPKSoft</Authors>

@@ -171,6 +171,9 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
             // File extensions for the Visual Basic .NET programming language.
             new LexerFileExtensions { LexerType = LexerType.VbDotNet, FileExtensionList = ".vb" },
 
+            // File extensions for the JavaScript Object Notation (Json) data format.
+            new LexerFileExtensions { LexerType = LexerType.Json, FileExtensionList = ".json" },
+
             // new LexerFileExtensions { LexerType = LexerType.xxx, FileExtensionList = "" },
         }); 
 

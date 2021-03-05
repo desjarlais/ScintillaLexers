@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net5-windows</TargetFramework>
+<!--    <TargetFramework>net45</TargetFramework>-->
     <AssemblyTitle>TestLexer</AssemblyTitle>
     <Company>VPKSoft</Company>
     <Product>TestLexer</Product>
     <Description>A test application for the ScintillaLexers library containing lexer definitions for the ScintillaNET.</Description>
     <Copyright>Copyright © VPKSoft 2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -15,16 +17,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45'">
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="FormMain.cs" />
     <Compile Update="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
@@ -45,7 +45,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <PackageReference Include="VPKSoft.ScintillaLexers" Version="1.1.2" />
+    <ProjectReference Include="..\VPKSoft.ScintillaLexers.SUO\VPKSoft.ScintillaLexers.SUO.csproj" />
     <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>

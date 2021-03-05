@@ -156,7 +156,9 @@ namespace VPKSoft.ScintillaLexers
                 ScintillaNotepadPlusPlusStyles.LoadLexerStyleFromNotepadPlusXml(document, scintilla,
                     lexerType); // TODO::Font?
 
-                scintilla.Lexer = LexerTypeName.GetLexerByLexerType(lexerType);
+                var lexerTypeDetected = LexerTypeName.GetLexerByLexerType(lexerType);
+
+                scintilla.Lexer = lexerTypeDetected;
 
                 ScintillaKeyWords.SetKeywords(scintilla, lexerType);
 
@@ -286,6 +288,11 @@ namespace VPKSoft.ScintillaLexers
             if (lexerType == LexerType.VbDotNet)
             {
                 return CreateLexerVb.CreateVbLexer(scintilla, LexerColors);
+            }
+
+            if (lexerType == LexerType.Json)
+            {
+                return CreateLexerJson.CreateJsonLexer(scintilla, LexerColors);
             }
 
             // a lexer wasn't found..

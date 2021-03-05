@@ -135,6 +135,11 @@ namespace VPKSoft.ScintillaLexers
             /// The Visual Basic .NET programming language.
             /// </summary>
             VbDotNet = 19,
+
+            /// <summary>
+            /// The JavaScript Object Notation (JSON) data format.
+            /// </summary>
+            Json,
         }
     }
 }

@@ -3,7 +3,7 @@
     <TargetFrameworks>netcoreapp3.1;net45;net5.0-windows</TargetFrameworks>
     <AssemblyTitle>VPKSoft.ScintillaLexers.SUO</AssemblyTitle>
     <Product>VPKSoft.ScintillaLexers.SUO</Product>
-    <Copyright>Copyright © 2020 VPKSoft</Copyright>
+    <Copyright>Copyright © 2021 VPKSoft</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>VPKSoft</Authors>
     <Description>A class library containing lexer definitions for the ScintillaNET.</Description>
@@ -14,10 +14,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper scintilla ScintillaNET lexer</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaLexers</PackageReleaseNotes>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.1.5.0</AssemblyVersion>
+    <AssemblyVersion>1.1.6.0</AssemblyVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
@@ -37,9 +37,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerBatch.cs" Link="CreateSpecificLexer\CreateLexerBatch.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerCommon.cs" Link="CreateSpecificLexer\CreateLexerCommon.cs" />
@@ -51,6 +48,7 @@
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerInnoSetup.cs" Link="CreateSpecificLexer\CreateLexerInnoSetup.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJava.cs" Link="CreateSpecificLexer\CreateLexerJava.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJavaScript.cs" Link="CreateSpecificLexer\CreateLexerJavaScript.cs" />
+    <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJson.cs" Link="CreateSpecificLexer\CreateLexerJson.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerNsis.cs" Link="CreateSpecificLexer\CreateLexerNsis.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerNull.cs" Link="CreateSpecificLexer\CreateLexerNull.cs" />
     <Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerPascal.cs" Link="CreateSpecificLexer\CreateLexerPascal.cs" />
@@ -78,7 +76,7 @@
     <Folder Include="ScintillaNotepadPlusPlus\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="unofficial.ScintillaNET" Version="3.8.1" />
+    <PackageReference Include="unofficial.ScintillaNET" Version="3.8.5" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\vpksoft_logo.png">

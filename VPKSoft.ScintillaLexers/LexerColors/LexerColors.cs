@@ -140,6 +140,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     return vbDotNetColors;
                 }
 
+                if (lexerType == LexerType.Json)
+                {
+                    return jsonColors;
+                }
+
                 return new List<Tuple<Color, string, bool>>();
             }
 
@@ -288,6 +293,14 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                         throw new ArgumentOutOfRangeException(nameof(value));
                     }
                     vbDotNetColors = value;
+                }
+                else if (lexerType == LexerType.Json)
+                {
+                    if (value == null || value.Count != jsonColors.Count)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(value));
+                    }
+                    jsonColors = value;
                 }
             }
         }
@@ -895,7 +908,25 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 Tuple.Create(Color.FromArgb(255, 255, 255), "DATE", false), // #FFFFFF 
             });
 
-        
+            List<Tuple<Color, string, bool>> jsonColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[] 
+            { 
+                Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 0, 0), "STRING DOUBLE QUOTE", true), // #800000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING DOUBLE QUOTE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 128, 128), "STRING SINGLE QUOTE", true), // #808080 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING SINGLE QUOTE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 255), "BOOLEAN NULL", true), // #0000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "BOOLEAN NULL", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(128, 0, 255), "OPERATOR", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 128, 0), "BLOCK COMMENT", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "BLOCK COMMENT", false), // #FFFFFF
+            });
         #endregion
 
         #region InteralColorIndexList
@@ -1728,6 +1759,35 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                     new KeyValuePair<int, string>(17, "DateBack"),
                 });
 
+        private List<KeyValuePair<int, string>> JsonColorIndexes { get; } =
+            new List<KeyValuePair<int, string>>
+            (
+                new[]
+                {
+                    new KeyValuePair<int, string>(0, "JsonKeywordFore"),
+                    new KeyValuePair<int, string>(1, "JsonKeywordFore"),
+
+                    new KeyValuePair<int, string>(2, "JsonNumberFore"),
+                    new KeyValuePair<int, string>(3, "JsonNumberBack"),
+
+                    new KeyValuePair<int, string>(4, "JsonDoubleQuoteFore"),
+                    new KeyValuePair<int, string>(5, "JsonDoubleQuoteBack"),
+
+                    new KeyValuePair<int, string>(6, "JsonSingleQuoteFore"),
+                    new KeyValuePair<int, string>(7, "JsonSingleQuoteBack"),
+
+                    new KeyValuePair<int, string>(8, "JsonBollNullQuoteFore"),
+                    new KeyValuePair<int, string>(9, "JsonBollNullQuoteBack"),
+
+                    new KeyValuePair<int, string>(10, "JsonOperatorFore"),
+                    new KeyValuePair<int, string>(11, "JsonOperatorBack"),
+
+                    new KeyValuePair<int, string>(12, "JsonCommentFore"),
+                    new KeyValuePair<int, string>(13, "JsonCommentBack"),
+
+                    new KeyValuePair<int, string>(14, "JsonBlockCommentFore"),
+                    new KeyValuePair<int, string>(15, "JsonBlockCommentBack"),
+                });
         #endregion
 
         /// <summary>
@@ -1958,6 +2018,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 return idx;
             }                  
             
+            if (lexerType == LexerType.Json)
+            {
+                int idx = jsonColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+                return idx;
+            }
+
             return -1;
         }
 
@@ -2077,6 +2143,12 @@ namespace VPKSoft.ScintillaLexers.LexerColors
                 return idx;
             }
 
+            if (lexerType == LexerType.Json)
+            {
+                int idx = JsonColorIndexes.FindIndex(f => f.Value == name);
+                return idx;
+            }
+
             return -1;
         }
 
@@ -2175,6 +2247,11 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             if (lexerType == LexerType.VbDotNet)
             {
                 return VbDotNetColorIndexes.Select(f => f.Value);
+            }   
+
+            if (lexerType == LexerType.Json)
+            {
+                return JsonColorIndexes.Select(f => f.Value);
             }   
 
             return new List<string>();
