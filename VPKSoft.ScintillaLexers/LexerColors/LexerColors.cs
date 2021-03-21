@@ -912,20 +912,32 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             { 
                 Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
                 Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(255, 128, 0), "NUMBER", true), // #FF8000 
+                Tuple.Create(Color.FromArgb(0xFF, 0x80, 0), "NUMBER", true), // #000000 
                 Tuple.Create(Color.FromArgb(255, 255, 255), "NUMBER", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(128, 0, 0), "STRING DOUBLE QUOTE", true), // #800000 
-                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING DOUBLE QUOTE", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(128, 128, 128), "STRING SINGLE QUOTE", true), // #808080 
-                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING SINGLE QUOTE", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(0, 0, 255), "BOOLEAN NULL", true), // #0000FF 
-                Tuple.Create(Color.FromArgb(255, 255, 255), "BOOLEAN NULL", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(128, 0, 255), "OPERATOR", true), // #8000FF 
+                Tuple.Create(Color.FromArgb(0x80, 0x80, 0x80), "STRING", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "STRING", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0x80, 0x80, 0x80), "UNCLOSED STRING", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "UNCLOSED STRING", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0x88, 0x0A, 0xE8), "PROPERTY NAME", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "PROPERTY NAME", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0xA5, 0x2A, 0x2A), "ESCAPE SEQUENCE", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "ESCAPE SEQUENCE", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0x80, 0), "LINE COMMENT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "LINE COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0x80, 0), "BLOCK COMMENT", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "BLOCK COMMENT", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0x80, 0, 0xFF), "OPERATOR", true), // #000000 
                 Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #8000FF 
-                Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
-                Tuple.Create(Color.FromArgb(0, 128, 0), "BLOCK COMMENT", true), // #8000FF 
-                Tuple.Create(Color.FromArgb(255, 255, 255), "BLOCK COMMENT", false), // #FFFFFF
+                Tuple.Create(Color.FromArgb(0xC7, 0x15, 0x85), "URI", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "URI", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0xD9, 0x22, 0x99), "JSON-LD COMPACT IRI", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "JSON-LD COMPACT IRI", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0x80), "JSON KEYWORD", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "JSON KEYWORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0, 0x89), "JSON-LD KEYWORD", true), // #000000 
+                Tuple.Create(Color.FromArgb(255, 255, 255), "JSON-LD KEYWORD", false), // #FFFFFF 
+                Tuple.Create(Color.FromArgb(0, 0x8B, 0x8B), "PARSING ERROR", true), // #000000 
+                Tuple.Create(Color.FromArgb(0xFF, 0X45, 255), "PARSING ERROR", false), // #FFFFFF 
             });
         #endregion
 
@@ -1764,29 +1776,47 @@ namespace VPKSoft.ScintillaLexers.LexerColors
             (
                 new[]
                 {
-                    new KeyValuePair<int, string>(0, "JsonKeywordFore"),
-                    new KeyValuePair<int, string>(1, "JsonKeywordFore"),
-
+                    new KeyValuePair<int, string>(0, "JsonDefaultFore"),
+                    new KeyValuePair<int, string>(1, "JsonDefaultBack"),
+                    
                     new KeyValuePair<int, string>(2, "JsonNumberFore"),
                     new KeyValuePair<int, string>(3, "JsonNumberBack"),
-
-                    new KeyValuePair<int, string>(4, "JsonDoubleQuoteFore"),
-                    new KeyValuePair<int, string>(5, "JsonDoubleQuoteBack"),
-
-                    new KeyValuePair<int, string>(6, "JsonSingleQuoteFore"),
-                    new KeyValuePair<int, string>(7, "JsonSingleQuoteBack"),
-
-                    new KeyValuePair<int, string>(8, "JsonBollNullQuoteFore"),
-                    new KeyValuePair<int, string>(9, "JsonBollNullQuoteBack"),
-
-                    new KeyValuePair<int, string>(10, "JsonOperatorFore"),
-                    new KeyValuePair<int, string>(11, "JsonOperatorBack"),
-
-                    new KeyValuePair<int, string>(12, "JsonCommentFore"),
-                    new KeyValuePair<int, string>(13, "JsonCommentBack"),
-
+                    
+                    new KeyValuePair<int, string>(4, "JsonStringFore"),
+                    new KeyValuePair<int, string>(5, "JsonStringBack"),
+                    
+                    new KeyValuePair<int, string>(6, "JsonUnclosedStringFore"),
+                    new KeyValuePair<int, string>(7, "JsonUnclosedStringBack"),
+                    
+                    new KeyValuePair<int, string>(8, "JsonPropertyFore"),
+                    new KeyValuePair<int, string>(9, "JsonPropertyBack"),
+                    
+                    new KeyValuePair<int, string>(10, "JsonEscapeSequenceFore"),
+                    new KeyValuePair<int, string>(11, "JsonEscapeSequenceBack"),
+                    
+                    new KeyValuePair<int, string>(12, "JsonLineCommentFore"),
+                    new KeyValuePair<int, string>(13, "JsonLineCommentBack"),
+                    
                     new KeyValuePair<int, string>(14, "JsonBlockCommentFore"),
                     new KeyValuePair<int, string>(15, "JsonBlockCommentBack"),
+                    
+                    new KeyValuePair<int, string>(16, "JsonOperatorFore"),
+                    new KeyValuePair<int, string>(17, "JsonOperatorBack"),
+                    
+                    new KeyValuePair<int, string>(18, "JsonUriFore"),
+                    new KeyValuePair<int, string>(19, "JsonUriBack"),
+                    
+                    new KeyValuePair<int, string>(20, "JsonCompactIRIFore"),
+                    new KeyValuePair<int, string>(21, "JsonCompactIRIBack"),
+                    
+                    new KeyValuePair<int, string>(22, "JsonKeywordFore"),
+                    new KeyValuePair<int, string>(23, "JsonKeywordBack"),
+                    
+                    new KeyValuePair<int, string>(24, "JsonLdKeywordFore"),
+                    new KeyValuePair<int, string>(25, "JsonLdKeywordBack"),
+                    
+                    new KeyValuePair<int, string>(26, "JsonErrorFore"),
+                    new KeyValuePair<int, string>(27, "JsonErrorBack"),
                 });
         #endregion
 

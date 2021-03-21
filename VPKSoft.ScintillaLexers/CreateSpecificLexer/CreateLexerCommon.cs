@@ -54,7 +54,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// Adds a "standard" folding to a lexer.
         /// </summary>
         /// <param name="scintilla">An instance to a Scintilla class.</param>
-        internal static void AddFolding(Scintilla scintilla)
+        public static void AddFolding(Scintilla scintilla)
         {
             // the default colors as in the example.. (C)::https://github.com/jacobslusser/ScintillaNET/wiki/Automatic-Code-Folding
             AddFolding(scintilla, SystemColors.ControlLightLight, SystemColors.ControlDark);
@@ -66,7 +66,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         /// <param name="scintilla">An instance to a Scintilla class.</param>
         /// <param name="foregroundColor">The foreground color to be used.</param>
         /// <param name="backgroundColor">The background color to be used.</param>
-        internal static void AddFolding(Scintilla scintilla, Color foregroundColor, Color backgroundColor)
+        public static void AddFolding(Scintilla scintilla, Color foregroundColor, Color backgroundColor)
         {
             // the default colors as in the example.. (C)::https://github.com/jacobslusser/ScintillaNET/wiki/Automatic-Code-Folding
 
