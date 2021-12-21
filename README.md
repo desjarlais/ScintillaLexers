@@ -12,6 +12,6 @@ The package ending with .NET is depended upon the new Scintilla 5 series [Scinti
 ## Thanks to
 * [JetBrains](https://www.jetbrains.com/?from=ScintillaLexers) for their open source license(s).
 * [tSlappy](https://github.com/tSlappy) for the InnoSetup script language lexer.
-* [![VPKSoft](https://circleci.com/gh/VPKSoft/ScintillaLexers.svg?style=shield)](https://app.circleci.com/pipelines/github/VPKSoft/ScintillaLexers) 
+* [![.NET Desktop](https://github.com/VPKSoft/ScintillaLexers/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/VPKSoft/ScintillaLexers/actions/workflows/dotnet-desktop.yml)
 
 [![JetBrains](http://www.vpksoft.net/site/External/JetBrains/jetbrains.svg)](https://www.jetbrains.com/?from=ScintillaLexers)
