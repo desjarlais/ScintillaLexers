@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLexer", "TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
 EndProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet-Push.ps1 = NuGet-Push.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers.SUO", "VPKSoft.ScintillaLexers.SUO\VPKSoft.ScintillaLexers.SUO.csproj", "{6323DCF7-6EDD-4AF5-A850-9A6C2B54E5FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers.NET", "VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.NET.csproj", "{CD400ADB-0B46-4DAD-97F5-B2829691A809}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +28,10 @@ Global
 		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6323DCF7-6EDD-4AF5-A850-9A6C2B54E5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6323DCF7-6EDD-4AF5-A850-9A6C2B54E5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6323DCF7-6EDD-4AF5-A850-9A6C2B54E5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6323DCF7-6EDD-4AF5-A850-9A6C2B54E5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
