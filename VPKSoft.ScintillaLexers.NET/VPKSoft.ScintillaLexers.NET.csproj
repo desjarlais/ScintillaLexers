@@ -75,7 +75,6 @@
     <Folder Include="LexerColors\" />
     <Folder Include="ScintillaNotepadPlusPlus\" />
   </ItemGroup>
-  <ItemGroup>
     <None Include="..\vpksoft_logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
