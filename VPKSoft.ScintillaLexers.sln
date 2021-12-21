@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers\VPKSoft.ScintillaLexers.csproj", "{182FB840-C6F2-42D1-9C98-55F0E9FF572C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{961E8E38-5FDE-48A0-831D-9FA94719D64E}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet-Push.ps1 = NuGet-Push.ps1
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers.NET", "VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.NET.csproj", "{CD400ADB-0B46-4DAD-97F5-B2829691A809}"
 EndProject
