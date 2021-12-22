@@ -14,10 +14,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper scintilla Scintilla.NET lexer</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaLexers</PackageReleaseNotes>
-    <Version>1.1.8</Version>
+    <Version>1.1.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.1.8</AssemblyVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
@@ -82,6 +81,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Scintilla.NET" Version="5.1.5" />
+    <PackageReference Include="Scintilla.NET" Version="5.1.5.1" />
   </ItemGroup>
 </Project>
