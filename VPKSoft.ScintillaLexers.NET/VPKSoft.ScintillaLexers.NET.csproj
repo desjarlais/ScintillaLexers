@@ -14,7 +14,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>wrapper scintilla Scintilla.NET lexer</PackageTags>
     <PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaLexers</PackageReleaseNotes>
-    <Version>1.1.10</Version>
+    <Version>1.1.11</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <UseWindowsForms>true</UseWindowsForms>
@@ -81,6 +81,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Scintilla.NET" Version="5.1.5.3" />
+    <PackageReference Include="Scintilla.NET" Version="5.1.5.4" />
   </ItemGroup>
 </Project>
