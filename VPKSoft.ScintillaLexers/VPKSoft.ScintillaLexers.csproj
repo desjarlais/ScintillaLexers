@@ -22,6 +22,7 @@
     <RepositoryUrl>https://github.com/VPKSoft/ScintillaLexers</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <UserSecretsId>2c6039a8-cf1c-4bc0-b68d-c611e61ef999</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
