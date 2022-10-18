@@ -3,7 +3,7 @@
 		<TargetFrameworks>netcoreapp3.1;net45;net5.0-windows;net6-windows</TargetFrameworks>
 		<AssemblyTitle>VPKSoft.ScintillaLexers.NET</AssemblyTitle>
 		<Product>VPKSoft.ScintillaLexers.NET</Product>
-		<Copyright>Copyright © 2021 VPKSoft</Copyright>
+		<Copyright>Copyright © 2022 VPKSoft</Copyright>
 		<OutputPath>bin\$(Configuration)\</OutputPath>
 		<Authors>VPKSoft</Authors>
 		<Description>A class library containing lexer definitions for the ScintillaNET.</Description>
@@ -14,7 +14,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>wrapper scintilla Scintilla.NET lexer</PackageTags>
 		<PackageReleaseNotes>See: https://github.com/VPKSoft/ScintillaLexers</PackageReleaseNotes>
-		<Version>1.1.12</Version>
+		<Version>1.1.13</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -69,6 +69,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Scintilla.NET" Version="5.3.1.1" />
+		<PackageReference Include="Scintilla.NET" Version="5.3.1.2" />
 	</ItemGroup>
 </Project>
