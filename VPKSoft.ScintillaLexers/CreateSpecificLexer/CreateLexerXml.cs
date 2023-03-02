@@ -28,108 +28,107 @@ using ScintillaNET;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the XML lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerXml: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the XML lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the XML (The eXtensible Markup Language).
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerXml: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateXmlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the XML (The eXtensible Markup Language).
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateXmlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // XMLSTART, fontStyle = 0 
-            scintilla.Styles[Style.Xml.XmlStart].ForeColor =
-                lexerColors[LexerType.Xml, "XmlStartFore"];
-            scintilla.Styles[Style.Xml.XmlStart].BackColor =
-                lexerColors[LexerType.Xml, "XmlStartBack"];
+        // XMLSTART, fontStyle = 0 
+        scintilla.Styles[Style.Xml.XmlStart].ForeColor =
+            lexerColors[LexerType.Xml, "XmlStartFore"];
+        scintilla.Styles[Style.Xml.XmlStart].BackColor =
+            lexerColors[LexerType.Xml, "XmlStartBack"];
 
-            // XMLEND, fontStyle = 0 
-            scintilla.Styles[Style.Xml.XmlEnd].ForeColor = lexerColors[LexerType.Xml, "XmlEndFore"];
-            scintilla.Styles[Style.Xml.XmlEnd].BackColor = lexerColors[LexerType.Xml, "XmlEndBack"];
+        // XMLEND, fontStyle = 0 
+        scintilla.Styles[Style.Xml.XmlEnd].ForeColor = lexerColors[LexerType.Xml, "XmlEndFore"];
+        scintilla.Styles[Style.Xml.XmlEnd].BackColor = lexerColors[LexerType.Xml, "XmlEndBack"];
 
-            // DEFAULT, fontStyle = 1 
-            scintilla.Styles[Style.Xml.Default].Bold = true;
-            scintilla.Styles[Style.Xml.Default].ForeColor = lexerColors[LexerType.Xml, "DefaultFore"];
-            scintilla.Styles[Style.Xml.Default].BackColor = lexerColors[LexerType.Xml, "DefaultBack"];
+        // DEFAULT, fontStyle = 1 
+        scintilla.Styles[Style.Xml.Default].Bold = true;
+        scintilla.Styles[Style.Xml.Default].ForeColor = lexerColors[LexerType.Xml, "DefaultFore"];
+        scintilla.Styles[Style.Xml.Default].BackColor = lexerColors[LexerType.Xml, "DefaultBack"];
 
-            // COMMENT, fontStyle = 0 
-            scintilla.Styles[Style.Xml.Comment].ForeColor = lexerColors[LexerType.Xml, "CommentFore"];
-            scintilla.Styles[Style.Xml.Comment].BackColor = lexerColors[LexerType.Xml, "CommentBack"];
+        // COMMENT, fontStyle = 0 
+        scintilla.Styles[Style.Xml.Comment].ForeColor = lexerColors[LexerType.Xml, "CommentFore"];
+        scintilla.Styles[Style.Xml.Comment].BackColor = lexerColors[LexerType.Xml, "CommentBack"];
 
-            // NUMBER, fontStyle = 0 
-            scintilla.Styles[Style.Xml.Number].ForeColor = lexerColors[LexerType.Xml, "NumberFore"];
-            scintilla.Styles[Style.Xml.Number].BackColor = lexerColors[LexerType.Xml, "NumberBack"];
+        // NUMBER, fontStyle = 0 
+        scintilla.Styles[Style.Xml.Number].ForeColor = lexerColors[LexerType.Xml, "NumberFore"];
+        scintilla.Styles[Style.Xml.Number].BackColor = lexerColors[LexerType.Xml, "NumberBack"];
 
-            // DOUBLESTRING, fontStyle = 1 
-            scintilla.Styles[Style.Xml.DoubleString].Bold = true;
-            scintilla.Styles[Style.Xml.DoubleString].ForeColor =
-                lexerColors[LexerType.Xml, "DoubleStringFore"];
-            scintilla.Styles[Style.Xml.DoubleString].BackColor =
-                lexerColors[LexerType.Xml, "DoubleStringBack"];
+        // DOUBLESTRING, fontStyle = 1 
+        scintilla.Styles[Style.Xml.DoubleString].Bold = true;
+        scintilla.Styles[Style.Xml.DoubleString].ForeColor =
+            lexerColors[LexerType.Xml, "DoubleStringFore"];
+        scintilla.Styles[Style.Xml.DoubleString].BackColor =
+            lexerColors[LexerType.Xml, "DoubleStringBack"];
 
-            // SINGLESTRING, fontStyle = 1 
-            scintilla.Styles[Style.Xml.SingleString].Bold = true;
-            scintilla.Styles[Style.Xml.SingleString].ForeColor =
-                lexerColors[LexerType.Xml, "SingleStringFore"];
-            scintilla.Styles[Style.Xml.SingleString].BackColor =
-                lexerColors[LexerType.Xml, "SingleStringBack"];
+        // SINGLESTRING, fontStyle = 1 
+        scintilla.Styles[Style.Xml.SingleString].Bold = true;
+        scintilla.Styles[Style.Xml.SingleString].ForeColor =
+            lexerColors[LexerType.Xml, "SingleStringFore"];
+        scintilla.Styles[Style.Xml.SingleString].BackColor =
+            lexerColors[LexerType.Xml, "SingleStringBack"];
 
-            // TAG, fontStyle = 0 
-            scintilla.Styles[Style.Xml.Tag].ForeColor = lexerColors[LexerType.Xml, "TagFore"];
-            scintilla.Styles[Style.Xml.Tag].BackColor = lexerColors[LexerType.Xml, "TagBack"];
+        // TAG, fontStyle = 0 
+        scintilla.Styles[Style.Xml.Tag].ForeColor = lexerColors[LexerType.Xml, "TagFore"];
+        scintilla.Styles[Style.Xml.Tag].BackColor = lexerColors[LexerType.Xml, "TagBack"];
 
-            // TAGEND, fontStyle = 0 
-            scintilla.Styles[Style.Xml.TagEnd].ForeColor = lexerColors[LexerType.Xml, "TagEndFore"];
-            scintilla.Styles[Style.Xml.TagEnd].BackColor = lexerColors[LexerType.Xml, "TagEndBack"];
+        // TAGEND, fontStyle = 0 
+        scintilla.Styles[Style.Xml.TagEnd].ForeColor = lexerColors[LexerType.Xml, "TagEndFore"];
+        scintilla.Styles[Style.Xml.TagEnd].BackColor = lexerColors[LexerType.Xml, "TagEndBack"];
 
-            // TAGUNKNOWN, fontStyle = 0 
-            scintilla.Styles[Style.Xml.TagUnknown].ForeColor =
-                lexerColors[LexerType.Xml, "TagUnknownFore"];
-            scintilla.Styles[Style.Xml.TagUnknown].BackColor =
-                lexerColors[LexerType.Xml, "TagUnknownBack"];
+        // TAGUNKNOWN, fontStyle = 0 
+        scintilla.Styles[Style.Xml.TagUnknown].ForeColor =
+            lexerColors[LexerType.Xml, "TagUnknownFore"];
+        scintilla.Styles[Style.Xml.TagUnknown].BackColor =
+            lexerColors[LexerType.Xml, "TagUnknownBack"];
 
-            // ATTRIBUTE, fontStyle = 0 
-            scintilla.Styles[Style.Xml.Attribute].ForeColor =
-                lexerColors[LexerType.Xml, "AttributeFore"];
-            scintilla.Styles[Style.Xml.Attribute].BackColor =
-                lexerColors[LexerType.Xml, "AttributeBack"];
+        // ATTRIBUTE, fontStyle = 0 
+        scintilla.Styles[Style.Xml.Attribute].ForeColor =
+            lexerColors[LexerType.Xml, "AttributeFore"];
+        scintilla.Styles[Style.Xml.Attribute].BackColor =
+            lexerColors[LexerType.Xml, "AttributeBack"];
 
-            // ATTRIBUTEUNKNOWN, fontStyle = 0 
-            scintilla.Styles[Style.Xml.AttributeUnknown].ForeColor =
-                lexerColors[LexerType.Xml, "AttributeUnknownFore"];
-            scintilla.Styles[Style.Xml.AttributeUnknown].BackColor =
-                lexerColors[LexerType.Xml, "AttributeUnknownBack"];
+        // ATTRIBUTEUNKNOWN, fontStyle = 0 
+        scintilla.Styles[Style.Xml.AttributeUnknown].ForeColor =
+            lexerColors[LexerType.Xml, "AttributeUnknownFore"];
+        scintilla.Styles[Style.Xml.AttributeUnknown].BackColor =
+            lexerColors[LexerType.Xml, "AttributeUnknownBack"];
 
-            // SGMLDEFAULT, fontStyle = 0 
-            scintilla.Styles[21].ForeColor = lexerColors[LexerType.Xml, "SgmlDefaultFore"];
-            scintilla.Styles[21].BackColor = lexerColors[LexerType.Xml, "SgmlDefaultBack"];
+        // SGMLDEFAULT, fontStyle = 0 
+        scintilla.Styles[21].ForeColor = lexerColors[LexerType.Xml, "SgmlDefaultFore"];
+        scintilla.Styles[21].BackColor = lexerColors[LexerType.Xml, "SgmlDefaultBack"];
 
-            // CDATA, fontStyle = 0 
-            scintilla.Styles[Style.Xml.CData].ForeColor = lexerColors[LexerType.Xml, "CDataFore"];
-            scintilla.Styles[Style.Xml.CData].BackColor = lexerColors[LexerType.Xml, "CDataBack"];
+        // CDATA, fontStyle = 0 
+        scintilla.Styles[Style.Xml.CData].ForeColor = lexerColors[LexerType.Xml, "CDataFore"];
+        scintilla.Styles[Style.Xml.CData].BackColor = lexerColors[LexerType.Xml, "CDataBack"];
 
-            // ENTITY, fontStyle = 2 
-            scintilla.Styles[Style.Xml.Entity].Italic = true;
-            scintilla.Styles[Style.Xml.Entity].ForeColor = lexerColors[LexerType.Xml, "EntityFore"];
-            scintilla.Styles[Style.Xml.Entity].BackColor = lexerColors[LexerType.Xml, "EntityBack"];
+        // ENTITY, fontStyle = 2 
+        scintilla.Styles[Style.Xml.Entity].Italic = true;
+        scintilla.Styles[Style.Xml.Entity].ForeColor = lexerColors[LexerType.Xml, "EntityFore"];
+        scintilla.Styles[Style.Xml.Entity].BackColor = lexerColors[LexerType.Xml, "EntityBack"];
 
-            scintilla.LexerName = "xml";
+        scintilla.LexerName = "xml";
 
-            // folding for a XML lexer..
-            LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.XmlFolding);
+        // folding for a XML lexer..
+        LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.XmlFolding);
 
-            AddFolding(scintilla);
-            return true;
-        }
+        AddFolding(scintilla);
+        return true;
     }
 }

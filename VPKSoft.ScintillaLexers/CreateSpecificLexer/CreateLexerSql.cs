@@ -29,69 +29,68 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the SQL lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerSql: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the SQL lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the Structured Query Language (SQL).
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerSql: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateSqlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the Structured Query Language (SQL).
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateSqlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // KEYWORD, fontStyle = 1 
-            scintilla.Styles[Style.Sql.Word].Bold = true;
-            scintilla.Styles[Style.Sql.Word].ForeColor = lexerColors[LexerType.SQL, "WordFore"];
-            scintilla.Styles[Style.Sql.Word].BackColor = lexerColors[LexerType.SQL, "WordBack"];
+        // KEYWORD, fontStyle = 1 
+        scintilla.Styles[Style.Sql.Word].Bold = true;
+        scintilla.Styles[Style.Sql.Word].ForeColor = lexerColors[LexerType.SQL, "WordFore"];
+        scintilla.Styles[Style.Sql.Word].BackColor = lexerColors[LexerType.SQL, "WordBack"];
 
-            // NUMBER, fontStyle = 0 
-            scintilla.Styles[Style.Sql.Number].ForeColor = lexerColors[LexerType.SQL, "NumberFore"];
-            scintilla.Styles[Style.Sql.Number].BackColor = lexerColors[LexerType.SQL, "NumberBack"];
+        // NUMBER, fontStyle = 0 
+        scintilla.Styles[Style.Sql.Number].ForeColor = lexerColors[LexerType.SQL, "NumberFore"];
+        scintilla.Styles[Style.Sql.Number].BackColor = lexerColors[LexerType.SQL, "NumberBack"];
 
-            // STRING, fontStyle = 0 
-            scintilla.Styles[Style.Sql.String].ForeColor = lexerColors[LexerType.SQL, "StringFore"];
-            scintilla.Styles[Style.Sql.String].BackColor = lexerColors[LexerType.SQL, "StringBack"];
+        // STRING, fontStyle = 0 
+        scintilla.Styles[Style.Sql.String].ForeColor = lexerColors[LexerType.SQL, "StringFore"];
+        scintilla.Styles[Style.Sql.String].BackColor = lexerColors[LexerType.SQL, "StringBack"];
 
-            // STRING2, fontStyle = 0 
-            scintilla.Styles[Style.Sql.Character].ForeColor =
-                lexerColors[LexerType.SQL, "CharacterFore"];
-            scintilla.Styles[Style.Sql.Character].BackColor =
-                lexerColors[LexerType.SQL, "CharacterBack"];
+        // STRING2, fontStyle = 0 
+        scintilla.Styles[Style.Sql.Character].ForeColor =
+            lexerColors[LexerType.SQL, "CharacterFore"];
+        scintilla.Styles[Style.Sql.Character].BackColor =
+            lexerColors[LexerType.SQL, "CharacterBack"];
 
-            // OPERATOR, fontStyle = 1 
-            scintilla.Styles[Style.Sql.Operator].Bold = true;
-            scintilla.Styles[Style.Sql.Operator].ForeColor =
-                lexerColors[LexerType.SQL, "OperatorFore"];
-            scintilla.Styles[Style.Sql.Operator].BackColor =
-                lexerColors[LexerType.SQL, "OperatorBack"];
+        // OPERATOR, fontStyle = 1 
+        scintilla.Styles[Style.Sql.Operator].Bold = true;
+        scintilla.Styles[Style.Sql.Operator].ForeColor =
+            lexerColors[LexerType.SQL, "OperatorFore"];
+        scintilla.Styles[Style.Sql.Operator].BackColor =
+            lexerColors[LexerType.SQL, "OperatorBack"];
 
-            // COMMENT, fontStyle = 0 
-            scintilla.Styles[Style.Sql.Comment].ForeColor = lexerColors[LexerType.SQL, "CommentFore"];
-            scintilla.Styles[Style.Sql.Comment].BackColor = lexerColors[LexerType.SQL, "CommentBack"];
+        // COMMENT, fontStyle = 0 
+        scintilla.Styles[Style.Sql.Comment].ForeColor = lexerColors[LexerType.SQL, "CommentFore"];
+        scintilla.Styles[Style.Sql.Comment].BackColor = lexerColors[LexerType.SQL, "CommentBack"];
 
-            // COMMENT LINE, fontStyle = 0 
-            scintilla.Styles[Style.Sql.CommentLine].ForeColor =
-                lexerColors[LexerType.SQL, "CommentLineFore"];
-            scintilla.Styles[Style.Sql.CommentLine].BackColor =
-                lexerColors[LexerType.SQL, "CommentLineBack"];
+        // COMMENT LINE, fontStyle = 0 
+        scintilla.Styles[Style.Sql.CommentLine].ForeColor =
+            lexerColors[LexerType.SQL, "CommentLineFore"];
+        scintilla.Styles[Style.Sql.CommentLine].BackColor =
+            lexerColors[LexerType.SQL, "CommentLineBack"];
 
-            scintilla.LexerName = "sql";
+        scintilla.LexerName = "sql";
             
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.SQL);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.SQL);
 
-            LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.SqlFolding);
+        LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.SqlFolding);
 
-            AddFolding(scintilla);
-            return true;
-        }
+        AddFolding(scintilla);
+        return true;
     }
 }

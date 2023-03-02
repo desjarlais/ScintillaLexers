@@ -26,21 +26,20 @@ SOFTWARE.
 
 using ScintillaNET;
 
-namespace VPKSoft.ScintillaLexers
+namespace VPKSoft.ScintillaLexers;
+
+/// <summary>
+/// A class to set the basic font style for the <see cref="Scintilla"/>.
+/// </summary>
+public static class GlobalScintillaFont
 {
     /// <summary>
-    /// A class to set the basic font style for the <see cref="Scintilla"/>.
+    /// Gets or sets the size of the font for the <see cref="Scintilla"/> controls.
     /// </summary>
-    public static class GlobalScintillaFont
-    {
-        /// <summary>
-        /// Gets or sets the size of the font for the <see cref="Scintilla"/> controls.
-        /// </summary>
-        public static int FontSize { get; set; } = 10;
+    public static int FontSize { get; set; } = 10;
 
-        /// <summary>
-        /// Gets or sets the name of the font family for the <see cref="Scintilla"/> controls.
-        /// </summary>
-        public static string FontFamilyName { get; set; } = "Consolas";
-    }
+    /// <summary>
+    /// Gets or sets the name of the font family for the <see cref="Scintilla"/> controls.
+    /// </summary>
+    public static string FontFamilyName { get; set; } = "Consolas";
 }
