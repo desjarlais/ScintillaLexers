@@ -108,7 +108,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Python.Decorator].ForeColor = lexerColors[LexerType.Python, "DecoratorFore"];
             scintilla.Styles[Style.Python.Decorator].BackColor = lexerColors[LexerType.Python, "DecoratorBack"];
 
-            scintilla.Lexer = Lexer.Python;
+            scintilla.LexerName = "python";
             
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Python);
 

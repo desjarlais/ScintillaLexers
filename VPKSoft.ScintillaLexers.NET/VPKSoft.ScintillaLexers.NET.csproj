@@ -18,6 +18,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
 		<Reference Include="System.Data.DataSetExtensions" />

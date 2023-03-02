@@ -69,7 +69,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Properties.DefVal].ForeColor = lexerColors[LexerType.INI, "DefValFore"];
             scintilla.Styles[Style.Properties.DefVal].BackColor = lexerColors[LexerType.INI, "DefValBack"];
 
-            scintilla.Lexer = Lexer.Properties;
+            scintilla.LexerName = "props";
 
             AddFolding(scintilla);
 

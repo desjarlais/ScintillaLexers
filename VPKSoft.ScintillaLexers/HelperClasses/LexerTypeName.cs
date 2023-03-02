@@ -105,10 +105,10 @@ namespace VPKSoft.ScintillaLexers.HelperClasses
         /// </summary>
         /// <param name="lexerType">Type of the lexer.</param>
         /// <returns>A <see cref="Lexer"/> matching the given <see cref="LexerEnumerations.LexerType"/> enumeration.</returns>
-        public static Lexer GetLexerByLexerType(LexerEnumerations.LexerType lexerType)
+        public static string? GetLexerByLexerType(LexerEnumerations.LexerType lexerType)
         {
             var result = LexerTypeNameList.FirstOrDefault(f => f.Item1 == lexerType);
-            return result?.Item3 ?? Lexer.Null;
+            return result?.Item2;
         }
     }
 }
