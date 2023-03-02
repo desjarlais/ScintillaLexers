@@ -154,7 +154,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].BackColor =
                 lexerColors[LexerType.Cs, "PreprocessorCommentDocBack"];
 
-            scintilla.Lexer = Lexer.Cpp;
+            scintilla.LexerName = "cpp";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cs);
 

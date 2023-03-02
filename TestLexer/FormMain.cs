@@ -162,7 +162,7 @@ namespace TestLexer
             scintilla.Styles[Style.Json.Error].ForeColor = ColorTranslator.FromHtml("#008B8B");
             scintilla.Styles[Style.Json.Error].BackColor = ColorTranslator.FromHtml("#FF4500");
 
-            scintilla.Lexer = Lexer.Json;
+            scintilla.LexerName = "json";
 
             scintilla.SetKeywords(0, "false null true");     
             scintilla.SetKeywords(1, "@id @context @type @value @language @container @list @set @reverse @index @base @vocab @graph");     

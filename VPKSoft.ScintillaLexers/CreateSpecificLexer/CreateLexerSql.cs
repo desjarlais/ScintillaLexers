@@ -84,7 +84,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Sql.CommentLine].BackColor =
                 lexerColors[LexerType.SQL, "CommentLineBack"];
 
-            scintilla.Lexer = Lexer.Sql;
+            scintilla.LexerName = "sql";
             
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.SQL);
 

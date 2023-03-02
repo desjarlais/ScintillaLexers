@@ -101,7 +101,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Css.Directive].BackColor = lexerColors[LexerType.Css, "DirectiveBack"];
 
 
-            scintilla.Lexer = Lexer.Css;
+            scintilla.LexerName = "css";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Css);
 

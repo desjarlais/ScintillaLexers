@@ -106,7 +106,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Pascal.Asm].Bold = true;
             scintilla.Styles[Style.Pascal.Asm].ForeColor = lexerColors[LexerType.Pascal, "ForeColorFore"];
             scintilla.Styles[Style.Pascal.Asm].BackColor = lexerColors[LexerType.Pascal, "ForeColorBack"];
-            scintilla.Lexer = Lexer.Pascal;
+            scintilla.LexerName = "pascal";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Pascal);
 

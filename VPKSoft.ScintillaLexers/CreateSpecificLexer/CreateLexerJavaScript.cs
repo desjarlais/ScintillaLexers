@@ -117,7 +117,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Cpp.CommentDocKeywordError].ForeColor = lexerColors[LexerType.JavaScript, "CommentDocKeywordErrorFore"];
             scintilla.Styles[Style.Cpp.CommentDocKeywordError].BackColor = lexerColors[LexerType.JavaScript, "CommentDocKeywordErrorBack"];
 
-            scintilla.Lexer = Lexer.Cpp;
+            scintilla.LexerName = "cpp";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.JavaScript);
 

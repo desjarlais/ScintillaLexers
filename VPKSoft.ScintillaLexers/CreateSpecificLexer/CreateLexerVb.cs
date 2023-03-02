@@ -85,7 +85,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             // DATE, fontStyle = 0, styleId = 8
             scintilla.Styles[Style.Vb.Date].ForeColor = lexerColors[LexerType.VbDotNet, "DateFore"];
             scintilla.Styles[Style.Vb.Date].BackColor = lexerColors[LexerType.VbDotNet, "DateBack"];
-            scintilla.Lexer = Lexer.Vb;
+            scintilla.LexerName = "vb";
             
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.VbDotNet);
 

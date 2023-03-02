@@ -108,7 +108,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[SCE_YAML_OPERATOR].ForeColor = lexerColors[LexerType.YAML, "OperatorFore"];
             scintilla.Styles[SCE_YAML_OPERATOR].BackColor = lexerColors[LexerType.YAML, "OperatorBack"];
 
-            scintilla.Lexer = (Lexer)LexerTypeName.SCLEX_YAML;
+            scintilla.LexerName = "yaml";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.YAML);
 

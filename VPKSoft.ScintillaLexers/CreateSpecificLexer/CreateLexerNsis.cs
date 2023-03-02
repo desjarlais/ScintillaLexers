@@ -153,7 +153,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
                 scintilla.Styles[SCE_NSIS_COMMENTBOX].ForeColor = lexerColors[LexerType.Nsis, "CommentFore"];
                 scintilla.Styles[SCE_NSIS_COMMENTBOX].BackColor = lexerColors[LexerType.Nsis, "CommentBack"];
 
-                scintilla.Lexer = (Lexer)LexerTypeName.SCLEX_NSIS;
+                scintilla.LexerName = "nsis";
                 
                 ScintillaKeyWords.SetKeywords(scintilla, LexerType.Nsis);
 
