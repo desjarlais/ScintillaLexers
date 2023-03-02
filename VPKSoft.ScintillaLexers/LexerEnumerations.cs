@@ -24,122 +24,121 @@ SOFTWARE.
 */
 #endregion
 
-namespace VPKSoft.ScintillaLexers
+namespace VPKSoft.ScintillaLexers;
+
+/// <summary>
+/// A class containing the <see cref="LexerType"/> enumeration values.
+/// </summary>
+public class LexerEnumerations
 {
     /// <summary>
-    /// A class containing the <see cref="LexerType"/> enumeration values.
+    /// An enumeration of currently supported Scintilla lexers.
     /// </summary>
-    public class LexerEnumerations
+    public enum LexerType
     {
         /// <summary>
-        /// An enumeration of currently supported Scintilla lexers.
+        /// An unknown language and / or file.
         /// </summary>
-        public enum LexerType
-        {
-            /// <summary>
-            /// An unknown language and / or file.
-            /// </summary>
-            Unknown = 0, // previously: 0
+        Unknown = 0, // previously: 0
 
-            /// <summary>
-            /// The C# programming language.
-            /// </summary>
-            Cs = 1, // previously: 1
+        /// <summary>
+        /// The C# programming language.
+        /// </summary>
+        Cs = 1, // previously: 1
 
-            /// <summary>
-            /// The C++ programming language.
-            /// </summary>
-            Cpp = 2, // previously: 2
+        /// <summary>
+        /// The C++ programming language.
+        /// </summary>
+        Cpp = 2, // previously: 2
 
-            /// <summary>
-            /// The eXtensible Markup Language.
-            /// </summary>
-            Xml = 3, // previously: 4
+        /// <summary>
+        /// The eXtensible Markup Language.
+        /// </summary>
+        Xml = 3, // previously: 4
 
-            /// <summary>
-            /// A plain text document.
-            /// </summary>
-            Text = 4, // previously: 8
+        /// <summary>
+        /// A plain text document.
+        /// </summary>
+        Text = 4, // previously: 8
 
-            /// <summary>
-            /// The NSIS (Nullsoft Scriptable Install System).
-            /// </summary>
-            Nsis = 5, // previously: 16
+        /// <summary>
+        /// The NSIS (Nullsoft Scriptable Install System).
+        /// </summary>
+        Nsis = 5, // previously: 16
 
-            /// <summary>
-            /// The Structured Query Language (SQL).
-            /// </summary>
-            SQL = 6, // previously: 32
+        /// <summary>
+        /// The Structured Query Language (SQL).
+        /// </summary>
+        SQL = 6, // previously: 32
 
-            /// <summary>
-            /// A batch script file.
-            /// </summary>
-            Batch = 7, // previously: 64
+        /// <summary>
+        /// A batch script file.
+        /// </summary>
+        Batch = 7, // previously: 64
 
-            /// <summary>
-            /// A lexer for the Pascal programming language.
-            /// </summary>
-            Pascal = 8, // previously: 128
+        /// <summary>
+        /// A lexer for the Pascal programming language.
+        /// </summary>
+        Pascal = 8, // previously: 128
 
-            /// <summary>
-            /// A lexer for the PHP programming language.
-            /// </summary>
-            PHP = 9, // previously: 256
+        /// <summary>
+        /// A lexer for the PHP programming language.
+        /// </summary>
+        PHP = 9, // previously: 256
 
-            /// <summary>
-            /// A lexer type for the HTML (Hypertext Markup Language).
-            /// </summary>
-            HTML = 10, // previously: 512
+        /// <summary>
+        /// A lexer type for the HTML (Hypertext Markup Language).
+        /// </summary>
+        HTML = 10, // previously: 512
 
-            /// <summary>
-            /// A lexer type for the Windows PowerShell scripting language.
-            /// </summary>
-            WindowsPowerShell = 11,
+        /// <summary>
+        /// A lexer type for the Windows PowerShell scripting language.
+        /// </summary>
+        WindowsPowerShell = 11,
 
-            /// <summary>
-            /// An INI file lexer.
-            /// </summary>
-            INI = 12,
+        /// <summary>
+        /// An INI file lexer.
+        /// </summary>
+        INI = 12,
 
-            /// <summary>
-            /// A lexer for the Python programming language.
-            /// </summary>
-            Python = 13,
+        /// <summary>
+        /// A lexer for the Python programming language.
+        /// </summary>
+        Python = 13,
 
-            /// <summary>
-            /// A lexer for the YAML Ain't Markup Language.
-            /// </summary>
-            YAML = 14,
+        /// <summary>
+        /// A lexer for the YAML Ain't Markup Language.
+        /// </summary>
+        YAML = 14,
 
-            /// <summary>
-            /// A lexer for the Java programming language.
-            /// </summary>
-            Java = 15,
+        /// <summary>
+        /// A lexer for the Java programming language.
+        /// </summary>
+        Java = 15,
 
-            /// <summary>
-            /// A lexer for the JavaScript scripting language.
-            /// </summary>
-            JavaScript = 16,
+        /// <summary>
+        /// A lexer for the JavaScript scripting language.
+        /// </summary>
+        JavaScript = 16,
 
-            /// <summary>
-            /// A lexer for the Cascading Style Sheets (CSS).
-            /// </summary>
-            Css = 17,
+        /// <summary>
+        /// A lexer for the Cascading Style Sheets (CSS).
+        /// </summary>
+        Css = 17,
 
-            /// <summary>
-            /// A lexer for the Inno Setup.
-            /// </summary>
-            InnoSetup = 18,
+        /// <summary>
+        /// A lexer for the Inno Setup.
+        /// </summary>
+        InnoSetup = 18,
 
-            /// <summary>
-            /// The Visual Basic .NET programming language.
-            /// </summary>
-            VbDotNet = 19,
+        /// <summary>
+        /// The Visual Basic .NET programming language.
+        /// </summary>
+        VbDotNet = 19,
 
-            /// <summary>
-            /// The JavaScript Object Notation (JSON) data format.
-            /// </summary>
-            Json,
-        }
+        /// <summary>
+        /// The JavaScript Object Notation (JSON) data format.
+        /// </summary>
+        Json,
     }
 }

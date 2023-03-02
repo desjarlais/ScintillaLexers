@@ -29,67 +29,66 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the Batch lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerBatch: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the Batch lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the batch script file.
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerBatch: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateBatchLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the batch script file.
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateBatchLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // DEFAULT, fontStyle = 0 
-            scintilla.Styles[Style.Batch.Default].ForeColor = lexerColors[LexerType.Batch, "DefaultFore"];
-            scintilla.Styles[Style.Batch.Default].BackColor = lexerColors[LexerType.Batch, "DefaultBack"];
+        // DEFAULT, fontStyle = 0 
+        scintilla.Styles[Style.Batch.Default].ForeColor = lexerColors[LexerType.Batch, "DefaultFore"];
+        scintilla.Styles[Style.Batch.Default].BackColor = lexerColors[LexerType.Batch, "DefaultBack"];
 
-            // COMMENT, fontStyle = 0 
-            scintilla.Styles[Style.Batch.Comment].ForeColor = lexerColors[LexerType.Batch, "CommentFore"];
-            scintilla.Styles[Style.Batch.Comment].BackColor = lexerColors[LexerType.Batch, "CommentBack"];
+        // COMMENT, fontStyle = 0 
+        scintilla.Styles[Style.Batch.Comment].ForeColor = lexerColors[LexerType.Batch, "CommentFore"];
+        scintilla.Styles[Style.Batch.Comment].BackColor = lexerColors[LexerType.Batch, "CommentBack"];
 
-            // KEYWORDS, fontStyle = 1 
-            scintilla.Styles[Style.Batch.Word].Bold = true;
-            scintilla.Styles[Style.Batch.Word].ForeColor = lexerColors[LexerType.Batch, "WordFore"];
-            scintilla.Styles[Style.Batch.Word].BackColor = lexerColors[LexerType.Batch, "WordBack"];
+        // KEYWORDS, fontStyle = 1 
+        scintilla.Styles[Style.Batch.Word].Bold = true;
+        scintilla.Styles[Style.Batch.Word].ForeColor = lexerColors[LexerType.Batch, "WordFore"];
+        scintilla.Styles[Style.Batch.Word].BackColor = lexerColors[LexerType.Batch, "WordBack"];
 
-            // LABEL, fontStyle = 1 
-            scintilla.Styles[Style.Batch.Label].Bold = true;
-            scintilla.Styles[Style.Batch.Label].ForeColor = lexerColors[LexerType.Batch, "LabelFore"];
-            scintilla.Styles[Style.Batch.Label].BackColor = lexerColors[LexerType.Batch, "LabelBack"];
+        // LABEL, fontStyle = 1 
+        scintilla.Styles[Style.Batch.Label].Bold = true;
+        scintilla.Styles[Style.Batch.Label].ForeColor = lexerColors[LexerType.Batch, "LabelFore"];
+        scintilla.Styles[Style.Batch.Label].BackColor = lexerColors[LexerType.Batch, "LabelBack"];
 
-            // HIDE SYBOL, fontStyle = 0 
-            scintilla.Styles[Style.Batch.Hide].ForeColor = lexerColors[LexerType.Batch, "HideFore"];
-            scintilla.Styles[Style.Batch.Hide].BackColor = lexerColors[LexerType.Batch, "HideBack"];
+        // HIDE SYBOL, fontStyle = 0 
+        scintilla.Styles[Style.Batch.Hide].ForeColor = lexerColors[LexerType.Batch, "HideFore"];
+        scintilla.Styles[Style.Batch.Hide].BackColor = lexerColors[LexerType.Batch, "HideBack"];
 
-            // COMMAND, fontStyle = 0 
-            scintilla.Styles[Style.Batch.Command].ForeColor = lexerColors[LexerType.Batch, "CommandFore"];
-            scintilla.Styles[Style.Batch.Command].BackColor = lexerColors[LexerType.Batch, "CommandBack"];
+        // COMMAND, fontStyle = 0 
+        scintilla.Styles[Style.Batch.Command].ForeColor = lexerColors[LexerType.Batch, "CommandFore"];
+        scintilla.Styles[Style.Batch.Command].BackColor = lexerColors[LexerType.Batch, "CommandBack"];
 
-            // VARIABLE, fontStyle = 1 
-            scintilla.Styles[Style.Batch.Identifier].Bold = true;
-            scintilla.Styles[Style.Batch.Identifier].ForeColor = lexerColors[LexerType.Batch, "IdentifierFore"];
-            scintilla.Styles[Style.Batch.Identifier].BackColor = lexerColors[LexerType.Batch, "IdentifierBack"];
+        // VARIABLE, fontStyle = 1 
+        scintilla.Styles[Style.Batch.Identifier].Bold = true;
+        scintilla.Styles[Style.Batch.Identifier].ForeColor = lexerColors[LexerType.Batch, "IdentifierFore"];
+        scintilla.Styles[Style.Batch.Identifier].BackColor = lexerColors[LexerType.Batch, "IdentifierBack"];
 
-            // OPERATOR, fontStyle = 1 
-            scintilla.Styles[Style.Batch.Operator].Bold = true;
-            scintilla.Styles[Style.Batch.Operator].ForeColor = lexerColors[LexerType.Batch, "OperatorFore"];
-            scintilla.Styles[Style.Batch.Operator].BackColor = lexerColors[LexerType.Batch, "OperatorBack"];
+        // OPERATOR, fontStyle = 1 
+        scintilla.Styles[Style.Batch.Operator].Bold = true;
+        scintilla.Styles[Style.Batch.Operator].ForeColor = lexerColors[LexerType.Batch, "OperatorFore"];
+        scintilla.Styles[Style.Batch.Operator].BackColor = lexerColors[LexerType.Batch, "OperatorBack"];
 
-            scintilla.LexerName = "batch";
+        scintilla.LexerName = "batch";
             
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Batch);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.Batch);
 
-            AddFolding(scintilla);
-            return true;
-        }
+        AddFolding(scintilla);
+        return true;
     }
 }

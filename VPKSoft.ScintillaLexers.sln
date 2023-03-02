@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLexer", "TestLexer\TestLexer.csproj", "{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.ScintillaLexers", "VPKSoft.ScintillaLexers\VPKSoft.ScintillaLexers.csproj", "{182FB840-C6F2-42D1-9C98-55F0E9FF572C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{961E8E38-5FDE-48A0-831D-9FA94719D64E}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-desktop.yml = .github\workflows\dotnet-desktop.yml
@@ -24,10 +22,6 @@ Global
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0B9D852-F1C1-41AF-BB29-3D4D968B4599}.Release|Any CPU.Build.0 = Release|Any CPU
-		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{182FB840-C6F2-42D1-9C98-55F0E9FF572C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD400ADB-0B46-4DAD-97F5-B2829691A809}.Release|Any CPU.ActiveCfg = Release|Any CPU
