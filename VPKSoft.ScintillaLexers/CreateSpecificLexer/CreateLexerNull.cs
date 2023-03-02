@@ -26,26 +26,25 @@ SOFTWARE.
 
 using ScintillaNET;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for plain text.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+class CreateLexerNull: CreateLexerCommon
 {
     /// <summary>
-    /// A class for plain text.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for a plain text file.
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    class CreateLexerNull: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateNullLexer(Scintilla scintilla)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for a plain text file.
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateNullLexer(Scintilla scintilla)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            scintilla.LexerName = "null";
-            return true;
-        }
+        scintilla.LexerName = "null";
+        return true;
     }
 }

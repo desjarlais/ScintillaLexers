@@ -28,86 +28,85 @@ using ScintillaNET;
 using VPKSoft.ScintillaLexers.HelperClasses;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+class CreateLexerCss: CreateLexerCommon
 {
-    class CreateLexerCss: CreateLexerCommon
+    /// <summary>
+    /// Creates the lexer for a given Scintilla class instance for the Cascading Style Sheets (CSS).
+    /// </summary>
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateCssLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the Cascading Style Sheets (CSS).
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateCssLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // DEFAULT, fontStyle = 0, styleId = 0
-            scintilla.Styles[Style.Css.Default].ForeColor = lexerColors[LexerType.Css, "DefaultFore"];
-            scintilla.Styles[Style.Css.Default].BackColor = lexerColors[LexerType.Css, "DefaultFore"];
+        // DEFAULT, fontStyle = 0, styleId = 0
+        scintilla.Styles[Style.Css.Default].ForeColor = lexerColors[LexerType.Css, "DefaultFore"];
+        scintilla.Styles[Style.Css.Default].BackColor = lexerColors[LexerType.Css, "DefaultFore"];
 
-            // TAG, fontStyle = 0, styleId = 1
-            scintilla.Styles[Style.Css.Tag].ForeColor = lexerColors[LexerType.Css, "TagFore"];
-            scintilla.Styles[Style.Css.Tag].BackColor = lexerColors[LexerType.Css, "TagBack"];
+        // TAG, fontStyle = 0, styleId = 1
+        scintilla.Styles[Style.Css.Tag].ForeColor = lexerColors[LexerType.Css, "TagFore"];
+        scintilla.Styles[Style.Css.Tag].BackColor = lexerColors[LexerType.Css, "TagBack"];
 
-            // CLASS, fontStyle = 0, styleId = 2
-            scintilla.Styles[Style.Css.Class].ForeColor = lexerColors[LexerType.Css, "ClassFore"];
-            scintilla.Styles[Style.Css.Class].BackColor = lexerColors[LexerType.Css, "ClassBack"];
+        // CLASS, fontStyle = 0, styleId = 2
+        scintilla.Styles[Style.Css.Class].ForeColor = lexerColors[LexerType.Css, "ClassFore"];
+        scintilla.Styles[Style.Css.Class].BackColor = lexerColors[LexerType.Css, "ClassBack"];
 
-            // PSEUDOCLASS, fontStyle = 1, styleId = 3
-            scintilla.Styles[Style.Css.PseudoClass].Bold = true;
-            scintilla.Styles[Style.Css.PseudoClass].ForeColor = lexerColors[LexerType.Css, "PseudoClassFore"];
-            scintilla.Styles[Style.Css.PseudoClass].BackColor = lexerColors[LexerType.Css, "PseudoClassBack"];
+        // PSEUDOCLASS, fontStyle = 1, styleId = 3
+        scintilla.Styles[Style.Css.PseudoClass].Bold = true;
+        scintilla.Styles[Style.Css.PseudoClass].ForeColor = lexerColors[LexerType.Css, "PseudoClassFore"];
+        scintilla.Styles[Style.Css.PseudoClass].BackColor = lexerColors[LexerType.Css, "PseudoClassBack"];
 
-            // UNKNOWN_PSEUDOCLASS, fontStyle = 0, styleId = 4
-            scintilla.Styles[Style.Css.UnknownPseudoClass].ForeColor = lexerColors[LexerType.Css, "UnknownPseudoClassFore"];
-            scintilla.Styles[Style.Css.UnknownPseudoClass].BackColor = lexerColors[LexerType.Css, "UnknownPseudoClassBack"];
+        // UNKNOWN_PSEUDOCLASS, fontStyle = 0, styleId = 4
+        scintilla.Styles[Style.Css.UnknownPseudoClass].ForeColor = lexerColors[LexerType.Css, "UnknownPseudoClassFore"];
+        scintilla.Styles[Style.Css.UnknownPseudoClass].BackColor = lexerColors[LexerType.Css, "UnknownPseudoClassBack"];
 
-            // OPERATOR, fontStyle = 1, styleId = 5
-            scintilla.Styles[Style.Css.Operator].Bold = true;
-            scintilla.Styles[Style.Css.Operator].ForeColor = lexerColors[LexerType.Css, "OperatorFore"];
-            scintilla.Styles[Style.Css.Operator].BackColor = lexerColors[LexerType.Css, "OperatorBack"];
+        // OPERATOR, fontStyle = 1, styleId = 5
+        scintilla.Styles[Style.Css.Operator].Bold = true;
+        scintilla.Styles[Style.Css.Operator].ForeColor = lexerColors[LexerType.Css, "OperatorFore"];
+        scintilla.Styles[Style.Css.Operator].BackColor = lexerColors[LexerType.Css, "OperatorBack"];
 
-            // IDENTIFIER, fontStyle = 1, styleId = 6
-            scintilla.Styles[Style.Css.Identifier].Bold = true;
-            scintilla.Styles[Style.Css.Identifier].ForeColor = lexerColors[LexerType.Css, "IdentifierFore"];
-            scintilla.Styles[Style.Css.Identifier].BackColor = lexerColors[LexerType.Css, "IdentifierBack"];
+        // IDENTIFIER, fontStyle = 1, styleId = 6
+        scintilla.Styles[Style.Css.Identifier].Bold = true;
+        scintilla.Styles[Style.Css.Identifier].ForeColor = lexerColors[LexerType.Css, "IdentifierFore"];
+        scintilla.Styles[Style.Css.Identifier].BackColor = lexerColors[LexerType.Css, "IdentifierBack"];
 
-            // UNKNOWN_IDENTIFIER, fontStyle = 0, styleId = 7
-            scintilla.Styles[Style.Css.UnknownIdentifier].ForeColor = lexerColors[LexerType.Css, "UnknownIdentifierFore"];
-            scintilla.Styles[Style.Css.UnknownIdentifier].BackColor = lexerColors[LexerType.Css, "UnknownIdentifierBack"];
+        // UNKNOWN_IDENTIFIER, fontStyle = 0, styleId = 7
+        scintilla.Styles[Style.Css.UnknownIdentifier].ForeColor = lexerColors[LexerType.Css, "UnknownIdentifierFore"];
+        scintilla.Styles[Style.Css.UnknownIdentifier].BackColor = lexerColors[LexerType.Css, "UnknownIdentifierBack"];
 
-            // VALUE, fontStyle = 1, styleId = 8
-            scintilla.Styles[Style.Css.Value].Bold = true;
-            scintilla.Styles[Style.Css.Value].ForeColor = lexerColors[LexerType.Css, "ValueFore"];
-            scintilla.Styles[Style.Css.Value].BackColor = lexerColors[LexerType.Css, "ValueBack"];
+        // VALUE, fontStyle = 1, styleId = 8
+        scintilla.Styles[Style.Css.Value].Bold = true;
+        scintilla.Styles[Style.Css.Value].ForeColor = lexerColors[LexerType.Css, "ValueFore"];
+        scintilla.Styles[Style.Css.Value].BackColor = lexerColors[LexerType.Css, "ValueBack"];
 
-            // COMMENT, fontStyle = 0, styleId = 9
-            scintilla.Styles[Style.Css.Comment].ForeColor = lexerColors[LexerType.Css, "CommentFore"];
-            scintilla.Styles[Style.Css.Comment].BackColor = lexerColors[LexerType.Css, "CommentBack"];
+        // COMMENT, fontStyle = 0, styleId = 9
+        scintilla.Styles[Style.Css.Comment].ForeColor = lexerColors[LexerType.Css, "CommentFore"];
+        scintilla.Styles[Style.Css.Comment].BackColor = lexerColors[LexerType.Css, "CommentBack"];
 
-            // ID, fontStyle = 1, styleId = 10
-            scintilla.Styles[Style.Css.Id].Bold = true;
-            scintilla.Styles[Style.Css.Id].ForeColor = lexerColors[LexerType.Css, "IdFore"];
-            scintilla.Styles[Style.Css.Id].BackColor = lexerColors[LexerType.Css, "IdBack"];
+        // ID, fontStyle = 1, styleId = 10
+        scintilla.Styles[Style.Css.Id].Bold = true;
+        scintilla.Styles[Style.Css.Id].ForeColor = lexerColors[LexerType.Css, "IdFore"];
+        scintilla.Styles[Style.Css.Id].BackColor = lexerColors[LexerType.Css, "IdBack"];
 
-            // IMPORTANT, fontStyle = 1, styleId = 11
-            scintilla.Styles[Style.Css.Important].Bold = true;
-            scintilla.Styles[Style.Css.Important].ForeColor = lexerColors[LexerType.Css, "ImportantFore"];
-            scintilla.Styles[Style.Css.Important].BackColor = lexerColors[LexerType.Css, "ImportantBack"];
+        // IMPORTANT, fontStyle = 1, styleId = 11
+        scintilla.Styles[Style.Css.Important].Bold = true;
+        scintilla.Styles[Style.Css.Important].ForeColor = lexerColors[LexerType.Css, "ImportantFore"];
+        scintilla.Styles[Style.Css.Important].BackColor = lexerColors[LexerType.Css, "ImportantBack"];
 
-            // DIRECTIVE, fontStyle = 0, styleId = 12
-            scintilla.Styles[Style.Css.Directive].ForeColor = lexerColors[LexerType.Css, "DirectiveFore"];
-            scintilla.Styles[Style.Css.Directive].BackColor = lexerColors[LexerType.Css, "DirectiveBack"];
+        // DIRECTIVE, fontStyle = 0, styleId = 12
+        scintilla.Styles[Style.Css.Directive].ForeColor = lexerColors[LexerType.Css, "DirectiveFore"];
+        scintilla.Styles[Style.Css.Directive].BackColor = lexerColors[LexerType.Css, "DirectiveBack"];
 
 
-            scintilla.LexerName = "css";
+        scintilla.LexerName = "css";
 
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Css);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.Css);
 
-            AddFolding(scintilla);
+        AddFolding(scintilla);
 
-            return true;
-        }
+        return true;
     }
 }

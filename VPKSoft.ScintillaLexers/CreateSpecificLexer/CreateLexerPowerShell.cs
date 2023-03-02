@@ -29,118 +29,117 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the Windows PowerShell lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerPowerShell: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the Windows PowerShell lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the Windows PowerShell script language.
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerPowerShell: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreatePowerShellLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the Windows PowerShell script language.
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreatePowerShellLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // DEFAULT, fontStyle = 0, styleId = 0
-            scintilla.Styles[Style.PowerShell.Default].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "DefaultFore"];
-            scintilla.Styles[Style.PowerShell.Default].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "DefaultBack"];
+        // DEFAULT, fontStyle = 0, styleId = 0
+        scintilla.Styles[Style.PowerShell.Default].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "DefaultFore"];
+        scintilla.Styles[Style.PowerShell.Default].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "DefaultBack"];
 
-            // COMMENT, fontStyle = 0, styleId = 1
-            scintilla.Styles[Style.PowerShell.Comment].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentFore"];
-            scintilla.Styles[Style.PowerShell.Comment].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentBack"];
+        // COMMENT, fontStyle = 0, styleId = 1
+        scintilla.Styles[Style.PowerShell.Comment].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentFore"];
+        scintilla.Styles[Style.PowerShell.Comment].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentBack"];
 
-            // STRING, fontStyle = 0, styleId = 2
-            scintilla.Styles[Style.PowerShell.String].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "StringFore"];
-            scintilla.Styles[Style.PowerShell.String].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "StringBack"];
+        // STRING, fontStyle = 0, styleId = 2
+        scintilla.Styles[Style.PowerShell.String].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "StringFore"];
+        scintilla.Styles[Style.PowerShell.String].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "StringBack"];
 
-            // CHARACTER, fontStyle = 0, styleId = 3
-            scintilla.Styles[Style.PowerShell.Character].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "CharacterFore"];
-            scintilla.Styles[Style.PowerShell.Character].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "CharacterBack"];
+        // CHARACTER, fontStyle = 0, styleId = 3
+        scintilla.Styles[Style.PowerShell.Character].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "CharacterFore"];
+        scintilla.Styles[Style.PowerShell.Character].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "CharacterBack"];
 
-            // NUMBER, fontStyle = 0, styleId = 4
-            scintilla.Styles[Style.PowerShell.Number].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "NumberFore"];
-            scintilla.Styles[Style.PowerShell.Number].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "NumberBack"];
+        // NUMBER, fontStyle = 0, styleId = 4
+        scintilla.Styles[Style.PowerShell.Number].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "NumberFore"];
+        scintilla.Styles[Style.PowerShell.Number].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "NumberBack"];
 
-            // VARIABLE, fontStyle = 1, styleId = 5
-            scintilla.Styles[Style.PowerShell.Variable].Bold = true;
-            scintilla.Styles[Style.PowerShell.Variable].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "VariableFore"];
-            scintilla.Styles[Style.PowerShell.Variable].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "VariableBack"];
+        // VARIABLE, fontStyle = 1, styleId = 5
+        scintilla.Styles[Style.PowerShell.Variable].Bold = true;
+        scintilla.Styles[Style.PowerShell.Variable].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "VariableFore"];
+        scintilla.Styles[Style.PowerShell.Variable].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "VariableBack"];
 
-            // OPERATOR, fontStyle = 1, styleId = 6
-            scintilla.Styles[Style.PowerShell.Operator].Bold = true;
-            scintilla.Styles[Style.PowerShell.Operator].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "OperatorFore"];
-            scintilla.Styles[Style.PowerShell.Operator].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "OperatorBack"];
+        // OPERATOR, fontStyle = 1, styleId = 6
+        scintilla.Styles[Style.PowerShell.Operator].Bold = true;
+        scintilla.Styles[Style.PowerShell.Operator].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "OperatorFore"];
+        scintilla.Styles[Style.PowerShell.Operator].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "OperatorBack"];
 
-            // INSTRUCTION WORD, fontStyle = 1, styleId = 8
-            scintilla.Styles[Style.PowerShell.Keyword].Bold = true;
-            scintilla.Styles[Style.PowerShell.Keyword].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "InstructionWordFore"];
-            scintilla.Styles[Style.PowerShell.Keyword].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "InstructionWordBack"];
+        // INSTRUCTION WORD, fontStyle = 1, styleId = 8
+        scintilla.Styles[Style.PowerShell.Keyword].Bold = true;
+        scintilla.Styles[Style.PowerShell.Keyword].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "InstructionWordFore"];
+        scintilla.Styles[Style.PowerShell.Keyword].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "InstructionWordBack"];
 
-            // CMDLET, fontStyle = 0, styleId = 9
-            scintilla.Styles[Style.PowerShell.Cmdlet].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommandletFore"];
-            scintilla.Styles[Style.PowerShell.Cmdlet].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommandletBack"];
+        // CMDLET, fontStyle = 0, styleId = 9
+        scintilla.Styles[Style.PowerShell.Cmdlet].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommandletFore"];
+        scintilla.Styles[Style.PowerShell.Cmdlet].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommandletBack"];
 
-            // ALIAS, fontStyle = 0, styleId = 10
-            scintilla.Styles[Style.PowerShell.Alias].ForeColor = lexerColors[LexerType.WindowsPowerShell, "AliasFore"];
-            scintilla.Styles[Style.PowerShell.Alias].BackColor = lexerColors[LexerType.WindowsPowerShell, "AliasBack"];
+        // ALIAS, fontStyle = 0, styleId = 10
+        scintilla.Styles[Style.PowerShell.Alias].ForeColor = lexerColors[LexerType.WindowsPowerShell, "AliasFore"];
+        scintilla.Styles[Style.PowerShell.Alias].BackColor = lexerColors[LexerType.WindowsPowerShell, "AliasBack"];
 
-            // COMMENT STREAM, fontStyle = 0, styleId = 13
-            scintilla.Styles[Style.PowerShell.CommentStream].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentStreamFore"];
-            scintilla.Styles[Style.PowerShell.CommentStream].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentStreamBack"];
+        // COMMENT STREAM, fontStyle = 0, styleId = 13
+        scintilla.Styles[Style.PowerShell.CommentStream].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentStreamFore"];
+        scintilla.Styles[Style.PowerShell.CommentStream].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentStreamBack"];
 
-            // HERE STRING, fontStyle = 0, styleId = 14
-            scintilla.Styles[Style.PowerShell.HereString].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "HereStringFore"];
-            scintilla.Styles[Style.PowerShell.HereString].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "HereStringBack"];
+        // HERE STRING, fontStyle = 0, styleId = 14
+        scintilla.Styles[Style.PowerShell.HereString].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "HereStringFore"];
+        scintilla.Styles[Style.PowerShell.HereString].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "HereStringBack"];
 
-            // HERE CHARACTER, fontStyle = 0, styleId = 15
-            scintilla.Styles[Style.PowerShell.HereCharacter].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "HereCharacterFore"];
-            scintilla.Styles[Style.PowerShell.HereCharacter].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "HereCharacterBack"];
+        // HERE CHARACTER, fontStyle = 0, styleId = 15
+        scintilla.Styles[Style.PowerShell.HereCharacter].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "HereCharacterFore"];
+        scintilla.Styles[Style.PowerShell.HereCharacter].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "HereCharacterBack"];
 
-            // COMMENT DOC KEYWORD, fontStyle = 1, styleId = 16
-            scintilla.Styles[Style.PowerShell.CommentDocKeyword].Bold = true;
-            scintilla.Styles[Style.PowerShell.CommentDocKeyword].ForeColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordFore"];
-            scintilla.Styles[Style.PowerShell.CommentDocKeyword].BackColor =
-                lexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordBack"];
+        // COMMENT DOC KEYWORD, fontStyle = 1, styleId = 16
+        scintilla.Styles[Style.PowerShell.CommentDocKeyword].Bold = true;
+        scintilla.Styles[Style.PowerShell.CommentDocKeyword].ForeColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordFore"];
+        scintilla.Styles[Style.PowerShell.CommentDocKeyword].BackColor =
+            lexerColors[LexerType.WindowsPowerShell, "CommentDocKeywordBack"];
 
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.WindowsPowerShell);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.WindowsPowerShell);
 
-            scintilla.LexerName = "powershell";
+        scintilla.LexerName = "powershell";
 
-            AddFolding(scintilla);
+        AddFolding(scintilla);
 
-            return true;
-        }
+        return true;
     }
 }
