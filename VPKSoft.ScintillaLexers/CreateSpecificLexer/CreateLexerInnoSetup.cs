@@ -194,7 +194,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[InnoSetup.Asm].ForeColor = lexerColors[LexerType.InnoSetup, "ForeColorFore"];
             scintilla.Styles[InnoSetup.Asm].BackColor = lexerColors[LexerType.InnoSetup, "ForeColorBack"];
 
-            scintilla.Lexer = (Lexer)LexerTypeName.SCLEX_INNOSETUP;
+            scintilla.LexerName = "inno";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.InnoSetup);
 

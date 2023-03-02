@@ -123,7 +123,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Xml.Entity].ForeColor = lexerColors[LexerType.Xml, "EntityFore"];
             scintilla.Styles[Style.Xml.Entity].BackColor = lexerColors[LexerType.Xml, "EntityBack"];
 
-            scintilla.Lexer = Lexer.Xml;
+            scintilla.LexerName = "xml";
 
             // folding for a XML lexer..
             LexerFoldProperties.SetScintillaProperties(scintilla, LexerFoldProperties.XmlFolding);

@@ -136,7 +136,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.WindowsPowerShell);
 
-            scintilla.Lexer = Lexer.PowerShell;
+            scintilla.LexerName = "powershell";
 
             AddFolding(scintilla);
 

@@ -83,7 +83,8 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             scintilla.Styles[Style.Batch.Operator].Bold = true;
             scintilla.Styles[Style.Batch.Operator].ForeColor = lexerColors[LexerType.Batch, "OperatorFore"];
             scintilla.Styles[Style.Batch.Operator].BackColor = lexerColors[LexerType.Batch, "OperatorBack"];
-            scintilla.Lexer = Lexer.Batch;
+
+            scintilla.LexerName = "batch";
             
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Batch);
 

@@ -44,7 +44,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
         {
             ClearStyle(scintilla);
 
-            scintilla.Lexer = Lexer.Null;
+            scintilla.LexerName = "null";
             return true;
         }
     }

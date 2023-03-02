@@ -52,7 +52,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             SetPhpStyles(scintilla, lexerColors);
             SetHtmlStyles(scintilla, lexerColors);
 
-            scintilla.Lexer = Lexer.PhpScript;
+            scintilla.LexerName = "phpscript";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.PHP);
 

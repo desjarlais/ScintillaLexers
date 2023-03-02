@@ -53,7 +53,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             SetHtmlStyles(scintilla, lexerColors);
             SetPhpStyles(scintilla, lexerColors);
 
-            scintilla.Lexer = Lexer.Html;
+            scintilla.LexerName = "hypertext";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.HTML);
             

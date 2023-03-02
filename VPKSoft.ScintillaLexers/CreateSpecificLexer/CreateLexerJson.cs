@@ -108,7 +108,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
             // PARSING ERROR
             scintilla.Styles[Style.Json.LdKeyword].ForeColor = lexerColors[LexerType.Json, "JsonErrorFore"];
             scintilla.Styles[Style.Json.LdKeyword].BackColor = lexerColors[LexerType.Json, "JsonErrorBack"];
-            scintilla.Lexer = Lexer.Json;
+            scintilla.LexerName = "json";
 
             ScintillaKeyWords.SetKeywords(scintilla, LexerType.Json);
 
