@@ -49,16 +49,8 @@ public partial class FormMain : Form
     {
         if (odFile.ShowDialog() == DialogResult.OK)
         {                
-            scintilla.Text = File.ReadAllText(odFile.FileName);
-
-//                string fileName = @"C:\Program Files (x86)\Notepad++\themes\Black board.xml";
-            string fileName = @"C:\Program Files (x86)\Notepad++\stylers.model.xml";
-//                string fileName = @"C:\Program Files (x86)\Notepad++\themes\Hello Kitty.xml";
-
-//                JSonCustom();
-
-            //ScintillaLexers.CreateLexerFromFile(scintilla, odFile.FileName, fileName);
             ScintillaLexers.CreateLexer(scintilla, odFile.FileName);
+            scintilla.Text = File.ReadAllText(odFile.FileName);
         }
     }
 

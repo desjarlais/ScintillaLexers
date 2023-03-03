@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp3.1;net462;net5.0-windows;net6-windows;net7-windows</TargetFrameworks>
+		<TargetFrameworks>netcoreapp3.1;net462;net6-windows;net7-windows</TargetFrameworks>
 		<AssemblyTitle>VPKSoft.ScintillaLexers.NET</AssemblyTitle>
 		<Product>VPKSoft.ScintillaLexers.NET</Product>
 		<Copyright>Copyright © 2023 VPKSoft</Copyright>
@@ -26,44 +26,6 @@
 		<Reference Include="System.Data.DataSetExtensions" />
 		<Reference Include="Microsoft.CSharp" />
 		<Reference Include="System.Net.Http" />
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerBatch.cs" Link="CreateSpecificLexer\CreateLexerBatch.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerCommon.cs" Link="CreateSpecificLexer\CreateLexerCommon.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerCpp.cs" Link="CreateSpecificLexer\CreateLexerCpp.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerCs.cs" Link="CreateSpecificLexer\CreateLexerCs.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerCss.cs" Link="CreateSpecificLexer\CreateLexerCss.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerHtml.cs" Link="CreateSpecificLexer\CreateLexerHtml.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerIni.cs" Link="CreateSpecificLexer\CreateLexerIni.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerInnoSetup.cs" Link="CreateSpecificLexer\CreateLexerInnoSetup.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJava.cs" Link="CreateSpecificLexer\CreateLexerJava.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJavaScript.cs" Link="CreateSpecificLexer\CreateLexerJavaScript.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerJson.cs" Link="CreateSpecificLexer\CreateLexerJson.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerNsis.cs" Link="CreateSpecificLexer\CreateLexerNsis.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerNull.cs" Link="CreateSpecificLexer\CreateLexerNull.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerPascal.cs" Link="CreateSpecificLexer\CreateLexerPascal.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerPhp.cs" Link="CreateSpecificLexer\CreateLexerPhp.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerPowerShell.cs" Link="CreateSpecificLexer\CreateLexerPowerShell.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerPython.cs" Link="CreateSpecificLexer\CreateLexerPython.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerSql.cs" Link="CreateSpecificLexer\CreateLexerSql.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerVb.cs" Link="CreateSpecificLexer\CreateLexerVb.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerXml.cs" Link="CreateSpecificLexer\CreateLexerXml.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\CreateLexerYaml.cs" Link="CreateSpecificLexer\CreateLexerYaml.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\CreateSpecificLexer\LexerFoldProperties.cs" Link="CreateSpecificLexer\LexerFoldProperties.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\GlobalScintillaFont.cs" Link="GlobalScintillaFont.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\HelperClasses\LexerFileExtensions.cs" Link="HelperClasses\LexerFileExtensions.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\HelperClasses\LexerTypeName.cs" Link="HelperClasses\LexerTypeName.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\HelperClasses\ScintillaKeyWords.cs" Link="HelperClasses\ScintillaKeyWords.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\LexerColors\LexerColors.cs" Link="LexerColors\LexerColors.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\LexerEnumerations.cs" Link="LexerEnumerations.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\ScintillaLexers.cs" Link="ScintillaLexers.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\ScintillaNotepadPlusPlus\MarkColors.cs" Link="ScintillaNotepadPlusPlus\MarkColors.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\ScintillaNotepadPlusPlus\ScintillaNotepadPlusPlusStyles.cs" Link="ScintillaNotepadPlusPlus\ScintillaNotepadPlusPlusStyles.cs" />
-		<Compile Include="..\VPKSoft.ScintillaLexers\ScintillaNotepadPlusPlus\XmlStyleNotepadPlusPlusHelper.cs" Link="ScintillaNotepadPlusPlus\XmlStyleNotepadPlusPlusHelper.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="LexerColors\" />
-		<Folder Include="ScintillaNotepadPlusPlus\" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\vpksoft_logo.png">
