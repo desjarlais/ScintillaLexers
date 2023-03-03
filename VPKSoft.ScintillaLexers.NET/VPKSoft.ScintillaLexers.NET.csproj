@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp3.1;net45;net5.0-windows;net6-windows;net7-windows</TargetFrameworks>
+		<TargetFrameworks>netcoreapp3.1;net462;net5.0-windows;net6-windows;net7-windows</TargetFrameworks>
 		<AssemblyTitle>VPKSoft.ScintillaLexers.NET</AssemblyTitle>
 		<Product>VPKSoft.ScintillaLexers.NET</Product>
 		<Copyright>Copyright © 2023 VPKSoft</Copyright>
@@ -22,7 +22,7 @@
 		<RootNamespace>VPKSoft.ScintillaLexers</RootNamespace>
 		<LangVersion>Latest</LangVersion>
 	</PropertyGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
 		<Reference Include="System.Data.DataSetExtensions" />
 		<Reference Include="Microsoft.CSharp" />
 		<Reference Include="System.Net.Http" />
