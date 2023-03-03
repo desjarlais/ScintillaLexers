@@ -29,37 +29,36 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the PHP lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerPhp: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the PHP lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the PHP programming language.
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerPhp: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreatePhpLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the PHP programming language.
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreatePhpLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            //..therefore the weird logic.. (which might malfunction)..
-            SetPhpStyles(scintilla, lexerColors);
-            SetHtmlStyles(scintilla, lexerColors);
+        //..therefore the weird logic.. (which might malfunction)..
+        SetPhpStyles(scintilla, lexerColors);
+        SetHtmlStyles(scintilla, lexerColors);
 
-            scintilla.Lexer = Lexer.PhpScript;
+        scintilla.LexerName = "phpscript";
 
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.PHP);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.PHP);
 
-            SetScriptedHtml(LexerType.PHP, scintilla, lexerColors);
+        SetScriptedHtml(LexerType.PHP, scintilla, lexerColors);
 
-            AddFolding(scintilla);
-            return true;
-        }
+        AddFolding(scintilla);
+        return true;
     }
 }

@@ -28,52 +28,51 @@ using ScintillaNET;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the INI lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerIni: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the INI lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the INI (properties file).
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerIni: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateIniLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the INI (properties file).
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateIniLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // DEFAULT, fontStyle = 0, styleId = 0
-            scintilla.Styles[Style.Properties.Default].ForeColor = lexerColors[LexerType.INI, "DefaultFore"];
-            scintilla.Styles[Style.Properties.Default].BackColor = lexerColors[LexerType.INI, "DefaultBack"];
+        // DEFAULT, fontStyle = 0, styleId = 0
+        scintilla.Styles[Style.Properties.Default].ForeColor = lexerColors[LexerType.INI, "DefaultFore"];
+        scintilla.Styles[Style.Properties.Default].BackColor = lexerColors[LexerType.INI, "DefaultBack"];
 
-            // COMMENT, fontStyle = 0, styleId = 1
-            scintilla.Styles[Style.Properties.Comment].ForeColor = lexerColors[LexerType.INI, "CommentFore"];
-            scintilla.Styles[Style.Properties.Comment].BackColor = lexerColors[LexerType.INI, "CommentBack"];
+        // COMMENT, fontStyle = 0, styleId = 1
+        scintilla.Styles[Style.Properties.Comment].ForeColor = lexerColors[LexerType.INI, "CommentFore"];
+        scintilla.Styles[Style.Properties.Comment].BackColor = lexerColors[LexerType.INI, "CommentBack"];
 
-            // SECTION, fontStyle = 1, styleId = 2
-            scintilla.Styles[Style.Properties.Section].Bold = true;
-            scintilla.Styles[Style.Properties.Section].ForeColor = lexerColors[LexerType.INI, "SectionFore"];
-            scintilla.Styles[Style.Properties.Section].BackColor = lexerColors[LexerType.INI, "SectionBack"];
+        // SECTION, fontStyle = 1, styleId = 2
+        scintilla.Styles[Style.Properties.Section].Bold = true;
+        scintilla.Styles[Style.Properties.Section].ForeColor = lexerColors[LexerType.INI, "SectionFore"];
+        scintilla.Styles[Style.Properties.Section].BackColor = lexerColors[LexerType.INI, "SectionBack"];
 
-            // ASSIGNMENT, fontStyle = 1, styleId = 3
-            scintilla.Styles[Style.Properties.Assignment].Bold = true;
-            scintilla.Styles[Style.Properties.Assignment].ForeColor = lexerColors[LexerType.INI, "AssignmentFore"];
-            scintilla.Styles[Style.Properties.Assignment].BackColor = lexerColors[LexerType.INI, "AssignmentBack"];
+        // ASSIGNMENT, fontStyle = 1, styleId = 3
+        scintilla.Styles[Style.Properties.Assignment].Bold = true;
+        scintilla.Styles[Style.Properties.Assignment].ForeColor = lexerColors[LexerType.INI, "AssignmentFore"];
+        scintilla.Styles[Style.Properties.Assignment].BackColor = lexerColors[LexerType.INI, "AssignmentBack"];
 
-            // DEFVAL, fontStyle = 0, styleId = 4
-            scintilla.Styles[Style.Properties.DefVal].ForeColor = lexerColors[LexerType.INI, "DefValFore"];
-            scintilla.Styles[Style.Properties.DefVal].BackColor = lexerColors[LexerType.INI, "DefValBack"];
+        // DEFVAL, fontStyle = 0, styleId = 4
+        scintilla.Styles[Style.Properties.DefVal].ForeColor = lexerColors[LexerType.INI, "DefValFore"];
+        scintilla.Styles[Style.Properties.DefVal].BackColor = lexerColors[LexerType.INI, "DefValBack"];
 
-            scintilla.Lexer = Lexer.Properties;
+        scintilla.LexerName = "props";
 
-            AddFolding(scintilla);
+        AddFolding(scintilla);
 
-            return true;
-        }
+        return true;
     }
 }

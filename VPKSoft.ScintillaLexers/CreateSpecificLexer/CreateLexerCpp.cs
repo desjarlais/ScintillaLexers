@@ -29,116 +29,115 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the C++ lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+public class CreateLexerCpp: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the C++ lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the C++ programming language.
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    public class CreateLexerCpp: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateCppLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the C++ programming language.
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateCppLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            ClearStyle(scintilla);
+        ClearStyle(scintilla);
 
-            // PREPROCESSOR, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Preprocessor].ForeColor = lexerColors[LexerType.Cpp, "PreprocessorFore"];
-            scintilla.Styles[Style.Cpp.Preprocessor].BackColor = lexerColors[LexerType.Cpp, "PreprocessorBack"];
+        // PREPROCESSOR, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Preprocessor].ForeColor = lexerColors[LexerType.Cpp, "PreprocessorFore"];
+        scintilla.Styles[Style.Cpp.Preprocessor].BackColor = lexerColors[LexerType.Cpp, "PreprocessorBack"];
 
-            // DEFAULT, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Default].ForeColor = lexerColors[LexerType.Cpp, "DefaultFore"];
-            scintilla.Styles[Style.Cpp.Default].BackColor = lexerColors[LexerType.Cpp, "DefaultBack"];
+        // DEFAULT, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Default].ForeColor = lexerColors[LexerType.Cpp, "DefaultFore"];
+        scintilla.Styles[Style.Cpp.Default].BackColor = lexerColors[LexerType.Cpp, "DefaultBack"];
 
-            // INSTRUCTION WORD, fontStyle = 1 
-            scintilla.Styles[Style.Cpp.Word].Bold = true;
-            scintilla.Styles[Style.Cpp.Word].ForeColor = lexerColors[LexerType.Cpp, "WordFore"];
-            scintilla.Styles[Style.Cpp.Word].BackColor = lexerColors[LexerType.Cpp, "WordBack"];
+        // INSTRUCTION WORD, fontStyle = 1 
+        scintilla.Styles[Style.Cpp.Word].Bold = true;
+        scintilla.Styles[Style.Cpp.Word].ForeColor = lexerColors[LexerType.Cpp, "WordFore"];
+        scintilla.Styles[Style.Cpp.Word].BackColor = lexerColors[LexerType.Cpp, "WordBack"];
 
-            // TYPE WORD, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Word2].ForeColor = lexerColors[LexerType.Cpp, "Word2Fore"];
-            scintilla.Styles[Style.Cpp.Word2].BackColor = lexerColors[LexerType.Cpp, "Word2Back"];
+        // TYPE WORD, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Word2].ForeColor = lexerColors[LexerType.Cpp, "Word2Fore"];
+        scintilla.Styles[Style.Cpp.Word2].BackColor = lexerColors[LexerType.Cpp, "Word2Back"];
 
-            // NUMBER, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Number].ForeColor = lexerColors[LexerType.Cpp, "NumberFore"];
-            scintilla.Styles[Style.Cpp.Number].BackColor = lexerColors[LexerType.Cpp, "NumberBack"];
+        // NUMBER, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Number].ForeColor = lexerColors[LexerType.Cpp, "NumberFore"];
+        scintilla.Styles[Style.Cpp.Number].BackColor = lexerColors[LexerType.Cpp, "NumberBack"];
 
-            // STRING, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.String].ForeColor = lexerColors[LexerType.Cpp, "StringFore"];
-            scintilla.Styles[Style.Cpp.String].BackColor = lexerColors[LexerType.Cpp, "StringBack"];
+        // STRING, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.String].ForeColor = lexerColors[LexerType.Cpp, "StringFore"];
+        scintilla.Styles[Style.Cpp.String].BackColor = lexerColors[LexerType.Cpp, "StringBack"];
 
-            // CHARACTER, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Character].ForeColor = lexerColors[LexerType.Cpp, "CharacterFore"];
-            scintilla.Styles[Style.Cpp.Character].BackColor = lexerColors[LexerType.Cpp, "CharacterBack"];
+        // CHARACTER, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Character].ForeColor = lexerColors[LexerType.Cpp, "CharacterFore"];
+        scintilla.Styles[Style.Cpp.Character].BackColor = lexerColors[LexerType.Cpp, "CharacterBack"];
 
-            // OPERATOR, fontStyle = 1 
-            scintilla.Styles[Style.Cpp.Operator].Bold = true;
-            scintilla.Styles[Style.Cpp.Operator].ForeColor = lexerColors[LexerType.Cpp, "OperatorFore"];
-            scintilla.Styles[Style.Cpp.Operator].BackColor = lexerColors[LexerType.Cpp, "OperatorBack"];
+        // OPERATOR, fontStyle = 1 
+        scintilla.Styles[Style.Cpp.Operator].Bold = true;
+        scintilla.Styles[Style.Cpp.Operator].ForeColor = lexerColors[LexerType.Cpp, "OperatorFore"];
+        scintilla.Styles[Style.Cpp.Operator].BackColor = lexerColors[LexerType.Cpp, "OperatorBack"];
 
-            // VERBATIM, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Verbatim].ForeColor = lexerColors[LexerType.Cpp, "VerbatimFore"];
-            scintilla.Styles[Style.Cpp.Verbatim].BackColor = lexerColors[LexerType.Cpp, "VerbatimBack"];
+        // VERBATIM, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Verbatim].ForeColor = lexerColors[LexerType.Cpp, "VerbatimFore"];
+        scintilla.Styles[Style.Cpp.Verbatim].BackColor = lexerColors[LexerType.Cpp, "VerbatimBack"];
 
-            // REGEX, fontStyle = 1 
-            scintilla.Styles[Style.Cpp.Regex].Bold = true;
-            scintilla.Styles[Style.Cpp.Regex].ForeColor = lexerColors[LexerType.Cpp, "RegexFore"];
-            scintilla.Styles[Style.Cpp.Regex].BackColor = lexerColors[LexerType.Cpp, "RegexBack"];
+        // REGEX, fontStyle = 1 
+        scintilla.Styles[Style.Cpp.Regex].Bold = true;
+        scintilla.Styles[Style.Cpp.Regex].ForeColor = lexerColors[LexerType.Cpp, "RegexFore"];
+        scintilla.Styles[Style.Cpp.Regex].BackColor = lexerColors[LexerType.Cpp, "RegexBack"];
 
-            // COMMENT, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.Comment].ForeColor = lexerColors[LexerType.Cpp, "CommentFore"];
-            scintilla.Styles[Style.Cpp.Comment].BackColor = lexerColors[LexerType.Cpp, "CommentBack"];
+        // COMMENT, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.Comment].ForeColor = lexerColors[LexerType.Cpp, "CommentFore"];
+        scintilla.Styles[Style.Cpp.Comment].BackColor = lexerColors[LexerType.Cpp, "CommentBack"];
 
-            // COMMENT LINE, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.CommentLine].ForeColor = lexerColors[LexerType.Cpp, "CommentLineFore"];
-            scintilla.Styles[Style.Cpp.CommentLine].BackColor = lexerColors[LexerType.Cpp, "CommentLineBack"];
+        // COMMENT LINE, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.CommentLine].ForeColor = lexerColors[LexerType.Cpp, "CommentLineFore"];
+        scintilla.Styles[Style.Cpp.CommentLine].BackColor = lexerColors[LexerType.Cpp, "CommentLineBack"];
 
-            // COMMENT DOC, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.CommentDoc].ForeColor = lexerColors[LexerType.Cpp, "CommentDocFore"];
-            scintilla.Styles[Style.Cpp.CommentDoc].BackColor = lexerColors[LexerType.Cpp, "CommentDocBack"];
+        // COMMENT DOC, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.CommentDoc].ForeColor = lexerColors[LexerType.Cpp, "CommentDocFore"];
+        scintilla.Styles[Style.Cpp.CommentDoc].BackColor = lexerColors[LexerType.Cpp, "CommentDocBack"];
 
-            // COMMENT LINE DOC, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.CommentLineDoc].ForeColor = lexerColors[LexerType.Cpp, "CommentLineDocFore"];
-            scintilla.Styles[Style.Cpp.CommentLineDoc].BackColor = lexerColors[LexerType.Cpp, "CommentLineDocBack"];
+        // COMMENT LINE DOC, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.CommentLineDoc].ForeColor = lexerColors[LexerType.Cpp, "CommentLineDocFore"];
+        scintilla.Styles[Style.Cpp.CommentLineDoc].BackColor = lexerColors[LexerType.Cpp, "CommentLineDocBack"];
 
-            // COMMENT DOC KEYWORD, fontStyle = 1 
-            scintilla.Styles[Style.Cpp.CommentDocKeyword].Bold = true;
-            scintilla.Styles[Style.Cpp.CommentDocKeyword].ForeColor =
-                lexerColors[LexerType.Cpp, "CommentDocKeywordFore"];
-            scintilla.Styles[Style.Cpp.CommentDocKeyword].BackColor =
-                lexerColors[LexerType.Cpp, "CommentDocKeywordBack"];
+        // COMMENT DOC KEYWORD, fontStyle = 1 
+        scintilla.Styles[Style.Cpp.CommentDocKeyword].Bold = true;
+        scintilla.Styles[Style.Cpp.CommentDocKeyword].ForeColor =
+            lexerColors[LexerType.Cpp, "CommentDocKeywordFore"];
+        scintilla.Styles[Style.Cpp.CommentDocKeyword].BackColor =
+            lexerColors[LexerType.Cpp, "CommentDocKeywordBack"];
 
-            // COMMENT DOC KEYWORD ERROR, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.CommentDocKeywordError].ForeColor =
-                lexerColors[LexerType.Cpp, "CommentDocKeywordErrorFore"];
-            scintilla.Styles[Style.Cpp.CommentDocKeywordError].BackColor =
-                lexerColors[LexerType.Cpp, "CommentDocKeywordErrorBack"];
+        // COMMENT DOC KEYWORD ERROR, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.CommentDocKeywordError].ForeColor =
+            lexerColors[LexerType.Cpp, "CommentDocKeywordErrorFore"];
+        scintilla.Styles[Style.Cpp.CommentDocKeywordError].BackColor =
+            lexerColors[LexerType.Cpp, "CommentDocKeywordErrorBack"];
 
-            // PREPROCESSOR COMMENT, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.PreprocessorComment].ForeColor =
-                lexerColors[LexerType.Cpp, "PreprocessorCommentFore"];
-            scintilla.Styles[Style.Cpp.PreprocessorComment].BackColor =
-                lexerColors[LexerType.Cpp, "PreprocessorCommentBack"];
+        // PREPROCESSOR COMMENT, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.PreprocessorComment].ForeColor =
+            lexerColors[LexerType.Cpp, "PreprocessorCommentFore"];
+        scintilla.Styles[Style.Cpp.PreprocessorComment].BackColor =
+            lexerColors[LexerType.Cpp, "PreprocessorCommentBack"];
 
-            // PREPROCESSOR COMMENT DOC, fontStyle = 0 
-            scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].ForeColor =
-                lexerColors[LexerType.Cpp, "PreprocessorCommentDocFore"];
-            scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].BackColor =
-                lexerColors[LexerType.Cpp, "PreprocessorCommentDocBack"];
+        // PREPROCESSOR COMMENT DOC, fontStyle = 0 
+        scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].ForeColor =
+            lexerColors[LexerType.Cpp, "PreprocessorCommentDocFore"];
+        scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].BackColor =
+            lexerColors[LexerType.Cpp, "PreprocessorCommentDocBack"];
 
-            scintilla.Lexer = Lexer.Cpp;
+        scintilla.LexerName = "cpp";
 
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cpp);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cpp);
 
-            AddFolding(scintilla);
+        AddFolding(scintilla);
 
-            return true;
-        }
+        return true;
     }
 }

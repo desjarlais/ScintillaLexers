@@ -29,38 +29,37 @@ using VPKSoft.ScintillaLexers.HelperClasses;
 using VPKSoft.ScintillaLexers.LexerColors;
 using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer
+namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+
+/// <summary>
+/// A class for the HTML lexer.
+/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// </summary>
+/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+class CreateLexerHtml: CreateLexerCommon
 {
     /// <summary>
-    /// A class for the HTML lexer.
-    /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+    /// Creates the lexer for a given Scintilla class instance for the HTML (Hypertext Markup Language).
     /// </summary>
-    /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-    class CreateLexerHtml: CreateLexerCommon
+    /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
+    /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
+    /// <returns>True if the operation was successful; otherwise false.</returns>
+    public static bool CreateHtmlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
     {
-        /// <summary>
-        /// Creates the lexer for a given Scintilla class instance for the HTML (Hypertext Markup Language).
-        /// </summary>
-        /// <param name="scintilla">A Scintilla class instance to set the lexer style for.</param>
-        /// <param name="lexerColors">A <see cref="LexerColors"/> class instance for the lexer coloring.</param>
-        /// <returns>True if the operation was successful; otherwise false.</returns>
-        public static bool CreateHtmlLexer(Scintilla scintilla, LexerColors.LexerColors lexerColors)
-        {
-            // HTML should be simple but the embedded scripts make it hard for lexical "analysis"..
-            ClearStyle(scintilla);
+        // HTML should be simple but the embedded scripts make it hard for lexical "analysis"..
+        ClearStyle(scintilla);
 
-            //..therefore the weird logic.. (which might malfunction)..
-            SetHtmlStyles(scintilla, lexerColors);
-            SetPhpStyles(scintilla, lexerColors);
+        //..therefore the weird logic.. (which might malfunction)..
+        SetHtmlStyles(scintilla, lexerColors);
+        SetPhpStyles(scintilla, lexerColors);
 
-            scintilla.Lexer = Lexer.Html;
+        scintilla.LexerName = "hypertext";
 
-            ScintillaKeyWords.SetKeywords(scintilla, LexerType.HTML);
+        ScintillaKeyWords.SetKeywords(scintilla, LexerType.HTML);
             
-            SetScriptedHtml(LexerType.HTML, scintilla, lexerColors);
+        SetScriptedHtml(LexerType.HTML, scintilla, lexerColors);
 
-            AddFolding(scintilla);
-            return true;
-        }
+        AddFolding(scintilla);
+        return true;
     }
 }
