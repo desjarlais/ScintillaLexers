@@ -145,6 +145,11 @@ public class LexerColors
                 return jsonColors;
             }
 
+            if (lexerType == LexerType.ErrorList)
+            {
+                return errorListColors;
+            }
+            
             return new List<Tuple<Color, string, bool>>();
         }
 
@@ -302,6 +307,14 @@ public class LexerColors
                 }
                 jsonColors = value;
             }
+            else if (lexerType == LexerType.ErrorList)
+            {
+                if (value == null || value.Count != errorListColors.Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+                errorListColors = value;
+            }
         }
     }
 
@@ -359,7 +372,7 @@ public class LexerColors
     }
 
     #region InternalColorList
-    private List<Tuple<Color, string, bool>> cppColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> cppColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
@@ -396,10 +409,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 128, 0), "PREPROCESSOR COMMENT", true), // #008000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 128, 128), "PREPROCESSOR COMMENT DOC", true), // #008080 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> nsisColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> nsisColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -438,10 +451,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 0, 255), "FUNCTION DEFINITIONS", true), // #0000FF 
         Tuple.Create(Color.FromArgb(255, 255, 255), "FUNCTION DEFINITIONS", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> innoSetupColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> innoSetupColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(128, 128, 128), "DEFAULT", true), // #808080 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -470,10 +483,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
         Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 0, 0), "ASM", true), // #000000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> csColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> csColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR", false), // #FFFFFF 
@@ -510,10 +523,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 128, 0), "PREPROCESSOR COMMENT", true), // #008000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 128, 128), "PREPROCESSOR COMMENT DOC", true), // #008080 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "PREPROCESSOR COMMENT DOC", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> xmlColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> xmlColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(255, 0, 0), "XMLSTART", true), // #FF0000 
         Tuple.Create(Color.FromArgb(255, 255, 0), "XMLSTART", false), // #FFFF00 
@@ -544,10 +557,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(255, 128, 0), "CDATA", true), // #FF8000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "CDATA", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 0, 0), "ENTITY", true), // #000000 
-        Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false) // #FEFDE0 
+        Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false), // #FEFDE0 
     });
 
-    private List<Tuple<Color, string, bool>> sqlColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> sqlColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 255), "KEYWORD", true), // #0000FF 
         Tuple.Create(Color.FromArgb(255, 255, 255), "KEYWORD", false), // #FFFFFF 
@@ -562,10 +575,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT", true), // #008000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENT LINE", true), // #008000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT LINE", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> batchColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> batchColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -582,10 +595,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(255, 128, 0), "VARIABLE", true), // #FF8000 
         Tuple.Create(Color.FromArgb(252, 255, 240), "VARIABLE", false), // #FCFFF0 
         Tuple.Create(Color.FromArgb(255, 0, 0), "OPERATOR", true), // #FF0000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> pascalColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> pascalColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(128, 128, 128), "DEFAULT", true), // #808080 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -614,10 +627,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
         Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 0, 0), "ASM", true), // #000000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "ASM", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> phpColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> phpColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(255, 0, 0), "QUESTION MARK", true), // #FF0000 
         Tuple.Create(Color.FromArgb(253, 248, 227), "QUESTION MARK", false), // #FDF8E3 
@@ -640,10 +653,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTLINE", true), // #008000 
         Tuple.Create(Color.FromArgb(254, 252, 245), "COMMENTLINE", false), // #FEFCF5 
         Tuple.Create(Color.FromArgb(128, 0, 255), "OPERATOR", true), // #8000FF 
-        Tuple.Create(Color.FromArgb(254, 252, 245), "OPERATOR", false) // #FEFCF5 
+        Tuple.Create(Color.FromArgb(254, 252, 245), "OPERATOR", false), // #FEFCF5 
     });
 
-    private List<Tuple<Color, string, bool>> htmlColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> htmlColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -672,10 +685,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(255, 128, 0), "VALUE", true), // #FF8000 
         Tuple.Create(Color.FromArgb(254, 253, 224), "VALUE", false), // #FEFDE0 
         Tuple.Create(Color.FromArgb(0, 0, 0), "ENTITY", true), // #000000 
-        Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false) // #FEFDE0 
+        Tuple.Create(Color.FromArgb(254, 253, 224), "ENTITY", false), // #FEFDE0 
     });
 
-    private List<Tuple<Color, string, bool>> powerShellColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> powerShellColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -704,11 +717,11 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(128, 128, 128), "HERE CHARACTER", true), // #808080 
         Tuple.Create(Color.FromArgb(255, 255, 255), "HERE CHARACTER", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
     });
 
 
-    private List<Tuple<Color, string, bool>> iniColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> iniColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -719,10 +732,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(255, 0, 0), "ASSIGNMENT", true), // #FF0000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "ASSIGNMENT", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(255, 0, 0), "DEFVAL", true), // #FF0000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "DEFVAL", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "DEFVAL", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> pythonColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> pythonColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -751,10 +764,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 128, 0), "COMMENTBLOCK", true), // #008000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENTBLOCK", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(255, 128, 0), "DECORATOR", true), // #FF8000 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "DECORATOR", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "DECORATOR", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> yamlColors = new List<Tuple<Color, string, bool>>(new[]
+    private List<Tuple<Color, string, bool>> yamlColors = new(new[]
     {
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -775,10 +788,10 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(255, 0, 0), "ERROR", true), // #FF0000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "ERROR", false), // #FFFFFF 
         Tuple.Create(Color.FromArgb(0, 0, 128), "OPERATOR", true), // #000080 
-        Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false) // #FFFFFF 
+        Tuple.Create(Color.FromArgb(255, 255, 255), "OPERATOR", false), // #FFFFFF 
     });
 
-    private List<Tuple<Color, string, bool>> javaColors = new List<Tuple<Color, string, bool>>(
+    private List<Tuple<Color, string, bool>> javaColors = new(
         new[]
         {
             Tuple.Create(Color.FromArgb(128, 64, 0), "PREPROCESSOR", true), // #804000 
@@ -812,10 +825,10 @@ public class LexerColors
             Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
             Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
-            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false) // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false), // #FFFFFF 
         });
 
-    private List<Tuple<Color, string, bool>> javascriptColors = new List<Tuple<Color, string, bool>>(
+    private List<Tuple<Color, string, bool>> javascriptColors = new(
         new[]
         {
             Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
@@ -851,10 +864,10 @@ public class LexerColors
             Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD", true), // #008080 
             Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(0, 128, 128), "COMMENT DOC KEYWORD ERROR", true), // #008080 
-            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false) // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "COMMENT DOC KEYWORD ERROR", false), // #FFFFFF 
         });
 
-    private List<Tuple<Color, string, bool>> cssColors = new List<Tuple<Color, string, bool>>(
+    private List<Tuple<Color, string, bool>> cssColors = new(
         new[]
         {
             Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
@@ -882,10 +895,10 @@ public class LexerColors
             Tuple.Create(Color.FromArgb(255, 0, 0), "IMPORTANT", true), // #FF0000 
             Tuple.Create(Color.FromArgb(255, 255, 255), "IMPORTANT", false), // #FFFFFF 
             Tuple.Create(Color.FromArgb(0, 128, 255), "DIRECTIVE", true), // #0080FF 
-            Tuple.Create(Color.FromArgb(255, 255, 255), "DIRECTIVE", false) // #FFFFFF 
+            Tuple.Create(Color.FromArgb(255, 255, 255), "DIRECTIVE", false), // #FFFFFF 
         });
 
-    private List<Tuple<Color, string, bool>> vbDotNetColors = new List<Tuple<Color, string, bool>>(
+    private List<Tuple<Color, string, bool>> vbDotNetColors = new(
         new[]
         {
             Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
@@ -908,7 +921,7 @@ public class LexerColors
             Tuple.Create(Color.FromArgb(255, 255, 255), "DATE", false), // #FFFFFF 
         });
 
-    List<Tuple<Color, string, bool>> jsonColors = new List<Tuple<Color, string, bool>>(new Tuple<Color, string, bool>[] 
+    List<Tuple<Color, string, bool>> jsonColors = new(new[] 
     { 
         Tuple.Create(Color.FromArgb(0, 0, 0), "DEFAULT", true), // #000000 
         Tuple.Create(Color.FromArgb(255, 255, 255), "DEFAULT", false), // #FFFFFF 
@@ -939,12 +952,101 @@ public class LexerColors
         Tuple.Create(Color.FromArgb(0, 0x8B, 0x8B), "PARSING ERROR", true), // #000000 
         Tuple.Create(Color.FromArgb(0xFF, 0X45, 255), "PARSING ERROR", false), // #FFFFFF 
     });
+
+    private List<Tuple<Color, string, bool>> errorListColors = new(new[]
+    {
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "DEFAULT", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "DEFAULT", false),
+        Tuple.Create(Color.FromArgb(0xff, 0x00, 0x00), "PYTHON ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "PYTHON ERROR", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x80), "GCC ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "GCC ERROR", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x80, 0x00), "MICROSOFT ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "MICROSOFT ERROR", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0xFF), "COMMAND OR RETURN STATUS", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "COMMAND OR RETURN STATUS", false),
+        Tuple.Create(Color.FromArgb(0xB0, 0x60, 0x00), "BORLAND ERROR AND WARNING MESSAGES", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "BORLAND ERROR AND WARNING MESSAGES", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "PERL ERROR AND WARNING MESSAGES", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "PERL ERROR AND WARNING MESSAGES", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "NET TRACEBACKS", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "NET TRACEBACKS", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "LUA ERROR AND WARNING MESSAGES", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "LUA ERROR AND WARNING MESSAGES", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0xFF), "CTAGS", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "CTAGS", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x7F, 0x00), "DIFF CHANGED", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "DIFF CHANGED", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x7F), "DIFF ADDITION", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "DIFF ADDITION", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x7F, 0x7F), "DIFF DELETION", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "DIFF DELETION", false),
+        Tuple.Create(Color.FromArgb(0x7F, 0x00, 0x00), "DIFF MESSAGE", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "DIFF MESSAGE", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "PHP ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "PHP ERROR", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "ESSENTIAL LAHEY FORTRAN 90 ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "ESSENTIAL LAHEY FORTRAN 90 ERROR", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "INTEL FORTRAN COMPILER ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "INTEL FORTRAN COMPILER ERROR", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "INTEL FORTRAN COMPILER V8.0 ERROR/WARNING", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "INTEL FORTRAN COMPILER V8.0 ERROR/WARNING", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "ABSOFT PRO FORTRAN 90/95 V8.2 ERROR OR WARNING", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "ABSOFT PRO FORTRAN 90/95 V8.2 ERROR OR WARNING", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "HTML TIDY", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "HTML TIDY", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0x00, 0x00), "JAVA RUNTIME STACK TRACE", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "JAVA RUNTIME STACK TRACE", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "TEXT MATCHED WITH FIND IN FILES AND MESSAGE PART OF GCC ERRORS", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "TEXT MATCHED WITH FIND IN FILES AND MESSAGE PART OF GCC ERRORS", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x80), "GCC SHOWING INCLUDE PATH TO FOLLOWING ERROR", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xFF, 0xFF), "GCC SHOWING INCLUDE PATH TO FOLLOWING ERROR", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "ESCAPE SEQUENCE", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "ESCAPE SEQUENCE", false),
+        Tuple.Create(Color.FromArgb(0xFF, 0xE0, 0xA0), "ESCAPE SEQUENCE UNKNOWN", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "ESCAPE SEQUENCE UNKNOWN", false),
+        Tuple.Create(Color.FromArgb(0xCF, 0x00, 0x8F), "GCC SHOWING EXCERPT OF CODE WITH POINTER", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "GCC SHOWING EXCERPT OF CODE WITH POINTER", false),
+        Tuple.Create(Color.FromArgb(0xB0, 0x60, 0x00), "UNKNOWN1", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "UNKNOWN1", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "BASIC1", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC1", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x00), "BASIC2", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC2", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x80, 0x00), "BASIC3", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC3", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x80, 0x00), "BASIC4", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC4", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x80), "BASIC5", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC5", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x80), "BASIC6", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC6", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x80, 0x80), "BASIC7", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC7", false),
+        Tuple.Create(Color.FromArgb(0xA0, 0xA0, 0xA0), "BASIC8", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "BASIC8", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x00), "INTENSE1", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE1", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x00), "INTENSE2", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE2", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x80, 0x00), "INTENSE3", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE3", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x80, 0x00), "INTENSE4", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE4", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x00, 0x80), "INTENSE5", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE5", false),
+        Tuple.Create(Color.FromArgb(0x80, 0x00, 0x80), "INTENSE6", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE6", false),
+        Tuple.Create(Color.FromArgb(0x00, 0x80, 0x80), "INTENSE7", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE7", false),
+        Tuple.Create(Color.FromArgb(0xA0, 0xA0, 0xA0), "INTENSE8", true),
+        Tuple.Create(Color.FromArgb(0xFF, 0xF7, 0xE7), "INTENSE8", false),
+    });
     #endregion
 
     #region InteralColorIndexList
     private List<KeyValuePair<int, string>> CsColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "PreprocessorFore"),
@@ -999,13 +1101,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(33, "PreprocessorCommentBack"),
 
                 new KeyValuePair<int, string>(34, "PreprocessorCommentDocFore"),
-                new KeyValuePair<int, string>(35, "PreprocessorCommentDocBack")
+                new KeyValuePair<int, string>(35, "PreprocessorCommentDocBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> CppColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "PreprocessorFore"),
@@ -1060,13 +1161,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(33, "PreprocessorCommentBack"),
 
                 new KeyValuePair<int, string>(34, "PreprocessorCommentDocFore"),
-                new KeyValuePair<int, string>(35, "PreprocessorCommentDocBack")
+                new KeyValuePair<int, string>(35, "PreprocessorCommentDocBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> XmlColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "XmlStartFore"),
@@ -1112,13 +1212,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(27, "CDataBack"),
 
                 new KeyValuePair<int, string>(28, "EntityFore"),
-                new KeyValuePair<int, string>(29, "EntityBack")
+                new KeyValuePair<int, string>(29, "EntityBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> YamlColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1146,13 +1245,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(15, "TextBack"),
 
                 new KeyValuePair<int, string>(16, "ErrorFore"),
-                new KeyValuePair<int, string>(17, "ErrortBack")
+                new KeyValuePair<int, string>(17, "ErrortBack"),
             });
 
 
     private List<KeyValuePair<int, string>> NsisColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1210,13 +1308,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(35, "FunctionDefinitionsBack"),
 
                 new KeyValuePair<int, string>(36, "CommentFore"),
-                new KeyValuePair<int, string>(37, "CommentBack")
+                new KeyValuePair<int, string>(37, "CommentBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> InnoSetupColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1259,13 +1356,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(25, "OperatorBack"),
 
                 new KeyValuePair<int, string>(26, "ForeColorFore"),
-                new KeyValuePair<int, string>(27, "ForeColorBack")
+                new KeyValuePair<int, string>(27, "ForeColorBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> SqlColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "WordFore"),
@@ -1287,13 +1383,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(11, "CommentBack"),
 
                 new KeyValuePair<int, string>(12, "CommentLineFore"),
-                new KeyValuePair<int, string>(13, "CommentLineBack")
+                new KeyValuePair<int, string>(13, "CommentLineBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> BatchColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1318,13 +1413,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(13, "IdentifierBack"),
 
                 new KeyValuePair<int, string>(14, "OperatorFore"),
-                new KeyValuePair<int, string>(15, "OperatorBack")
+                new KeyValuePair<int, string>(15, "OperatorBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> PascalColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1367,13 +1461,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(25, "OperatorBack"),
 
                 new KeyValuePair<int, string>(26, "ForeColorFore"),
-                new KeyValuePair<int, string>(27, "ForeColorBack")
+                new KeyValuePair<int, string>(27, "ForeColorBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> PhpColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "HQuestionFore"),
@@ -1407,13 +1500,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(19, "CommentLineBack"),
 
                 new KeyValuePair<int, string>(20, "OperatorFore"),
-                new KeyValuePair<int, string>(21, "OperatorBack")
+                new KeyValuePair<int, string>(21, "OperatorBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> HtmlColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1459,13 +1551,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(27, "EntityBack"),
 
                 new KeyValuePair<int, string>(28, "HQuestionFore"),
-                new KeyValuePair<int, string>(29, "HQuestionBack")
+                new KeyValuePair<int, string>(29, "HQuestionBack"),
 
             });
 
     private List<KeyValuePair<int, string>> PowerShellColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1508,13 +1599,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(25, "HereCharacterBack"),
 
                 new KeyValuePair<int, string>(26, "CommentDocKeywordFore"),
-                new KeyValuePair<int, string>(27, "CommentDocKeywordBack")
+                new KeyValuePair<int, string>(27, "CommentDocKeywordBack"),
             }
         );
 
     private List<KeyValuePair<int, string>> IniColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1530,12 +1620,11 @@ public class LexerColors
                 new KeyValuePair<int, string>(7, "AssignmentBack"),
 
                 new KeyValuePair<int, string>(8, "DefValFore"),
-                new KeyValuePair<int, string>(9, "DefValBack")
+                new KeyValuePair<int, string>(9, "DefValBack"),
             });
 
     private List<KeyValuePair<int, string>> PythonColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1578,13 +1667,12 @@ public class LexerColors
                 new KeyValuePair<int, string>(25, "CommentBlockBack"),
 
                 new KeyValuePair<int, string>(26, "DecoratorFore"),
-                new KeyValuePair<int, string>(27, "DecoratorBack")
+                new KeyValuePair<int, string>(27, "DecoratorBack"),
             });
 
 
     private List<KeyValuePair<int, string>> JavaColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "PreprocessorFore"),
@@ -1633,12 +1721,11 @@ public class LexerColors
                 new KeyValuePair<int, string>(29, "CommentDocKeywordBack"),
 
                 new KeyValuePair<int, string>(30, "CommentDocKeywordErrorFore"),
-                new KeyValuePair<int, string>(31, "CommentDocKeywordErrorBack")
+                new KeyValuePair<int, string>(31, "CommentDocKeywordErrorBack"),
             });
 
     private List<KeyValuePair<int, string>> JavaScriptColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1690,12 +1777,11 @@ public class LexerColors
                 new KeyValuePair<int, string>(31, "CommentDocKeywordBack"),
 
                 new KeyValuePair<int, string>(32, "CommentDocKeywordErrorFore"),
-                new KeyValuePair<int, string>(33, "CommentDocKeywordErrorBack")
+                new KeyValuePair<int, string>(33, "CommentDocKeywordErrorBack"),
             });
 
     private List<KeyValuePair<int, string>> CssColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1735,12 +1821,11 @@ public class LexerColors
                 new KeyValuePair<int, string>(23, "ImportantBack"),
 
                 new KeyValuePair<int, string>(24, "DirectiveFore"),
-                new KeyValuePair<int, string>(25, "DirectiveBack")
+                new KeyValuePair<int, string>(25, "DirectiveBack"),
             });
 
     private List<KeyValuePair<int, string>> VbDotNetColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "DefaultFore"),
@@ -1772,8 +1857,7 @@ public class LexerColors
             });
 
     private List<KeyValuePair<int, string>> JsonColorIndexes { get; } =
-        new List<KeyValuePair<int, string>>
-        (
+        new(
             new[]
             {
                 new KeyValuePair<int, string>(0, "JsonDefaultFore"),
@@ -1817,6 +1901,140 @@ public class LexerColors
                     
                 new KeyValuePair<int, string>(26, "JsonErrorFore"),
                 new KeyValuePair<int, string>(27, "JsonErrorBack"),
+            });
+
+    private List<KeyValuePair<int, string>> ErrorListColorIndexes { get; } =
+        new(
+            new[]
+            {
+                new KeyValuePair<int, string>(0, "ErrorListDefaultFore"),
+                new KeyValuePair<int, string>(1, "ErrorListDefaultBack"),
+
+                new KeyValuePair<int, string>(2, "ErrorListPythonErrorFore"),
+                new KeyValuePair<int, string>(3, "ErrorListPythonErrorBack"),
+
+                new KeyValuePair<int, string>(4, "ErrorListGccErrorFore"),
+                new KeyValuePair<int, string>(5, "ErrorListGccErrorBack"),
+
+                new KeyValuePair<int, string>(6, "ErrorListMicrosoftErrorFore"),
+                new KeyValuePair<int, string>(7, "ErrorListMicrosoftErrorBack"),
+
+                new KeyValuePair<int, string>(8, "ErrorListStatusFore"),
+                new KeyValuePair<int, string>(9, "ErrorListStatusBack"),
+
+                new KeyValuePair<int, string>(10, "ErrorListBorlandErrorFore"),
+                new KeyValuePair<int, string>(11, "ErrorListBorlandErrorBack"),
+
+                new KeyValuePair<int, string>(12, "ErrorListPerlErrorFore"),
+                new KeyValuePair<int, string>(13, "ErrorListPerlErrorBack"),
+
+                new KeyValuePair<int, string>(14, "ErrorListNETTraceBacksFore"),
+                new KeyValuePair<int, string>(15, "ErrorListNETTraceBacksBack"),
+
+                new KeyValuePair<int, string>(16, "ErrorListLuaErrorFore"),
+                new KeyValuePair<int, string>(17, "ErrorListLuaErrorBack"),
+
+                new KeyValuePair<int, string>(18, "ErrorListCTagsFore"),
+                new KeyValuePair<int, string>(19, "ErrorListCTagsBack"),
+
+                new KeyValuePair<int, string>(20, "ErrorListDiffChangedFore"),
+                new KeyValuePair<int, string>(21, "ErrorListDiffChangedBack"),
+
+                new KeyValuePair<int, string>(22, "ErrorListDiffAdditionFore"),
+                new KeyValuePair<int, string>(23, "ErrorListDiffAdditionBack"),
+
+                new KeyValuePair<int, string>(24, "ErrorListDiffDeletionFore"),
+                new KeyValuePair<int, string>(25, "ErrorListDiffDeletionBack"),
+
+                new KeyValuePair<int, string>(26, "ErrorListDiffMessageFore"),
+                new KeyValuePair<int, string>(27, "ErrorListDiffMessageBack"),
+
+                new KeyValuePair<int, string>(28, "ErrorListPHPErrorFore"),
+                new KeyValuePair<int, string>(29, "ErrorListPHPErrorBack"),
+
+                new KeyValuePair<int, string>(30, "ErrorListFortran90ErrorFore"),
+                new KeyValuePair<int, string>(31, "ErrorListFortran90ErrorBack"),
+
+                new KeyValuePair<int, string>(32, "ErrorListFortranError1Fore"),
+                new KeyValuePair<int, string>(33, "ErrorListFortranError1Back"),
+
+                new KeyValuePair<int, string>(34, "ErrorListFortranError2Fore"),
+                new KeyValuePair<int, string>(35, "ErrorListFortranError2Back"),
+
+                new KeyValuePair<int, string>(36, "ErrorListFortranError3Fore"),
+                new KeyValuePair<int, string>(37, "ErrorListFortranError3Back"),
+
+                new KeyValuePair<int, string>(38, "ErrorListHTMLTidyFore"),
+                new KeyValuePair<int, string>(39, "ErrorListHTMLTidyBack"),
+
+                new KeyValuePair<int, string>(40, "ErrorListJREStackFore"),
+                new KeyValuePair<int, string>(41, "ErrorListJREStackBack"),
+
+                new KeyValuePair<int, string>(42, "ErrorListGCCTextMatchFore"),
+                new KeyValuePair<int, string>(43, "ErrorListGCCTextMatchBack"),
+
+                new KeyValuePair<int, string>(44, "ErrorListGCCIncludeFore"),
+                new KeyValuePair<int, string>(45, "ErrorListGCCIncludeBack"),
+
+                new KeyValuePair<int, string>(46, "ErrorListEscapeSequenceFore"),
+                new KeyValuePair<int, string>(47, "ErrorListEscapeSequenceBack"),
+
+                new KeyValuePair<int, string>(48, "ErrorListEscapeSequenceUnknownFore"),
+                new KeyValuePair<int, string>(49, "ErrorListEscapeSequenceUnknownBack"),
+
+                new KeyValuePair<int, string>(50, "ErrorListGCCPointerFore"),
+                new KeyValuePair<int, string>(51, "ErrorListGCCPointerBack"),
+
+                new KeyValuePair<int, string>(52, "ErrorListUnknown1Fore"),
+                new KeyValuePair<int, string>(53, "ErrorListUnknown1Back"),
+
+                new KeyValuePair<int, string>(54, "ErrorListBasic1Fore"),
+                new KeyValuePair<int, string>(55, "ErrorListBasic1Back"),
+
+                new KeyValuePair<int, string>(56, "ErrorListBasic2Fore"),
+                new KeyValuePair<int, string>(57, "ErrorListBasic2Back"),
+
+                new KeyValuePair<int, string>(58, "ErrorListBasic3Fore"),
+                new KeyValuePair<int, string>(59, "ErrorListBasic3Back"),
+
+                new KeyValuePair<int, string>(60, "ErrorListBasic4Fore"),
+                new KeyValuePair<int, string>(61, "ErrorListBasic4Back"),
+
+                new KeyValuePair<int, string>(62, "ErrorListBasic5Fore"),
+                new KeyValuePair<int, string>(63, "ErrorListBasic5Back"),
+
+                new KeyValuePair<int, string>(64, "ErrorListBasic6Fore"),
+                new KeyValuePair<int, string>(65, "ErrorListBasic6Back"),
+
+                new KeyValuePair<int, string>(66, "ErrorListBasic7Fore"),
+                new KeyValuePair<int, string>(67, "ErrorListBasic7Back"),
+
+                new KeyValuePair<int, string>(68, "ErrorListBasic8Fore"),
+                new KeyValuePair<int, string>(69, "ErrorListBasic8Back"),
+
+                new KeyValuePair<int, string>(70, "ErrorListIntense1Fore"),
+                new KeyValuePair<int, string>(71, "ErrorListIntense1Back"),
+
+                new KeyValuePair<int, string>(72, "ErrorListIntense2Fore"),
+                new KeyValuePair<int, string>(73, "ErrorListIntense2Back"),
+
+                new KeyValuePair<int, string>(74, "ErrorListIntense3Fore"),
+                new KeyValuePair<int, string>(75, "ErrorListIntense3Back"),
+
+                new KeyValuePair<int, string>(76, "ErrorListIntense4Fore"),
+                new KeyValuePair<int, string>(77, "ErrorListIntense4Back"),
+
+                new KeyValuePair<int, string>(78, "ErrorListIntense5Fore"),
+                new KeyValuePair<int, string>(79, "ErrorListIntense5Back"),
+
+                new KeyValuePair<int, string>(80, "ErrorListIntense6Fore"),
+                new KeyValuePair<int, string>(81, "ErrorListIntense6Back"),
+
+                new KeyValuePair<int, string>(82, "ErrorListIntense7Fore"),
+                new KeyValuePair<int, string>(83, "ErrorListIntense7Back"),
+
+                new KeyValuePair<int, string>(84, "ErrorListIntense8Fore"),
+                new KeyValuePair<int, string>(85, "ErrorListIntense8Back"),
             });
     #endregion
 
@@ -2054,6 +2272,13 @@ public class LexerColors
             return idx;
         }
 
+            
+        if (lexerType == LexerType.ErrorList)
+        {
+            int idx = errorListColors.FindIndex(f => f.Item2 == name && f.Item3 == isForeground);
+            return idx;
+        }
+
         return -1;
     }
 
@@ -2178,6 +2403,12 @@ public class LexerColors
             int idx = JsonColorIndexes.FindIndex(f => f.Value == name);
             return idx;
         }
+        
+        if (lexerType == LexerType.ErrorList)
+        {
+            int idx = ErrorListColorIndexes.FindIndex(f => f.Value == name);
+            return idx;
+        }
 
         return -1;
     }
@@ -2282,6 +2513,12 @@ public class LexerColors
         if (lexerType == LexerType.Json)
         {
             return JsonColorIndexes.Select(f => f.Value);
+        }   
+
+
+        if (lexerType == LexerType.ErrorList)
+        {
+            return ErrorListColorIndexes.Select(f => f.Value);
         }   
 
         return new List<string>();

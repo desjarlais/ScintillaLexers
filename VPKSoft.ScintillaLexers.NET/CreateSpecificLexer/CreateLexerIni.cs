@@ -35,7 +35,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-public class CreateLexerIni: CreateLexerCommon
+public abstract class CreateLexerIni: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the INI (properties file).

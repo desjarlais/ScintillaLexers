@@ -30,7 +30,7 @@ using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 
-class CreateLexerJavaScript: CreateLexerCommon
+internal abstract class CreateLexerJavaScript: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the Java programming language.

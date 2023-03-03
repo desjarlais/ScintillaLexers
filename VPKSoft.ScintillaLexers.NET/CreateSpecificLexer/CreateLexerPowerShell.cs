@@ -36,7 +36,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-public class CreateLexerPowerShell: CreateLexerCommon
+public abstract class CreateLexerPowerShell: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the Windows PowerShell script language.

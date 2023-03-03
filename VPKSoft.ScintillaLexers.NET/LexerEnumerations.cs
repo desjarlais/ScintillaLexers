@@ -140,5 +140,10 @@ public class LexerEnumerations
         /// The JavaScript Object Notation (JSON) data format.
         /// </summary>
         Json,
+
+        /// <summary>
+        /// The error list lexer (diff).
+        /// </summary>
+        ErrorList,
     }
 }

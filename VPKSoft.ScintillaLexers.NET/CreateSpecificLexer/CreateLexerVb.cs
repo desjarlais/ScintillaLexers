@@ -36,7 +36,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-public class CreateLexerVb: CreateLexerCommon
+public abstract class CreateLexerVb: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the batch script file.

@@ -30,7 +30,7 @@ using static VPKSoft.ScintillaLexers.LexerEnumerations;
 
 namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 
-class CreateLexerCss: CreateLexerCommon
+internal abstract class CreateLexerCss: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the Cascading Style Sheets (CSS).

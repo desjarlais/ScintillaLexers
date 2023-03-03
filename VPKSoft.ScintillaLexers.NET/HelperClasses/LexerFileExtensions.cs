@@ -52,7 +52,7 @@ public class LexerFileExtensions
     /// A list of strings used to detect if a file by it's starting contents is a XML file.
     /// </summary>
     public static List<string> XmlFileDetectionStrings = new(
-        new []{"<?xml "}
+        new []{"<?xml ", }
     );
 
     /// <summary>
@@ -117,63 +117,66 @@ public class LexerFileExtensions
     {
         // File extensions for XML files.
         new LexerFileExtensions { LexerType = LexerType.Xml, FileExtensionList = ".xml .xaml .xsl .xslt .xsd .xul .kml .svg .mxml .xsml .wsdl .xlf " +
-            ".xliff .xbl .sxbl .sitemap .gml .gpx .plist .resx .csproj .nuspec" },
+            ".xliff .xbl .sxbl .sitemap .gml .gpx .plist .resx .csproj .nuspec", },
         // File extensions for C# files.
-        new LexerFileExtensions { LexerType = LexerType.Cs, FileExtensionList = ".cs" },
+        new LexerFileExtensions { LexerType = LexerType.Cs, FileExtensionList = ".cs", },
 
         // File extensions for C++ files.
-        new LexerFileExtensions { LexerType = LexerType.Cpp, FileExtensionList = ".h .hpp .hxx .cpp .cxx .cc .ino" },
+        new LexerFileExtensions { LexerType = LexerType.Cpp, FileExtensionList = ".h .hpp .hxx .cpp .cxx .cc .ino", },
 
         // File extensions for SQL files.
-        new LexerFileExtensions { LexerType = LexerType.SQL, FileExtensionList = ".sql .sql_script" },
+        new LexerFileExtensions { LexerType = LexerType.SQL, FileExtensionList = ".sql .sql_script", },
 
         // File extensions for a batch file.
-        new LexerFileExtensions { LexerType = LexerType.Batch, FileExtensionList = ".bat .cmd .btm .nt" },
+        new LexerFileExtensions { LexerType = LexerType.Batch, FileExtensionList = ".bat .cmd .btm .nt", },
 
         // File extensions for plain text files.
-        new LexerFileExtensions { LexerType = LexerType.Text, FileExtensionList = ".txt" },
+        new LexerFileExtensions { LexerType = LexerType.Text, FileExtensionList = ".txt", },
 
         // File extensions for the NSIS (Nullsoft Scriptable Install System).
-        new LexerFileExtensions { LexerType = LexerType.Nsis, FileExtensionList = ".nsi .nsh" },
+        new LexerFileExtensions { LexerType = LexerType.Nsis, FileExtensionList = ".nsi .nsh", },
 
         // File extensions for the Inno Setup programming language.
-        new LexerFileExtensions { LexerType = LexerType.InnoSetup, FileExtensionList = ".iss" },
+        new LexerFileExtensions { LexerType = LexerType.InnoSetup, FileExtensionList = ".iss", },
 
         // File extensions for the Pascal programming language.
-        new LexerFileExtensions { LexerType = LexerType.Pascal, FileExtensionList = ".pas" },
+        new LexerFileExtensions { LexerType = LexerType.Pascal, FileExtensionList = ".pas", },
 
         // File extensions for the PHP programming language.
-        new LexerFileExtensions { LexerType = LexerType.PHP, FileExtensionList = ".php3 .phtml .php" }, 
+        new LexerFileExtensions { LexerType = LexerType.PHP, FileExtensionList = ".php3 .phtml .php", }, 
 
         // File extensions for the HTML markup language.
-        new LexerFileExtensions { LexerType = LexerType.HTML, FileExtensionList = ".html .htm .shtml .shtm .xhtml .xht .hta" },
+        new LexerFileExtensions { LexerType = LexerType.HTML, FileExtensionList = ".html .htm .shtml .shtm .xhtml .xht .hta", },
 
         // File extensions for the Windows PowerShell script files.
-        new LexerFileExtensions { LexerType = LexerType.WindowsPowerShell, FileExtensionList = ".ps1 .psd1 .psm1" },
+        new LexerFileExtensions { LexerType = LexerType.WindowsPowerShell, FileExtensionList = ".ps1 .psd1 .psm1", },
 
         // File extensions for the INI setting files.
-        new LexerFileExtensions { LexerType = LexerType.INI, FileExtensionList = ".ini" },
+        new LexerFileExtensions { LexerType = LexerType.INI, FileExtensionList = ".ini", },
 
         // File extension for the Python programming language files.
-        new LexerFileExtensions { LexerType = LexerType.Python, FileExtensionList = ".py .pyw" },
+        new LexerFileExtensions { LexerType = LexerType.Python, FileExtensionList = ".py .pyw", },
 
         // File extension for the YAML (YAML Ain't Markup Language) language files.
-        new LexerFileExtensions { LexerType = LexerType.Python, FileExtensionList = ".yml .yaml" },
+        new LexerFileExtensions { LexerType = LexerType.Python, FileExtensionList = ".yml .yaml", },
 
         // File extension for the Java programming language.
-        new LexerFileExtensions { LexerType = LexerType.Java, FileExtensionList = ".java" },
+        new LexerFileExtensions { LexerType = LexerType.Java, FileExtensionList = ".java", },
 
         // File extension for the JavaScript scripting language.
-        new LexerFileExtensions { LexerType = LexerType.JavaScript, FileExtensionList = ".js .mjs" },
+        new LexerFileExtensions { LexerType = LexerType.JavaScript, FileExtensionList = ".js .mjs", },
 
         // File extension for the Cascading Style Sheets (CSS).
-        new LexerFileExtensions { LexerType = LexerType.Css, FileExtensionList = ".css" },
+        new LexerFileExtensions { LexerType = LexerType.Css, FileExtensionList = ".css", },
 
         // File extensions for the Visual Basic .NET programming language.
-        new LexerFileExtensions { LexerType = LexerType.VbDotNet, FileExtensionList = ".vb" },
+        new LexerFileExtensions { LexerType = LexerType.VbDotNet, FileExtensionList = ".vb", },
 
         // File extensions for the JavaScript Object Notation (Json) data format.
-        new LexerFileExtensions { LexerType = LexerType.Json, FileExtensionList = ".json" },
+        new LexerFileExtensions { LexerType = LexerType.Json, FileExtensionList = ".json", },
+
+        // File extensions for the ErrorList (diff).
+        new LexerFileExtensions { LexerType = LexerType.ErrorList, FileExtensionList = ".diff", },
 
         // new LexerFileExtensions { LexerType = LexerType.xxx, FileExtensionList = "" },
     }); 

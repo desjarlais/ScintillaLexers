@@ -136,14 +136,9 @@ public class MarkColors
         {
             MarkColors result = new MarkColors();
             var nodes = document.Descendants(XName.Get("WidgetStyle")).Where(f =>
-                f.Attribute("name")?.Value == "Current line background colour" ||
-                f.Attribute("name")?.Value == "Smart HighLighting" ||
-                f.Attribute("name")?.Value == "Incremental highlight all" ||
-                f.Attribute("name")?.Value == "Mark Style 1" ||
-                f.Attribute("name")?.Value == "Mark Style 2" ||
-                f.Attribute("name")?.Value == "Mark Style 3" ||
-                f.Attribute("name")?.Value == "Mark Style 4" ||
-                f.Attribute("name")?.Value == "Mark Style 5");
+                f.Attribute("name")?.Value is "Current line background colour" or "Smart HighLighting"
+                    or "Incremental highlight all" or "Mark Style 1" or "Mark Style 2" or "Mark Style 3"
+                    or "Mark Style 4" or "Mark Style 5");
 
             foreach (var node in nodes)
             {

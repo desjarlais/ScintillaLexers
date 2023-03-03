@@ -52,9 +52,9 @@ public class LexerFoldProperties
     /// </summary>
     public static List<LexerFoldProperties> DefaultFolding { get; set; } = new List<LexerFoldProperties>(new[]
     {
-        new LexerFoldProperties {FoldPropertyName = "fold", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "fold.compact", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "fold.preprocessor", FoldPropertyValue = "1"},
+        new LexerFoldProperties {FoldPropertyName = "fold", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "fold.compact", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "fold.preprocessor", FoldPropertyValue = "1", },
     });
 
     /// <summary>
@@ -62,8 +62,8 @@ public class LexerFoldProperties
     /// </summary>
     public static List<LexerFoldProperties> XmlFolding { get; set; } = new List<LexerFoldProperties>(new[]
     {
-        new LexerFoldProperties {FoldPropertyName = "fold.html", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "html.tags.case.sensitive", FoldPropertyValue = "1"},
+        new LexerFoldProperties {FoldPropertyName = "fold.html", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "html.tags.case.sensitive", FoldPropertyValue = "1", },
     });
 
     /// <summary>
@@ -71,11 +71,11 @@ public class LexerFoldProperties
     /// </summary>
     public static List<LexerFoldProperties> SqlFolding { get; set; } = new List<LexerFoldProperties>(new[]
     {
-        new LexerFoldProperties {FoldPropertyName = "fold.sql.at.else", FoldPropertyValue = "1"}, // for a SQL lexer..
-        new LexerFoldProperties {FoldPropertyName = "fold.comment", FoldPropertyValue = "1"}, // for a SQL lexer..
-        new LexerFoldProperties {FoldPropertyName = "sql.backslash.escapes", FoldPropertyValue = "1"}, // for a SQL lexer.. (Enables backslash as an escape character in SQL.)
-        new LexerFoldProperties {FoldPropertyName = "lexer.sql.numbersign.comment", FoldPropertyValue = "1"}, // for a SQL lexer.. (If lexer.sql.numbersign.comment property is set to 0 a line beginning with '#' will not be a comment.)
-        new LexerFoldProperties {FoldPropertyName = "lexer.sql.allow.dotted.word", FoldPropertyValue = "1"}, // for a SQL lexer.. (set to 1 to colorize recognized words with dots (recommended for Oracle PL/SQL objects))
+        new LexerFoldProperties {FoldPropertyName = "fold.sql.at.else", FoldPropertyValue = "1", }, // for a SQL lexer..
+        new LexerFoldProperties {FoldPropertyName = "fold.comment", FoldPropertyValue = "1", }, // for a SQL lexer..
+        new LexerFoldProperties {FoldPropertyName = "sql.backslash.escapes", FoldPropertyValue = "1", }, // for a SQL lexer.. (Enables backslash as an escape character in SQL.)
+        new LexerFoldProperties {FoldPropertyName = "lexer.sql.numbersign.comment", FoldPropertyValue = "1", }, // for a SQL lexer.. (If lexer.sql.numbersign.comment property is set to 0 a line beginning with '#' will not be a comment.)
+        new LexerFoldProperties {FoldPropertyName = "lexer.sql.allow.dotted.word", FoldPropertyValue = "1", }, // for a SQL lexer.. (set to 1 to colorize recognized words with dots (recommended for Oracle PL/SQL objects))
     });
 
     /// <summary>
@@ -83,10 +83,10 @@ public class LexerFoldProperties
     /// </summary>
     public static List<LexerFoldProperties> HyperTextFolding { get; set; } = new List<LexerFoldProperties>(new[]
     {
-        new LexerFoldProperties {FoldPropertyName = "fold.hypertext.comment", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "fold.hypertext.heredoc", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "fold.html.preprocessor", FoldPropertyValue = "1"},
-        new LexerFoldProperties {FoldPropertyName = "fold.html", FoldPropertyValue = "1"},
+        new LexerFoldProperties {FoldPropertyName = "fold.hypertext.comment", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "fold.hypertext.heredoc", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "fold.html.preprocessor", FoldPropertyValue = "1", },
+        new LexerFoldProperties {FoldPropertyName = "fold.html", FoldPropertyValue = "1", },
     });
 
     /// <summary>

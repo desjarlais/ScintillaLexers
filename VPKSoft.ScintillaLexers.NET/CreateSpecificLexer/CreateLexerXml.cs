@@ -35,7 +35,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-public class CreateLexerXml: CreateLexerCommon
+public abstract class CreateLexerXml: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the XML (The eXtensible Markup Language).

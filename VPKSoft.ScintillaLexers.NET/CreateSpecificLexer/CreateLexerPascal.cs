@@ -36,7 +36,7 @@ namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
 /// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
-public class CreateLexerPascal: CreateLexerCommon
+public abstract class CreateLexerPascal: CreateLexerCommon
 {
     /// <summary>
     /// Creates the lexer for a given Scintilla class instance for the Pascal programming language.

@@ -47,6 +47,11 @@ public class LexerTypeName
     public const int SCLEX_INNOSETUP = 76;
 
     /// <summary>
+    /// The ErrorList (diff) lexer value.
+    /// </summary>
+    public const int SCLEX_ERRORLIST = 10;
+
+    /// <summary>
     /// The YAML (YAML Ain't Markup Language) lexer value.
     /// </summary>
     public const int SCLEX_YAML = 48;
@@ -76,6 +81,7 @@ public class LexerTypeName
             Tuple.Create(LexerEnumerations.LexerType.Css, "css", Lexer.Css),
             Tuple.Create(LexerEnumerations.LexerType.VbDotNet, "vb", Lexer.Vb),
             Tuple.Create(LexerEnumerations.LexerType.Json, "json", Lexer.Json),
+            Tuple.Create(LexerEnumerations.LexerType.ErrorList, "errorlist", (Lexer)SCLEX_ERRORLIST),
         });
 
     /// <summary>

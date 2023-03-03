@@ -25,10 +25,6 @@ SOFTWARE.
 #endregion
 
 // (C)::https://github.com/jacobslusser/ScintillaNET
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 using ScintillaNET;
 using VPKSoft.ScintillaLexers.CreateSpecificLexer;
@@ -52,7 +48,7 @@ public static class ScintillaLexers
     /// <summary>
     /// Gets or sets the value of a LexerColors class instance.
     /// </summary>
-    public static LexerColors.LexerColors LexerColors { get; private set; } = new LexerColors.LexerColors();
+    public static LexerColors.LexerColors LexerColors { get; } = new();
 
     /// <summary>
     /// Creates the lexer from XML file used by the Notepad++ software.
@@ -293,6 +289,11 @@ public static class ScintillaLexers
         if (lexerType == LexerType.Json)
         {
             return CreateLexerJson.CreateJsonLexer(scintilla, LexerColors);
+        }
+
+        if (lexerType == LexerType.ErrorList)
+        {
+            return CreateLexerErrorList.CreateLexerErrorListLexer(scintilla, LexerColors);
         }
 
         // a lexer wasn't found..

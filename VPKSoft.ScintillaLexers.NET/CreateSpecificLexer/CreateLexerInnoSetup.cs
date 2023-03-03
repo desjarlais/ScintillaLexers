@@ -121,7 +121,7 @@ public static class InnoSetup
 /// </summary>
 /// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 // ReSharper disable once IdentifierTypo
-public class CreateLexerInnoSetup: CreateLexerCommon
+public abstract class CreateLexerInnoSetup: CreateLexerCommon
 {
     // ReSharper disable once CommentTypo
     /// <summary>
