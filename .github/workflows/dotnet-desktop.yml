@@ -43,6 +43,11 @@ jobs:
       with:
         dotnet-version: 7.0.x
 
+    - name: Install .NET Frammework 4.6.2
+      run: |  
+        Invoke-WebRequest -URI https://go.microsoft.com/fwlink/?linkid=2099466 -OutFile ./setup_net462.exe
+        ./setup_net462.exe /q /norestart
+
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
