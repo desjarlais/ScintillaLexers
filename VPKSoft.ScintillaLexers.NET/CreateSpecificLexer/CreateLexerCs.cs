@@ -154,7 +154,7 @@ public abstract class CreateLexerCs: CreateLexerCommon
         scintilla.Styles[Style.Cpp.PreprocessorCommentDoc].BackColor =
             lexerColors[LexerType.Cs, "PreprocessorCommentDocBack"];
 
-        scintilla.LexerName = "cpp";
+        scintilla.LexerName = "csharp";
 
         ScintillaKeyWords.SetKeywords(scintilla, LexerType.Cs);
 
