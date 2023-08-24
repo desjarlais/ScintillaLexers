@@ -44,7 +44,7 @@ internal abstract class CreateLexerCss: CreateLexerCommon
 
         // DEFAULT, fontStyle = 0, styleId = 0
         scintilla.Styles[Style.Css.Default].ForeColor = lexerColors[LexerType.Css, "DefaultFore"];
-        scintilla.Styles[Style.Css.Default].BackColor = lexerColors[LexerType.Css, "DefaultFore"];
+        scintilla.Styles[Style.Css.Default].BackColor = lexerColors[LexerType.Css, "DefaultBack"];
 
         // TAG, fontStyle = 0, styleId = 1
         scintilla.Styles[Style.Css.Tag].ForeColor = lexerColors[LexerType.Css, "TagFore"];
