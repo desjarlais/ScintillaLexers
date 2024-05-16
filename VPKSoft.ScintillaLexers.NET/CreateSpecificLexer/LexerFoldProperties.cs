@@ -26,9 +26,9 @@ SOFTWARE.
 
 using System.Collections.Generic;
 using ScintillaNET;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 /// <summary>
 /// A class containing code folding properties for different lexers.

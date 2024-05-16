@@ -27,11 +27,11 @@ SOFTWARE.
 using System.Drawing;
 using System.Linq;
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.HelperClasses;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
-using static VPKSoft.ScintillaLexers.GlobalScintillaFont;
+using ScintillaLexers.HelperClasses;
+using static ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.GlobalScintillaFont;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 /// <summary>
 /// A base class for creating static lexers.

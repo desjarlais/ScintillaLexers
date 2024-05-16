@@ -31,9 +31,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.LexerColors;
+namespace ScintillaLexers.LexerColors;
 
 /// <summary>
 /// A class containing the colors for the lexers.

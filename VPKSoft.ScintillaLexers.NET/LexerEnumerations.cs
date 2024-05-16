@@ -24,7 +24,7 @@ SOFTWARE.
 */
 #endregion
 
-namespace VPKSoft.ScintillaLexers;
+namespace ScintillaLexers;
 
 /// <summary>
 /// A class containing the <see cref="LexerType"/> enumeration values.

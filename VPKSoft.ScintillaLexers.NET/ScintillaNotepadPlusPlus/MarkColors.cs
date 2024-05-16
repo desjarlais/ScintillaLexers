@@ -28,7 +28,7 @@ using System.Drawing;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus;
+namespace ScintillaLexers.ScintillaNotepadPlusPlus;
 
 /// <summary>
 /// A helper class to get the mark colors from the Notepad++ software XML lexer definition file.

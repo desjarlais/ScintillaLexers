@@ -25,16 +25,16 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.HelperClasses;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers.HelperClasses;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 /// <summary>
 /// A class for the Java lexer.
-/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// Implements the <see cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
-/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// <seealso cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 public abstract class CreateLexerJava : CreateLexerCommon
 {
     /// <summary>

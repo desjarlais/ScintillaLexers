@@ -26,13 +26,13 @@ SOFTWARE.
 
 using ScintillaNET;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 /// <summary>
 /// A class for plain text.
-/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// Implements the <see cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
-/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// <seealso cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 internal abstract class CreateLexerNull: CreateLexerCommon
 {
     /// <summary>

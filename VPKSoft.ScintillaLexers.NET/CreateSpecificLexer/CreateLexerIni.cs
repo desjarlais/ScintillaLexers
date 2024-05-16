@@ -25,16 +25,16 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.LexerColors;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers.LexerColors;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 /// <summary>
 /// A class for the INI lexer.
-/// Implements the <see cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// Implements the <see cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 /// </summary>
-/// <seealso cref="VPKSoft.ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
+/// <seealso cref="ScintillaLexers.CreateSpecificLexer.CreateLexerCommon" />
 public abstract class CreateLexerIni: CreateLexerCommon
 {
     /// <summary>

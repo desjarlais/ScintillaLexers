@@ -26,7 +26,7 @@ SOFTWARE.
 
 using ScintillaNET;
 
-namespace VPKSoft.ScintillaLexers;
+namespace ScintillaLexers;
 
 /// <summary>
 /// A class to set the basic font style for the <see cref="Scintilla"/>.

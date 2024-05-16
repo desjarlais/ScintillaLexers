@@ -29,9 +29,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.HelperClasses;
+namespace ScintillaLexers.HelperClasses;
 
 /// <summary>
 /// A class containing lexer known file extensions for different lexers.

@@ -25,11 +25,10 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.HelperClasses;
-using VPKSoft.ScintillaLexers.LexerColors;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers.HelperClasses;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 // ReSharper disable once CommentTypo
 /// <summary>

@@ -28,10 +28,10 @@ using System.Drawing;
 using System.Linq;
 using System.Xml.Linq;
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.CreateSpecificLexer;
-using VPKSoft.ScintillaLexers.HelperClasses;
+using ScintillaLexers.CreateSpecificLexer;
+using ScintillaLexers.HelperClasses;
 
-namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus;
+namespace ScintillaLexers.ScintillaNotepadPlusPlus;
 
 /// <summary>
 /// A class for loading global styles for the <see cref="Scintilla"/> from 
@@ -226,8 +226,8 @@ public class ScintillaNotepadPlusPlusStyles
                 }
                 else if (style.Name == "Selected text colour")
                 {
-                    scintilla.SetSelectionForeColor(useSelectionColors, style.ColorForeground);
-                    scintilla.SetSelectionBackColor(useSelectionColors, style.ColorBackground);
+                    scintilla.SelectionTextColor = style.ColorForeground;
+                    scintilla.SelectionBackColor = style.ColorBackground;
                 }
                 else if (style.Name == "Caret colour")
                 {
@@ -247,8 +247,8 @@ public class ScintillaNotepadPlusPlusStyles
                 }
                 else if (style.Name == "White space symbol") // <WidgetStyle name="White space symbol"..
                 {
-                    scintilla.SetWhitespaceForeColor(useWhiteSpace, style.ColorForeground);
-                    scintilla.SetWhitespaceBackColor(useWhiteSpace, style.ColorBackground);
+                    scintilla.WhitespaceTextColor = style.ColorForeground;
+                    scintilla.WhitespaceBackColor = style.ColorBackground;
                 }
             }
 

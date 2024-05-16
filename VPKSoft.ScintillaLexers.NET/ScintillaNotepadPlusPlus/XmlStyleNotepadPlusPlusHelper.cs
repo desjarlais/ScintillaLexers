@@ -27,7 +27,7 @@ SOFTWARE.
 using System.Drawing;
 using System.Xml.Linq;
 
-namespace VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus;
+namespace ScintillaLexers.ScintillaNotepadPlusPlus;
 
 /// <summary>
 /// A helper class for Notepad++ XML style definition files.

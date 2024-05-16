@@ -27,9 +27,9 @@ SOFTWARE.
 using System.Collections.Generic;
 using System.Linq;
 using ScintillaNET;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.HelperClasses;
+namespace ScintillaLexers.HelperClasses;
 
 /// <summary>
 /// A class for <see cref="Scintilla"/> keywords for different lexers.

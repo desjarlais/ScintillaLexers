@@ -26,9 +26,9 @@ SOFTWARE.
 
 using System.Drawing;
 using ScintillaNET;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 internal abstract class CreateLexerErrorList : CreateLexerCommon
 {

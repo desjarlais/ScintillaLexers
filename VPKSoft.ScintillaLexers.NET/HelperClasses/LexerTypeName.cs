@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ScintillaNET;
 
-namespace VPKSoft.ScintillaLexers.HelperClasses;
+namespace ScintillaLexers.HelperClasses;
 
 /// <summary>
 /// A helper class for Class LexerTypeName.
@@ -62,26 +62,24 @@ public class LexerTypeName
     public static readonly List<Tuple<LexerEnumerations.LexerType, string, Lexer>> LexerTypeNameList = new List<Tuple<LexerEnumerations.LexerType, string, Lexer>>(
         new[]
         {
-            Tuple.Create(LexerEnumerations.LexerType.Unknown, "text", Lexer.Null),
-            Tuple.Create(LexerEnumerations.LexerType.Cs, "cs", Lexer.Cpp),
-            Tuple.Create(LexerEnumerations.LexerType.Cpp, "cpp", Lexer.Cpp),
-            Tuple.Create(LexerEnumerations.LexerType.Xml, "xml", Lexer.Xml),
-            Tuple.Create(LexerEnumerations.LexerType.Text, "text", Lexer.Null),
-            Tuple.Create(LexerEnumerations.LexerType.Nsis, "nsis", (Lexer)SCLEX_NSIS),
-            Tuple.Create(LexerEnumerations.LexerType.InnoSetup, "inno", (Lexer)SCLEX_INNOSETUP),
-            Tuple.Create(LexerEnumerations.LexerType.SQL, "sql", Lexer.Xml),
-            Tuple.Create(LexerEnumerations.LexerType.Batch, "batch", Lexer.Batch),
-            Tuple.Create(LexerEnumerations.LexerType.Pascal, "pascal", Lexer.Pascal),
-            Tuple.Create(LexerEnumerations.LexerType.PHP, "php", Lexer.PhpScript),
-            Tuple.Create(LexerEnumerations.LexerType.WindowsPowerShell, "powershell", Lexer.PowerShell),
-            Tuple.Create(LexerEnumerations.LexerType.INI, "ini", Lexer.Properties),
-            Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.Python),
-            Tuple.Create(LexerEnumerations.LexerType.YAML, "yaml", (Lexer)SCLEX_YAML),
-            Tuple.Create(LexerEnumerations.LexerType.Java, "java", Lexer.Cpp),
-            Tuple.Create(LexerEnumerations.LexerType.Css, "css", Lexer.Css),
-            Tuple.Create(LexerEnumerations.LexerType.VbDotNet, "vb", Lexer.Vb),
-            Tuple.Create(LexerEnumerations.LexerType.Json, "json", Lexer.Json),
-            Tuple.Create(LexerEnumerations.LexerType.ErrorList, "errorlist", (Lexer)SCLEX_ERRORLIST),
+            Tuple.Create(LexerEnumerations.LexerType.Cs, "cs", Lexer.SCLEX_CSHARP),
+            Tuple.Create(LexerEnumerations.LexerType.Cpp, "cpp", Lexer.SCLEX_CPP),
+            Tuple.Create(LexerEnumerations.LexerType.Xml, "xml", Lexer.SCLEX_XML),
+            Tuple.Create(LexerEnumerations.LexerType.Nsis, "nsis", Lexer.SCLEX_NSIS),
+            Tuple.Create(LexerEnumerations.LexerType.InnoSetup, "inno", Lexer.SCLEX_INNOSETUP),
+            Tuple.Create(LexerEnumerations.LexerType.SQL, "sql", Lexer.SCLEX_SQL),
+            Tuple.Create(LexerEnumerations.LexerType.Batch, "batch", Lexer.SCLEX_BATCH),
+            Tuple.Create(LexerEnumerations.LexerType.Pascal, "pascal", Lexer.SCLEX_PASCAL),
+            Tuple.Create(LexerEnumerations.LexerType.PHP, "php", Lexer.SCLEX_PHPSCRIPT),
+            Tuple.Create(LexerEnumerations.LexerType.WindowsPowerShell, "powershell", Lexer.SCLEX_POWERSHELL),
+            Tuple.Create(LexerEnumerations.LexerType.INI, "ini", Lexer.SCLEX_PROPERTIES),
+            Tuple.Create(LexerEnumerations.LexerType.Python, "python", Lexer.SCLEX_PYTHON),
+            Tuple.Create(LexerEnumerations.LexerType.YAML, "yaml", Lexer.SCLEX_YAML),
+            Tuple.Create(LexerEnumerations.LexerType.Java, "java", Lexer.SCLEX_JAVA),
+            Tuple.Create(LexerEnumerations.LexerType.Css, "css", Lexer.SCLEX_CSS),
+            Tuple.Create(LexerEnumerations.LexerType.VbDotNet, "vb", Lexer.SCLEX_VB),
+            Tuple.Create(LexerEnumerations.LexerType.Json, "json", Lexer.SCLEX_JSON),
+            Tuple.Create(LexerEnumerations.LexerType.ErrorList, "errorlist", Lexer.SCLEX_ERRORLIST),
         });
 
     /// <summary>

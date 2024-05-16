@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net481;net6-windows</TargetFrameworks>
+		<AssemblyTitle>VPKSoft.ScintillaLexers.NET</AssemblyTitle>
+		<Product>ScintillaLexers.NET</Product>
+		<Copyright>Copyright © 2023 VPKSoft</Copyright>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+		<Authors>desjarlais</Authors>
+		<Description>A class library containing lexer definitions for the ScintillaNET.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/desjarlais/ScintillaLexers</PackageProjectUrl>
+		<PackageIcon>icon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/desjarlais/ScintillaLexers</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>wrapper scintilla Scintilla.NET lexer</PackageTags>
+		<PackageReleaseNotes>See: https://github.com/desjarlais/ScintillaLexers</PackageReleaseNotes>
+		<Version>1.1.17</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+		<RootNamespace>ScintillaLexers</RootNamespace>
+		<LangVersion>Latest</LangVersion>
+	</PropertyGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Net.Http" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\Scintilla.NET\Scintilla.NET\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Scintilla5.NET" Version="5.5.1" />
+	</ItemGroup>
+</Project>

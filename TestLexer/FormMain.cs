@@ -29,10 +29,9 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using VPKSoft.ScintillaLexers;
-using VPKSoft.ScintillaLexers.CreateSpecificLexer;
-using VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers;
+using ScintillaLexers.CreateSpecificLexer;
+using ScintillaLexers.ScintillaNotepadPlusPlus;
 
 namespace TestLexer;
 
@@ -49,7 +48,7 @@ public partial class FormMain : Form
     {
         if (odFile.ShowDialog() == DialogResult.OK)
         {                
-            ScintillaLexers.CreateLexer(scintilla, odFile.FileName);
+            ScintillaLexer.CreateLexer(scintilla, odFile.FileName);
             scintilla.Text = File.ReadAllText(odFile.FileName);
         }
     }

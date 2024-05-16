@@ -1,4 +1,6 @@
-﻿namespace TestLexer
+﻿using System.Drawing;
+
+namespace TestLexer
 {
     partial class FormMain
     {
@@ -29,79 +31,87 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.scintilla = new ScintillaNET.Scintilla();
-            this.msMain = new System.Windows.Forms.MenuStrip();
-            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTestMarkLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.odFile = new System.Windows.Forms.OpenFileDialog();
-            this.msMain.SuspendLayout();
-            this.SuspendLayout();
+            scintilla = new ScintillaNET.Scintilla();
+            msMain = new System.Windows.Forms.MenuStrip();
+            mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            mnuTestMarkLoad = new System.Windows.Forms.ToolStripMenuItem();
+            odFile = new System.Windows.Forms.OpenFileDialog();
+            msMain.SuspendLayout();
+            SuspendLayout();
             // 
             // scintilla
             // 
-            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintilla.EdgeColor = System.Drawing.Color.Black;
-            this.scintilla.Location = new System.Drawing.Point(0, 24);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(800, 426);
-            this.scintilla.TabIndex = 0;
-            this.scintilla.LocationChanged += new System.EventHandler(this.Scintilla_LocationChanged);
-            this.scintilla.Click += new System.EventHandler(this.Scintilla_LocationChanged);
+            scintilla.AutoCMaxHeight = 9;
+            scintilla.BiDirectionality = ScintillaNET.BiDirectionalDisplayType.Disabled;
+            scintilla.CaretLineBackColor = System.Drawing.Color.Black;
+            scintilla.CaretLineBackColor = Color.Yellow;
+            scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
+            scintilla.EdgeColor = System.Drawing.Color.Black;
+            scintilla.LexerName = null;
+            scintilla.Location = new System.Drawing.Point(0, 24);
+            scintilla.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            scintilla.Name = "scintilla";
+            scintilla.ScrollWidth = 1;
+            scintilla.Size = new System.Drawing.Size(933, 495);
+            scintilla.TabIndents = true;
+            scintilla.TabIndex = 0;
+            scintilla.UseRightToLeftReadingLayout = false;
+            scintilla.WrapMode = ScintillaNET.WrapMode.None;
+            scintilla.LocationChanged += Scintilla_LocationChanged;
+            scintilla.Click += Scintilla_LocationChanged;
             // 
             // msMain
             // 
-            this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile});
-            this.msMain.Location = new System.Drawing.Point(0, 0);
-            this.msMain.Name = "msMain";
-            this.msMain.Size = new System.Drawing.Size(800, 24);
-            this.msMain.TabIndex = 1;
-            this.msMain.Text = "menuStrip1";
+            msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuFile });
+            msMain.Location = new System.Drawing.Point(0, 0);
+            msMain.Name = "msMain";
+            msMain.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            msMain.Size = new System.Drawing.Size(933, 24);
+            msMain.TabIndex = 1;
+            msMain.Text = "menuStrip1";
             // 
             // mnuFile
             // 
-            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuOpen,
-            this.mnuTestMarkLoad});
-            this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(37, 20);
-            this.mnuFile.Text = "File";
+            mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mnuOpen, mnuTestMarkLoad });
+            mnuFile.Name = "mnuFile";
+            mnuFile.Size = new System.Drawing.Size(37, 20);
+            mnuFile.Text = "File";
             // 
             // mnuOpen
             // 
-            this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(150, 22);
-            this.mnuOpen.Text = "Open";
-            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
+            mnuOpen.Name = "mnuOpen";
+            mnuOpen.Size = new System.Drawing.Size(150, 22);
+            mnuOpen.Text = "Open";
+            mnuOpen.Click += mnuOpen_Click;
             // 
             // mnuTestMarkLoad
             // 
-            this.mnuTestMarkLoad.Name = "mnuTestMarkLoad";
-            this.mnuTestMarkLoad.Size = new System.Drawing.Size(150, 22);
-            this.mnuTestMarkLoad.Text = "Test mark load";
-            this.mnuTestMarkLoad.Click += new System.EventHandler(this.MnuTestMarkLoad_Click);
+            mnuTestMarkLoad.Name = "mnuTestMarkLoad";
+            mnuTestMarkLoad.Size = new System.Drawing.Size(150, 22);
+            mnuTestMarkLoad.Text = "Test mark load";
+            mnuTestMarkLoad.Click += MnuTestMarkLoad_Click;
             // 
             // odFile
             // 
-            this.odFile.Filter = "All files|*.*";
+            odFile.Filter = "All files|*.*";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.scintilla);
-            this.Controls.Add(this.msMain);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.msMain;
-            this.Name = "FormMain";
-            this.Text = "A test program for the ScintillaNET lexers © VPKSoft 2020";
-            this.msMain.ResumeLayout(false);
-            this.msMain.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(933, 519);
+            Controls.Add(scintilla);
+            Controls.Add(msMain);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = msMain;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FormMain";
+            Text = "Scintilla.NET.TestApp";
+            msMain.ResumeLayout(false);
+            msMain.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

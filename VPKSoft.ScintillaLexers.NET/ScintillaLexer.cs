@@ -27,10 +27,10 @@ SOFTWARE.
 // (C)::https://github.com/jacobslusser/ScintillaNET
 using System.Xml.Linq;
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.CreateSpecificLexer;
-using VPKSoft.ScintillaLexers.HelperClasses;
-using VPKSoft.ScintillaLexers.ScintillaNotepadPlusPlus;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers.CreateSpecificLexer;
+using ScintillaLexers.HelperClasses;
+using ScintillaLexers.ScintillaNotepadPlusPlus;
+using static ScintillaLexers.LexerEnumerations;
 
 
 // (C)::https://github.com/notepad-plus-plus/notepad-plus-plus
@@ -38,12 +38,12 @@ using static VPKSoft.ScintillaLexers.LexerEnumerations;
 // (C)::https://github.com/jacobslusser/ScintillaNET
 // (C)::https://www.scintilla.org
 
-namespace VPKSoft.ScintillaLexers;
+namespace ScintillaLexers;
 
 /// <summary>
 /// A class for setting a lexer for a Scintilla class instance.
 /// </summary>
-public static class ScintillaLexers
+public static class ScintillaLexer
 {
     /// <summary>
     /// Gets or sets the value of a LexerColors class instance.

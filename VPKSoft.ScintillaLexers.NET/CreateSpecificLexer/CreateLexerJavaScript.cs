@@ -25,10 +25,10 @@ SOFTWARE.
 #endregion
 
 using ScintillaNET;
-using VPKSoft.ScintillaLexers.HelperClasses;
-using static VPKSoft.ScintillaLexers.LexerEnumerations;
+using ScintillaLexers.HelperClasses;
+using static ScintillaLexers.LexerEnumerations;
 
-namespace VPKSoft.ScintillaLexers.CreateSpecificLexer;
+namespace ScintillaLexers.CreateSpecificLexer;
 
 internal abstract class CreateLexerJavaScript: CreateLexerCommon
 {
