@@ -21,7 +21,7 @@ jobs:
     env:
       Solution_Name: VPKSoft.ScintillaLexers.sln
       App_Project_Directory_1: ScintillaLexers
-      App_Project_Path_1: VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.csproj      
+      App_Project_Path: VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.csproj      
 
       NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
       NUGETAPI: ${{ secrets.NUGETAPI }}      
@@ -51,9 +51,9 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    # Create the VPKSoft.ScintillaLexers.NET app package by building and packaging the NuGet
-    - name: Create the VPKSoft.ScintillaLexers.NET NuGet package
-      run: msbuild $env:App_Project_Path_2 /p:Configuration=$env:Configuration
+    # Create the app package by building and packaging the NuGet
+    - name: Create the ScintillaLexers.NET NuGet package
+      run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration
 
     - name: Decode nuget.config
       if: ${{ github.event_name != 'pull_request' }}
