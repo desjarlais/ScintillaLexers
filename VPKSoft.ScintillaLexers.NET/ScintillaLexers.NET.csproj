@@ -21,6 +21,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>ScintillaLexers</RootNamespace>
 		<LangVersion>Latest</LangVersion>
+		<Title>ScintillaLexers.NET</Title>
 	</PropertyGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
 		<Reference Include="System.Data.DataSetExtensions" />

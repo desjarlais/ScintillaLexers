@@ -20,11 +20,8 @@ jobs:
 
     env:
       Solution_Name: VPKSoft.ScintillaLexers.sln
-      App_Project_Directory_1: VPKSoft.ScintillaLexers
-      App_Project_Path_1: VPKSoft.ScintillaLexers\VPKSoft.ScintillaLexers.csproj
-
-      App_Project_Directory_2: VPKSoft.ScintillaLexers.NET
-      App_Project_Path_2: VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.NET.csproj
+      App_Project_Directory_1: ScintillaLexers
+      App_Project_Path_1: VPKSoft.ScintillaLexers.NET\VPKSoft.ScintillaLexers.csproj      
 
       NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
       NUGETAPI: ${{ secrets.NUGETAPI }}      
