@@ -1,12 +1,11 @@
-name: .NET Desktop
+name: .NET NuGet Release
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  create:
+    tags:
+    - 'v*'
   workflow_dispatch:
-
+    
 jobs:
 
   build:
@@ -20,9 +19,8 @@ jobs:
 
     env:
       Solution_Name: VPKSoft.ScintillaLexers.sln
-      App_Project_Directory: ScintillaLexers
-      App_Project_Path: VPKSoft.ScintillaLexers.NET\ScintillaLexers.NET.csproj      
-
+      App_Project_Directory: VPKSoft.ScintillaLexers.NET
+      App_Project_Path: VPKSoft.ScintillaLexers.NET\ScintillaLexers.NET.csproj
       NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
       NUGETAPI: ${{ secrets.NUGETAPI }}      
       GH_PACKAGES_APIKEY: ${{ secrets.GH_PACKAGES_APIKEY }}
@@ -51,8 +49,8 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    # Create the app package by building and packaging the NuGet
-    - name: Create the ScintillaLexers.NET NuGet package
+    # Create the app package by building and packaging the Windows Application Packaging project
+    - name: Create the app NuGet package
       run: msbuild $env:App_Project_Path /p:Configuration=$env:Configuration
 
     - name: Decode nuget.config
