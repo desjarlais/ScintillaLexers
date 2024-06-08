@@ -4,12 +4,13 @@
     <TargetFramework>net6.0-windows7.0</TargetFramework>
 <!--    <TargetFramework>net462</TargetFramework>-->
     <AssemblyTitle>TestLexer</AssemblyTitle>
-    <Company>VPKSoft</Company>
-    <Product>TestLexer</Product>
+    <Company>desjarlais</Company>
+    <Product>ScintillaLexers.NET.TestApp</Product>
     <Description>A test application for the ScintillaLexers library containing lexer definitions for the ScintillaNET.</Description>
     <Copyright>Copyright © desjarlais 2023</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <UseWindowsForms>true</UseWindowsForms>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>

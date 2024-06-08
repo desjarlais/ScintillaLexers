@@ -3,7 +3,7 @@
 		<TargetFrameworks>net481;net6-windows</TargetFrameworks>
 		<AssemblyTitle>VPKSoft.ScintillaLexers.NET</AssemblyTitle>
 		<Product>ScintillaLexers.NET</Product>
-		<Copyright>Copyright © 2023 VPKSoft</Copyright>
+		<Copyright>Copyright © 2023 VPKSoft, desjarlais</Copyright>
 		<OutputPath>bin\$(Configuration)\</OutputPath>
 		<Authors>desjarlais</Authors>
 		<Description>A class library containing lexer definitions for the ScintillaNET.</Description>
