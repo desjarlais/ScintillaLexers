@@ -35,6 +35,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Scintilla5.NET" Version="5.5.1" />
+	  <PackageReference Include="Scintilla5.NET" Version="5.6.0" />
 	</ItemGroup>
 </Project>
