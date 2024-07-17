@@ -46,7 +46,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <PackageReference Include="Scintilla5.NET" Version="5.5.1" />
+    <PackageReference Include="Scintilla5.NET" Version="5.6.0" />
     <ProjectReference Include="..\VPKSoft.ScintillaLexers.NET\ScintillaLexers.NET.csproj" />
     <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
