@@ -29,7 +29,7 @@
 		<Reference Include="System.Net.Http" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Include="..\..\Scintilla.NET\Scintilla.NET\icon.png">
+		<None Include="..\icon.png">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>

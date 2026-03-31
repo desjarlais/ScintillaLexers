@@ -26,4 +26,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln"
     - name: Build
-      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln"
+      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln" -p:GeneratePackageOnBuild=false
+    - name: Copy Resources
+      run: |-
+        mkdir "$Env:GITHUB_WORKSPACE\ScintillaLexers\bin\$(BuildConfiguration)"
+        xcopy "..\..\Scintilla.NET\Scintilla.NET\icon.png" "$Env:GITHUB_WORKSPACE\ScintillaLexers\bin\$(BuildConfiguration)\" /Y
