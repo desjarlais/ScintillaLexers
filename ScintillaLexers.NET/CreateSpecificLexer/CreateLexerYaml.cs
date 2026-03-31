@@ -61,8 +61,8 @@ public abstract class CreateLexerYaml: CreateLexerCommon
         #endregion
 
         // DEFAULT, fontStyle = 0
-        scintilla.Styles[SCE_YAML_DEFAULT].ForeColor = lexerColors[LexerType.YAML, "YamlDefaultFore"];
-        scintilla.Styles[SCE_YAML_DEFAULT].BackColor = lexerColors[LexerType.YAML, "YamlDefaultBack"];
+        scintilla.Styles[SCE_YAML_DEFAULT].ForeColor = lexerColors[LexerType.YAML, "DefaultFore"];
+        scintilla.Styles[SCE_YAML_DEFAULT].BackColor = lexerColors[LexerType.YAML, "DefaultBack"];
 
         // COMMENT, fontStyle = 1
         scintilla.Styles[SCE_YAML_COMMENT].ForeColor = lexerColors[LexerType.YAML, "CommentFore"];
@@ -75,8 +75,8 @@ public abstract class CreateLexerYaml: CreateLexerCommon
 
         // KEYWORD, fontStyle = 3 
         scintilla.Styles[SCE_YAML_KEYWORD].Bold = true;
-        scintilla.Styles[SCE_YAML_KEYWORD].ForeColor = lexerColors[LexerType.YAML, "KeywordFore"];
-        scintilla.Styles[SCE_YAML_KEYWORD].BackColor = lexerColors[LexerType.YAML, "KeywordBack"];
+        scintilla.Styles[SCE_YAML_KEYWORD].ForeColor = lexerColors[LexerType.YAML, "InstructionWordFore"];
+        scintilla.Styles[SCE_YAML_KEYWORD].BackColor = lexerColors[LexerType.YAML, "InstructionWordBack"];
 
         // NUMBER, fontStyle = 4 
         scintilla.Styles[SCE_YAML_NUMBER].ForeColor = lexerColors[LexerType.YAML, "NumberFore"];

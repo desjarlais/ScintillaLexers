@@ -1245,7 +1245,10 @@ public class LexerColors
                 new KeyValuePair<int, string>(15, "TextBack"),
 
                 new KeyValuePair<int, string>(16, "ErrorFore"),
-                new KeyValuePair<int, string>(17, "ErrortBack"),
+                new KeyValuePair<int, string>(17, "ErrorBack"),
+
+                new KeyValuePair<int, string>(18, "OperatorFore"),
+                new KeyValuePair<int, string>(19, "OperatorBack"),
             });
 
 
