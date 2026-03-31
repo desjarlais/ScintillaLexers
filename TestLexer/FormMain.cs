@@ -24,14 +24,14 @@ SOFTWARE.
 */
 #endregion
 
+using ScintillaLexers;
+using ScintillaLexers.CreateSpecificLexer;
+using ScintillaLexers.ScintillaNotepadPlusPlus;
 using ScintillaNET;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using ScintillaLexers;
-using ScintillaLexers.CreateSpecificLexer;
-using ScintillaLexers.ScintillaNotepadPlusPlus;
 
 namespace TestLexer;
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
 <!--    <TargetFramework>net462</TargetFramework>-->
     <AssemblyTitle>TestLexer</AssemblyTitle>
     <Company>desjarlais</Company>
@@ -46,8 +46,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <PackageReference Include="Scintilla5.NET" Version="5.6.2" />
-    <ProjectReference Include="..\VPKSoft.ScintillaLexers.NET\ScintillaLexers.NET.csproj" />
+    <PackageReference Include="Scintilla5.NET" Version="6.1.2" />
+    <ProjectReference Include="..\ScintillaLexers.NET\ScintillaLexers.NET.csproj" />
     <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
