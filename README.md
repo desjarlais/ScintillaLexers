@@ -1,7 +1,7 @@
 # ScintillaLexers
 A class library containing lexer definitions for the ScintillaNET.
 
-[![Nuget](https://img.shields.io/nuget/v/VPKSoft.ScintillaLexers.NET)](https://www.nuget.org/packages/VPKSoft.ScintillaLexers.NET/)
+[![Nuget](https://img.shields.io/nuget/v/ScintillaLexers5.NET)](https://www.nuget.org/packages/ScintillaLexers5.NET/)
 
 * Easy to use class library to set a lexer definition for the [ScintillaNET](https://github.com/desjarlais/ScintillaNET) control.
 * Containing lexer definitions for C++, C#, SQL, XML, NSIS, Batch, PHP, HTML, WindowsPowerShell, INI (properties), Python, YAML, Java, JavaScript, Css, InnoSetup, ErrorList (diff) and Pascal programming "languages"/languages.
