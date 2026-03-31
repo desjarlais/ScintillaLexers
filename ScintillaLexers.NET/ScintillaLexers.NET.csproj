@@ -21,6 +21,7 @@
 		<RootNamespace>ScintillaLexers</RootNamespace>
 		<LangVersion>Latest</LangVersion>
 		<Title>ScintillaLexers.NET</Title>
+		<PackageId>ScintillaLexers5.NET</PackageId>
 	</PropertyGroup>
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
 		<Reference Include="System.Data.DataSetExtensions" />
