@@ -26,4 +26,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln"
     - name: Build
-      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln" -p:GeneratePackageOnBuild=false
+      run: dotnet build --no-restore "$Env:GITHUB_WORKSPACE/ScintillaLexers.sln"
